@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,IAAI;EACA,OAAO,EAAE,CAAC;EACV,aAAa,EAAE,aAAa",
-"sources": ["../sass/main.scss"],
+"mappings": "AAAA,wBAAwB;ACAhB,wGAAgG;AAExG,UAAU;EACN,WAAW,EAAE,2CAA2C;EACxD,UAAU,EAAE,MAAM;;ADCtB,qBAAqB;AAErB,wBAAwB;AAGxB,qBAAqB;AAGrB,wBAAwB;AAExB,qBAAqB;AAErB,WAAW;AAIX,gBAAgB;AAGhB,8BAA8B;AAG9B,2BAA2B",
+"sources": ["../sass/main.scss","../sass/Base/_font.scss"],
 "names": [],
 "file": "style.css"
 }
