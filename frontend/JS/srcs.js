@@ -19,7 +19,7 @@ function GETid(index, value){
     request.onreadystatechange = function() {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
             var response = JSON.parse(this.responseText);
-            test.innerHTML = response[index]._id;
+            value.innerHTML = response[index]._id;
         }
     };
     request.open("GET", "http://localhost:3000/api/teddies");
