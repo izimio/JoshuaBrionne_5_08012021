@@ -4,6 +4,9 @@ html, body {
   font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
   overflow-x: hidden; }
 
+body {
+  background-color: #faf6f9; }
+
 a {
   color: black;
   text-decoration: none; }
@@ -13,12 +16,6 @@ a {
 
 /* ++++ GLOBAL +++ */
 /* ----- HEDEAR ----- */
-/* ++++ HEDEAR +++ */
-/* ----- FOOTER ----- */
-/* ++++ FOOTER +++ */
-/* OTHER */
-/* ++++ OTHER */
-/* ----- PAGE accueil ----- */
 header {
   background-color: #f3e9f1;
   margin-top: 1em;
@@ -28,7 +25,7 @@ header {
   align-items: center;
   margin-bottom: 2em; }
   header img {
-    padding: 0.5em 1em 0.5em 1em;
+    padding: 0.5em 0.5em 1em;
     max-width: 150px; }
   header .cart {
     margin: 1em 3em;
@@ -36,6 +33,9 @@ header {
     border-radius: 5px;
     transition: 800ms; }
     header .cart a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: black; }
     header .cart:hover {
       background-color: #eedfeb; }
@@ -45,11 +45,36 @@ header {
         background-clip: text;
         color: transparent; }
 
+/* ++++ HEDEAR +++ */
+/* ----- FOOTER ----- */
+footer {
+  background-color: #f3e9f1;
+  border-radius: 15px;
+  margin-bottom: 1em; }
+  footer h3 {
+    font-size: 1.5em;
+    padding-top: 1em; }
+  footer p {
+    padding-bottom: 1em;
+    color: #cf7e48; }
+  footer .ico {
+    padding-bottom: 1em; }
+    footer .ico a {
+      font-size: 2em;
+      background: linear-gradient(-50deg, #915cf9, #cf7e48);
+      background-clip: text;
+      color: transparent; }
+
+/* ++++ FOOTER +++ */
+/* OTHER */
+/* ++++ OTHER */
+/* ----- PAGE accueil ----- */
 .tilte {
   text-align: center; }
   .tilte h1 {
     margin-bottom: 0%;
-    margin-top: -0.5em; }
+    margin-top: -0.5em;
+    font-size: 3.5em; }
   .tilte p {
     font-size: 0.8em; }
 
@@ -57,7 +82,7 @@ header {
   margin: 0em 0.3em 0em 0.3em; }
 
 section {
-  border: 2px solid red; }
+  margin-bottom: 2em; }
 
 .bg-color-deg {
   background: linear-gradient(-50deg, #e4d7fe, #e9c5ad);
@@ -65,15 +90,15 @@ section {
   border-radius: 15px;
   padding: 2em 0em 2em 0em; }
 
-.allcards {
-  display: flex; }
-
 .productCard {
   background-color: #ecdce9;
   border-radius: 10px;
   height: auto;
   margin-bottom: 2em;
   box-shadow: 1px 1px 15px 0px #ab659d; }
+  .productCard:hover {
+    transform: scale(1.02);
+    transition-duration: 600ms; }
   .productCard_img {
     height: 15rem;
     padding: 1em; }
@@ -84,6 +109,24 @@ section {
       object-fit: cover; }
   .productCard_caption {
     margin-top: 0%; }
+
+.tilte2 {
+  text-align: center; }
+  .tilte2 h1 {
+    margin-bottom: 0%;
+    margin-top: -0.5em;
+    font-size: 3.5em; }
+  .tilte2 p {
+    font-size: 1.5em;
+    color: #cf7e48; }
+  .tilte2_recap {
+    display: flex;
+    justify-content: center; }
+
+.recapitulatif h2 {
+  margin-top: -1em;
+  margin-left: 0.5em;
+  font-size: 1.5em; }
 
 /* ++++ PAGE accueil +++ */
 

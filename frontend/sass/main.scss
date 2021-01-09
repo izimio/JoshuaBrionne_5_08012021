@@ -1,18 +1,17 @@
 /* ----- GLOBAL ----- */
-@import "./Base/font";
 @import "./Utils/variables";
+@import "./Base/font";
 
 // @import "./Utils/mixin";
 /* ++++ GLOBAL +++ */
 
 /* ----- HEDEAR ----- */
-// @import "./Layout/acheader";
-// @import "./Layout/exheader";
+ @import "./Layout/acheader";
 /* ++++ HEDEAR +++ */
 
 
 /* ----- FOOTER ----- */
-// @import "./Layout/footer";
+ @import "./Layout/footer";
 /* ++++ FOOTER +++ */
 
 /* OTHER */
@@ -25,5 +24,7 @@
 
 /* ----- PAGE accueil ----- */
  @import "./Pages/accueil";
+ @import "./Pages/shoppingCart";
 // @import "./Pages/extrarest";
 /* ++++ PAGE accueil +++ */
+

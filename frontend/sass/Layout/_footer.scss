@@ -1,0 +1,25 @@
+
+footer{
+    background-color: $cd-primary;
+    border-radius: 15px;
+    margin-bottom: 1em;
+    h3{
+        font-size: 1.5em;
+        padding-top: 1em;
+    }
+    p{
+        padding-bottom: 1em;
+        color: $cd-tertiary;
+        
+    }
+    .ico{
+        padding-bottom: 1em;
+        a{
+            font-size: 2em;
+            background: linear-gradient(-50deg, $cd-secondary, $cd-tertiary);
+            background-clip: text;
+            color: transparent;
+        }
+    }
+}
+

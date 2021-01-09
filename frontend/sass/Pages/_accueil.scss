@@ -1,0 +1,51 @@
+.tilte{
+    text-align: center;
+    h1{
+        margin-bottom: 0%;
+        margin-top: -0.5em;
+        font-size: 3.5em;
+    }
+    p{
+        font-size: 0.8em;
+    }
+}
+
+.shrink{
+    margin: 0em 0.3em 0em 0.3em;
+}
+
+section{
+    margin-bottom: 2em;
+}
+.bg-color-deg{
+    background: (linear-gradient(-50deg, lighten($cd-secondary,25%), lighten($cd-tertiary,25%)));
+    height: auto;
+    border-radius: 15px;
+    padding: 2em 0em 2em 0em;
+}
+
+.productCard{
+    background-color: darken($cd-primary,4%);
+    border-radius: 10px;
+    height: auto;
+    margin-bottom: 2em;
+    box-shadow: 1px 1px 15px 0px rgba($color: darken($cd-primary,40), $alpha: 1);
+    &:hover{
+        transform: scale(1.02);
+        transition-duration: 600ms;
+    }
+    &_img{
+        height: 15rem;
+        padding: 1em;
+        img{
+            border-radius: 15px;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    &_caption{
+        margin-top: 0%;
+    }
+}
+
