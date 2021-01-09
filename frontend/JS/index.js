@@ -1,10 +1,10 @@
 const ouin = document.getElementById('allcost');
-
-let oui = 0;
+const ko = document.getElementById('allProductsName');
+let oui = 1;
 ouin.innerHTML = oui;
 ouin.addEventListener('click',function() {
 
-    oui++;
+    oui *= 2;
     ouin.innerHTML = "&nbsp " + oui + "€";
 
 });
