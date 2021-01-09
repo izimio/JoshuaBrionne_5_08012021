@@ -4,6 +4,11 @@ html, body {
   font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
   overflow-x: hidden; }
 
+a {
+  text-decoration: none; }
+  a:hover {
+    text-decoration: none; }
+
 /* ++++ GLOBAL +++ */
 /* ----- HEDEAR ----- */
 /* ++++ HEDEAR +++ */
@@ -12,6 +17,56 @@ html, body {
 /* OTHER */
 /* ++++ OTHER */
 /* ----- PAGE accueil ----- */
+header {
+  background-color: #f3e9f1;
+  margin-top: 1em;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em; }
+  header img {
+    padding: 0.5em 1em 0.5em 1em;
+    max-width: 150px; }
+  header .cart {
+    margin: 1em 3em;
+    padding: 0.5em;
+    border-radius: 5px;
+    transition: 800ms;
+    color: black; }
+    header .cart:hover {
+      background-color: #eedfeb; }
+
+.tilte {
+  text-align: center; }
+  .tilte h1 {
+    margin-bottom: 0%;
+    margin-top: -0.5em; }
+  .tilte p {
+    font-size: 0.8em; }
+
+section {
+  margin: 0 1em 0 1em; }
+
+.bg-color-deg {
+  background: linear-gradient(-50deg, #e4d7fe, #e9c5ad);
+  height: 500px;
+  border-radius: 15px; }
+
+/*
+.lp{
+    background-color: lightpink;
+    height: 100px;
+}
+.ld{
+    background-color: lightblue;
+    height: 200px;
+}
+.lk{
+    background-color: lightgreen;
+    height: 200px;
+}
+*/
 /* ++++ PAGE accueil +++ */
 
 /*# sourceMappingURL=style.css.map */

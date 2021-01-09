@@ -1,6 +1,6 @@
 /* ----- GLOBAL ----- */
 @import "./Base/font";
-// @import "./Utils/variables";
+@import "./Utils/variables";
 
 // @import "./Utils/mixin";
 /* ++++ GLOBAL +++ */
@@ -24,6 +24,6 @@
 
 
 /* ----- PAGE accueil ----- */
-// @import "./Pages/accueil";
+ @import "./Pages/accueil";
 // @import "./Pages/extrarest";
 /* ++++ PAGE accueil +++ */

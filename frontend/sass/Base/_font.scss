@@ -4,3 +4,9 @@ html, body{
     font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
+a{
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
+}
