@@ -1,3 +1,10 @@
-const oui = document.getElementById('allProductsName');
+const ouin = document.getElementById('allcost');
 
-oui.innerHTML = "JEAN est &nbsp";
+let oui = 0;
+ouin.innerHTML = oui;
+ouin.addEventListener('click',function() {
+
+    oui++;
+    ouin.innerHTML = "&nbsp " + oui + "€";
+
+});

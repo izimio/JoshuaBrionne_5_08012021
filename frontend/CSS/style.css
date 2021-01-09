@@ -94,8 +94,9 @@ section {
   background-color: #ecdce9;
   border-radius: 10px;
   height: auto;
-  margin-bottom: 2em;
-  box-shadow: 1px 1px 15px 0px #ab659d; }
+  margin-bottom: 1em;
+  margin-top: 1em;
+  box-shadow: 1px 1px 15px 0px #bd86b2; }
   .productCard:hover {
     transform: scale(1.02);
     transition-duration: 600ms; }
@@ -123,10 +124,24 @@ section {
     display: flex;
     justify-content: center; }
 
-.recapitulatif h2 {
-  margin-top: -1em;
-  margin-left: 0.5em;
-  font-size: 1.5em; }
+.recapitulatif {
+  position: relative;
+  height: 550px; }
+  .recapitulatif h2 {
+    margin-top: -1em;
+    margin-left: 0.5em;
+    font-size: 1.5em; }
+  .recapitulatif_price {
+    background-color: #b28dfb;
+    box-shadow: 1px 1px 5px 0px #b5652f;
+    padding: 0.5em 1em 0.5em 1em;
+    position: absolute;
+    display: flex;
+    bottom: -15px;
+    right: 15px;
+    border-radius: 15px; }
+    .recapitulatif_price p {
+      margin-bottom: 0%; }
 
 /* ++++ PAGE accueil +++ */
 

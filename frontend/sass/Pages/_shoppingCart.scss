@@ -16,9 +16,24 @@
 }
 
 .recapitulatif{
+    position: relative;
+    height: 550px;
     h2{
         margin-top: -1em;
         margin-left: 0.5em;
         font-size: 1.5em;
+    }
+    &_price{
+        background-color: lighten($cd-secondary,10%);
+        box-shadow: 1px 1px 5px 0px rgba($color: darken($cd-tertiary,10), $alpha: 1);
+        padding: 0.5em 1em 0.5em 1em;
+        position: absolute;
+        display: flex;
+        bottom: -15px;
+        right: 15px;
+        border-radius: 15px;
+        p{
+            margin-bottom: 0%;
+        }
     }
 }

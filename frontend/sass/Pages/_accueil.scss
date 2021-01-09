@@ -28,8 +28,9 @@ section{
     background-color: darken($cd-primary,4%);
     border-radius: 10px;
     height: auto;
-    margin-bottom: 2em;
-    box-shadow: 1px 1px 15px 0px rgba($color: darken($cd-primary,40), $alpha: 1);
+    margin-bottom: 1em;
+    margin-top: 1em;
+    box-shadow: 1px 1px 15px 0px rgba($color: darken($cd-primary,30), $alpha: 1);
     &:hover{
         transform: scale(1.02);
         transition-duration: 600ms;
