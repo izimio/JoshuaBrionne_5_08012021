@@ -5,8 +5,10 @@ html, body{
     overflow-x: hidden;
 }
 a{
+    color: black;
     text-decoration: none;
     &:hover{
+        color: black;
         text-decoration: none;
     }
 }

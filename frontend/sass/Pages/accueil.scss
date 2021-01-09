@@ -1,4 +1,9 @@
 
+
+//GLOBALE//
+//\GLOBALE\\
+
+//HEADER//
 header{
     background-color: $cd-primary;
     margin-top: 1em;
@@ -16,9 +21,17 @@ header{
         padding: 0.5em;
         border-radius: 5px;
         transition: 800ms;
-        color: black;
+        a{
+            color: black;
+        }
         &:hover{
             background-color: darken($cd-primary,3%);
+            i{
+                transition: 800ms;
+                background: linear-gradient(-50deg, $cd-secondary, $cd-tertiary);
+                background-clip: text;
+                color: transparent;
+            }
         }
     }
 }
@@ -34,27 +47,45 @@ header{
     }
 }
 
-section{
-    margin: 0 1em 0 1em;
+//\HEADER\\
+
+//MAIN//
+.shrink{
+    margin: 0em 0.3em 0em 0.3em;
 }
 
+section{
+    border: 2px solid red;
+}
 .bg-color-deg{
     background: (linear-gradient(-50deg, lighten($cd-secondary,25%), lighten($cd-tertiary,25%)));
-    height: 500px;
+    height: auto;
     border-radius: 15px;
+    padding: 2em 0em 2em 0em;
+}
+.allcards{
+    display: flex;
 }
 
-/*
-.lp{
-    background-color: lightpink;
-    height: 100px;
+
+.productCard{
+    background-color: darken($cd-primary,4%);
+    border-radius: 10px;
+    height: auto;
+    margin-bottom: 2em;
+    box-shadow: 1px 1px 15px 0px rgba($color: darken($cd-primary,40), $alpha: 1);
+    &_img{
+        height: 15rem;
+        padding: 1em;
+        img{
+            border-radius: 15px;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    &_caption{
+        margin-top: 0%;
+    }
 }
-.ld{
-    background-color: lightblue;
-    height: 200px;
-}
-.lk{
-    background-color: lightgreen;
-    height: 200px;
-}
-*/
+
