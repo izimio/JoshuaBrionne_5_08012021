@@ -8,7 +8,7 @@
         img{
             width: 100%;
             object-fit: cover;
-            height: 40em;
+            height: 46.3em;
             border-radius: 15px;
         }
         &-price{
@@ -23,8 +23,11 @@
             right: 10px;
             bottom: 5px;
             border-radius: 15px;
-            @media all and (max-width: 768px) {
+            @media all and (max-width: 769px) {
                 bottom: -15px;
+            }
+            @media all and (min-width: 769px) and  (max-width: 992px){
+                bottom: 48px;
             }
         }
     }
@@ -38,11 +41,22 @@
                 font-size: 1.5em;
                 font-weight: bold;
             }
+                &-form{
+                    border-radius: 15px;
+                    margin-top: 2em;
+                    text-align: center;
+                    label{
+                        display: block;
+                    }
+                    select{
+                        background-color: darken(#e4d6f8,6%);
+                    }
+                }
             &-colors{
                 display: flex;
                  justify-content: space-evenly;
                 &-bubble{
-                    @media all and (min-width: 768px) and (max-width: 992px) {
+                    @media all and (min-width: 769px) and (max-width: 992px) {
                         height: 70px;
                         width: 70px;
                     }
@@ -52,7 +66,6 @@
                     }
                     &:hover{
                         transform: scale(1.1);
-                        cursor: pointer;
                     }
                     background: chartreuse;
                     border-radius: 50%;
@@ -93,12 +106,12 @@
         }
         &-addcart{
             &-button{
-                   @media all and (min-width: 768px) {
+                   @media all and (min-width: 769px) {
                     margin-left: 20%;
                     margin-right: 20%;
                 }
 
-                @media all and (max-width: 768px) {
+                @media all and (max-width: 769px) {
                    margin-left: 15%;
                    margin-right: 15%;
                 }
@@ -129,7 +142,7 @@
             }
         }
     }
-    @media all and (max-width: 768px) {
+    @media all and (max-width: 769px) {
         flex-direction: column;
         justify-content: center;
         &_img{
