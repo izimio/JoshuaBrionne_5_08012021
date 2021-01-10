@@ -14,6 +14,13 @@ a {
     color: black;
     text-decoration: none; }
 
+@keyframes bigup {
+  0% {
+    transform: rotate(10deg); }
+  50% {
+    transform: rotate(-10deg); }
+  100% {
+    transform: rotate(0deg); } }
 /* ++++ GLOBAL +++ */
 /* ----- HEDEAR ----- */
 header {
@@ -147,12 +154,44 @@ section {
 
 .formulaire {
   border-radius: 15px;
-  background-color: #f3e9f1;
-  height: 100px; }
+  background-color: #efd3c1; }
   .formulaire h2 {
     padding-top: 0.5em;
     font-size: 1.5em;
     text-align: center; }
+  .formulaire-real {
+    margin-top: 2em;
+    text-align: center; }
+    .formulaire-real input {
+      width: 50%;
+      border-radius: 5px;
+      border: none;
+      margin-right: 0; }
+    .formulaire-real label {
+      margin-right: 1em; }
+    .formulaire-real-button {
+      margin-top: 2em;
+      padding-bottom: 2em; }
+      .formulaire-real-button button {
+        padding: 0.5em 1em 0.5em 1em;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 1px 1px 5px 0px lightblue;
+        transition: 800ms; }
+        .formulaire-real-button button:not(:disabled) {
+          animation: bigup 800ms;
+          background-color: lightblue; }
+        .formulaire-real-button button:disabled {
+          background-color: #ff6666;
+          box-shadow: 1px 1px 1px 0px #ff6666; }
+
+.wrong {
+  background-color: #ffb3b3; }
+
+.error {
+  color: red;
+  margin-bottom: 0em;
+  margin-top: -0.2em; }
 
 .overview {
   display: flex; }

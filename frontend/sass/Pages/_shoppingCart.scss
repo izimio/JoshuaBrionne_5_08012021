@@ -37,13 +37,57 @@
         }
     }
 }
+
 .formulaire{
     border-radius: 15px;
-    background-color: $cd-primary;
-    height: 100px;
+    background-color: lighten($cd-tertiary,30%);
     h2{
         padding-top: 0.5em;
         font-size: 1.5em;
         text-align: center;
     }
+    &-real{
+        margin-top: 2em;
+        text-align: center;
+        input{
+            width: 50%;
+            border-radius: 5px;
+            border: none;
+            margin-right: 0;
+        }
+        label{
+            margin-right: 1em;
+
+        }
+        &-button{
+            margin-top: 2em;
+            padding-bottom: 2em;
+            button{
+
+                padding: 0.5em 1em 0.5em 1em;
+                border-radius: 5px;
+                border: none;
+                box-shadow: 1px 1px 5px 0px rgba($color: lightblue, $alpha: 1);
+                transition: 800ms;
+                &:not(:disabled){
+                    animation: bigup 800ms;
+                    background-color: lightblue;
+                }
+                &:disabled{
+                    background-color: lighten(red,20);
+                    box-shadow: 1px 1px 1px 0px rgba($color: lighten(red,20), $alpha: 1);
+                }
+            }
+        }
+    }
+}
+
+.wrong{
+    background-color: lighten(red,35%);
+}
+
+.error{
+    color: red;
+    margin-bottom: 0em;
+    margin-top: -0.2em;
 }
