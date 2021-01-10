@@ -102,7 +102,7 @@
                    margin-left: 15%;
                    margin-right: 15%;
                 }
-                transition: 800ms;
+                //transition: 800ms;
                 padding: 0.8em;
                 display: flex;
                 align-items: center;
@@ -111,7 +111,6 @@
                 background-color: darken(#e4d6f8,6%);
                 box-shadow: 1px 1px 5px 0px rgba($color: darken(#e4d6f8,25), $alpha: 1);
                 i{
-                    transition: 800ms;
                     font-size: 1.5em;
                     margin-right: 0.5em;
                 }
@@ -121,6 +120,7 @@
                 &:hover{
                     background-color: darken(#e4d6f8,10%);
                     i{
+                        transition: 800ms;
                         background: linear-gradient(-50deg, $cd-secondary, $cd-tertiary);
                         background-clip: text;
                         color: transparent;

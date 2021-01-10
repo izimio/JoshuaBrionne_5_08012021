@@ -96,10 +96,10 @@ section {
   height: auto;
   margin-bottom: 1em;
   margin-top: 1em;
-  box-shadow: 1px 1px 15px 0px #bd86b2; }
+  box-shadow: 1px 1px 15px 0px #bd86b2;
+  transition: 200ms; }
   .productCard:hover {
-    transform: scale(1.02);
-    transition-duration: 600ms; }
+    transform: scale(1.04); }
   .productCard_img {
     height: 15rem;
     padding: 1em; }
@@ -222,7 +222,6 @@ section {
         font-size: 1.5em;
         font-weight: bold; }
     .overview_infos-addcart-button {
-      transition: 800ms;
       padding: 0.8em;
       display: flex;
       align-items: center;
@@ -239,7 +238,6 @@ section {
           margin-left: 15%;
           margin-right: 15%; } }
       .overview_infos-addcart-button i {
-        transition: 800ms;
         font-size: 1.5em;
         margin-right: 0.5em; }
       .overview_infos-addcart-button p {
@@ -247,6 +245,7 @@ section {
       .overview_infos-addcart-button:hover {
         background-color: #c7aaf1; }
         .overview_infos-addcart-button:hover i {
+          transition: 800ms;
           background: linear-gradient(-50deg, #915cf9, #cf7e48);
           background-clip: text;
           color: transparent; }
