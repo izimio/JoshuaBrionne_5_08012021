@@ -1,0 +1,114 @@
+.overview{
+    display: flex;
+    &_img{
+        margin-left: 1em;
+        position: relative;
+        border-radius: 15px;
+        width: 50%;
+        img{
+            width: 100%;
+            object-fit: cover;
+            height: 40em;
+            border-radius: 15px;
+        }
+        &-price{
+            h2{
+                margin-bottom: -0.1em;
+                font-weight: bold;
+            }
+            position: absolute;
+            background-color: lighten(gold,10%);
+            box-shadow: 1px 1px 5px 0px rgba($color: darken($cd-tertiary,10), $alpha: 1);
+            padding: 0.5em 1em 0.5em 1em;
+            bottom: -25px;
+            right: 10px;
+            border-radius: 15px;
+        }
+    }
+    &_infos{
+        width: 50%;
+        margin: 2em 0em 2em 0em;
+        &-allcolors{
+            h2{
+                margin: 0 0 1em 1em;
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+            &-colors{
+                display: flex;
+                 justify-content: space-evenly;
+                &-bubble{
+                    @media all and (min-width: 768px) and (max-width: 992px) {
+                        height: 70px;
+                        width: 70px;
+                    }
+                    @media all and (max-width: 576px) {
+                        height: 50px;
+                        width: 50px;
+                    }
+                    &:hover{
+                        transform: scale(1.1);
+                        cursor: pointer;
+                    }
+                    background: chartreuse;
+                    border-radius: 50%;
+                    height: 100px;
+                    transition: 200ms;
+                    width: 100px;
+                    &:nth-child(1){
+                        background-color: tan;
+                        &:hover{
+                            border: 2px solid darken(tan,20%);
+                        }
+                    }
+                    &:nth-child(2){
+                        background-color: chocolate;
+                        &:hover{
+                            border: 2px solid darken(chocolate,20%);
+                        }
+                    }
+                    &:nth-child(3){
+                        background-color: black;
+                        &:hover{
+                            border: 2px solid darken(black,20%);
+                        }
+                    }
+                    &:nth-child(4){
+                        background-color: sandybrown;
+                        &:hover{
+                            border: 2px solid darken(sandybrown,20%);
+                        }
+                    }
+                }
+            }
+        }
+        &-description{
+            margin: 2em 1em 2em 1.5em;
+            text-align: justify;
+        }
+        &-materiaux{
+            h2{
+               margin-left: 1em;
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+            
+        }
+    }
+    @media all and (max-width: 768px) {
+        flex-direction: column;
+        justify-content: center;
+        &_img{
+            margin-left: 5.8%;
+            width: 88%;
+            img{
+                height: 25em;
+                width: 100%;
+            }
+        }
+        &_infos{
+            width: 100%;
+        }
+    }
+
+}

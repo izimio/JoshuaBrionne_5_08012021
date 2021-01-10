@@ -6,7 +6,7 @@
         font-size: 3.5em;
     }
     p{
-        font-size: 0.8em;
+        font-size: 1em;
     }
 }
 
@@ -47,6 +47,11 @@ section{
     }
     &_caption{
         margin-top: 0%;
+        &-lower{
+            &-description{
+                margin: 1em;
+            }
+        }
     }
 }
 

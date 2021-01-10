@@ -1,10 +1,17 @@
-const ouin = document.getElementById('allcost');
-const ko = document.getElementById('allProductsName');
-let oui = 1;
-ouin.innerHTML = oui;
-ouin.addEventListener('click',function() {
+const op = document.getElementById('des1');
 
-    oui *= 2;
-    ouin.innerHTML = "&nbsp " + oui + "€";
+function GETdescription(index, value){
+    
+    var request = new XMLHttpRequest();
 
-});
+    request.onreadystatechange = function() {
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+            var response = JSON.parse(this.responseText);
+            value.innerHTML = response[index].description;
+        }
+    };
+    request.open("GET", "http://localhost:3000/api/teddies");
+    request.send();
+};
+
+GETdescription(1,op);
