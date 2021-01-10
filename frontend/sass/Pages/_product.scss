@@ -1,8 +1,8 @@
 .overview{
     display: flex;
     &_img{
-        margin-left: 1em;
         position: relative;
+        margin-left: 1em;
         border-radius: 15px;
         width: 50%;
         img{
@@ -18,15 +18,17 @@
             }
             position: absolute;
             background-color: lighten(gold,10%);
-            box-shadow: 1px 1px 5px 0px rgba($color: darken($cd-tertiary,10), $alpha: 1);
+            box-shadow: 1px 1px 5px 0px rgba($color: darken(gold,20), $alpha: 1);
             padding: 0.5em 1em 0.5em 1em;
-            bottom: -25px;
             right: 10px;
+            bottom: 5px;
             border-radius: 15px;
+            @media all and (max-width: 768px) {
+                bottom: -15px;
+            }
         }
     }
     &_infos{
-        position: relative;
         width: 50%;
         margin: 2em 0em 2em 0em;
         &-allcolors{
@@ -81,6 +83,7 @@
         }
         &-materiaux{
             margin-bottom: 2em;
+            margin-right: 05em;
             h2{
                 margin-left: 1em;
                 font-size: 1.5em;
@@ -90,12 +93,20 @@
         }
         &-addcart{
             &-button{
+                   @media all and (min-width: 768px) {
+                    margin-left: 20%;
+                    margin-right: 20%;
+                }
+
+                @media all and (max-width: 768px) {
+                   margin-left: 15%;
+                   margin-right: 15%;
+                }
                 transition: 800ms;
-                position: absolute;
-                left: 32%;
                 padding: 0.8em;
                 display: flex;
                 align-items: center;
+                justify-content: center;
                 border-radius: 5px;
                 background-color: darken(#e4d6f8,6%);
                 box-shadow: 1px 1px 5px 0px rgba($color: darken(#e4d6f8,25), $alpha: 1);

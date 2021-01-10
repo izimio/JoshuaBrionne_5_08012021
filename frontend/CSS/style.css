@@ -148,8 +148,8 @@ section {
 .overview {
   display: flex; }
   .overview_img {
-    margin-left: 1em;
     position: relative;
+    margin-left: 1em;
     border-radius: 15px;
     width: 50%; }
     .overview_img img {
@@ -160,16 +160,18 @@ section {
     .overview_img-price {
       position: absolute;
       background-color: #ffdf33;
-      box-shadow: 1px 1px 5px 0px #b5652f;
+      box-shadow: 1px 1px 5px 0px #998100;
       padding: 0.5em 1em 0.5em 1em;
-      bottom: -25px;
       right: 10px;
+      bottom: 5px;
       border-radius: 15px; }
       .overview_img-price h2 {
         margin-bottom: -0.1em;
         font-weight: bold; }
+      @media all and (max-width: 768px) {
+        .overview_img-price {
+          bottom: -15px; } }
   .overview_infos {
-    position: relative;
     width: 50%;
     margin: 2em 0em 2em 0em; }
     .overview_infos-allcolors {
@@ -213,21 +215,29 @@ section {
       margin: 2em 1em 2em 1.5em;
       text-align: justify; }
     .overview_infos-materiaux {
-      margin-bottom: 2em; }
+      margin-bottom: 2em;
+      margin-right: 05em; }
       .overview_infos-materiaux h2 {
         margin-left: 1em;
         font-size: 1.5em;
         font-weight: bold; }
     .overview_infos-addcart-button {
       transition: 800ms;
-      position: absolute;
-      left: 32%;
       padding: 0.8em;
       display: flex;
       align-items: center;
+      justify-content: center;
       border-radius: 5px;
       background-color: #d3bcf4;
       box-shadow: 1px 1px 5px 0px #9c69e5; }
+      @media all and (min-width: 768px) {
+        .overview_infos-addcart-button {
+          margin-left: 20%;
+          margin-right: 20%; } }
+      @media all and (max-width: 768px) {
+        .overview_infos-addcart-button {
+          margin-left: 15%;
+          margin-right: 15%; } }
       .overview_infos-addcart-button i {
         transition: 800ms;
         font-size: 1.5em;
