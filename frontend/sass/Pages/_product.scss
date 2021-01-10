@@ -26,9 +26,11 @@
         }
     }
     &_infos{
+        position: relative;
         width: 50%;
         margin: 2em 0em 2em 0em;
         &-allcolors{
+            margin-bottom: 2em;
             h2{
                 margin: 0 0 1em 1em;
                 font-size: 1.5em;
@@ -57,27 +59,18 @@
                     width: 100px;
                     &:nth-child(1){
                         background-color: tan;
-                        &:hover{
-                            border: 2px solid darken(tan,20%);
-                        }
+                        border: 2px solid darken(tan,20%);
                     }
                     &:nth-child(2){
                         background-color: chocolate;
-                        &:hover{
-                            border: 2px solid darken(chocolate,20%);
-                        }
+                        border: 2px solid darken(chocolate,20%);
                     }
                     &:nth-child(3){
                         background-color: black;
-                        &:hover{
-                            border: 2px solid darken(black,20%);
-                        }
                     }
                     &:nth-child(4){
                         background-color: sandybrown;
-                        &:hover{
-                            border: 2px solid darken(sandybrown,20%);
-                        }
+                        border: 2px solid darken(sandybrown,20%);
                     }
                 }
             }
@@ -87,12 +80,42 @@
             text-align: justify;
         }
         &-materiaux{
+            margin-bottom: 2em;
             h2{
-               margin-left: 1em;
+                margin-left: 1em;
                 font-size: 1.5em;
                 font-weight: bold;
             }
             
+        }
+        &-addcart{
+            &-button{
+                transition: 800ms;
+                position: absolute;
+                left: 32%;
+                padding: 0.8em;
+                display: flex;
+                align-items: center;
+                border-radius: 5px;
+                background-color: darken(#e4d6f8,6%);
+                box-shadow: 1px 1px 5px 0px rgba($color: darken(#e4d6f8,25), $alpha: 1);
+                i{
+                    transition: 800ms;
+                    font-size: 1.5em;
+                    margin-right: 0.5em;
+                }
+                p{
+                    margin: 0;
+                }
+                &:hover{
+                    background-color: darken(#e4d6f8,10%);
+                    i{
+                        background: linear-gradient(-50deg, $cd-secondary, $cd-tertiary);
+                        background-clip: text;
+                        color: transparent;
+                    }
+                }
+            }
         }
     }
     @media all and (max-width: 768px) {

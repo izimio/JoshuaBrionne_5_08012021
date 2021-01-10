@@ -169,55 +169,77 @@ section {
         margin-bottom: -0.1em;
         font-weight: bold; }
   .overview_infos {
+    position: relative;
     width: 50%;
     margin: 2em 0em 2em 0em; }
-    .overview_infos-allcolors h2 {
-      margin: 0 0 1em 1em;
-      font-size: 1.5em;
-      font-weight: bold; }
-    .overview_infos-allcolors-colors {
-      display: flex;
-      justify-content: space-evenly; }
-      .overview_infos-allcolors-colors-bubble {
-        background: chartreuse;
-        border-radius: 50%;
-        height: 100px;
-        transition: 200ms;
-        width: 100px; }
-        @media all and (min-width: 768px) and (max-width: 992px) {
-          .overview_infos-allcolors-colors-bubble {
-            height: 70px;
-            width: 70px; } }
-        @media all and (max-width: 576px) {
-          .overview_infos-allcolors-colors-bubble {
-            height: 50px;
-            width: 50px; } }
-        .overview_infos-allcolors-colors-bubble:hover {
-          transform: scale(1.1);
-          cursor: pointer; }
-        .overview_infos-allcolors-colors-bubble:nth-child(1) {
-          background-color: tan; }
-          .overview_infos-allcolors-colors-bubble:nth-child(1):hover {
+    .overview_infos-allcolors {
+      margin-bottom: 2em; }
+      .overview_infos-allcolors h2 {
+        margin: 0 0 1em 1em;
+        font-size: 1.5em;
+        font-weight: bold; }
+      .overview_infos-allcolors-colors {
+        display: flex;
+        justify-content: space-evenly; }
+        .overview_infos-allcolors-colors-bubble {
+          background: chartreuse;
+          border-radius: 50%;
+          height: 100px;
+          transition: 200ms;
+          width: 100px; }
+          @media all and (min-width: 768px) and (max-width: 992px) {
+            .overview_infos-allcolors-colors-bubble {
+              height: 70px;
+              width: 70px; } }
+          @media all and (max-width: 576px) {
+            .overview_infos-allcolors-colors-bubble {
+              height: 50px;
+              width: 50px; } }
+          .overview_infos-allcolors-colors-bubble:hover {
+            transform: scale(1.1);
+            cursor: pointer; }
+          .overview_infos-allcolors-colors-bubble:nth-child(1) {
+            background-color: tan;
             border: 2px solid #b28446; }
-        .overview_infos-allcolors-colors-bubble:nth-child(2) {
-          background-color: chocolate; }
-          .overview_infos-allcolors-colors-bubble:nth-child(2):hover {
+          .overview_infos-allcolors-colors-bubble:nth-child(2) {
+            background-color: chocolate;
             border: 2px solid #793c11; }
-        .overview_infos-allcolors-colors-bubble:nth-child(3) {
-          background-color: black; }
-          .overview_infos-allcolors-colors-bubble:nth-child(3):hover {
-            border: 2px solid black; }
-        .overview_infos-allcolors-colors-bubble:nth-child(4) {
-          background-color: sandybrown; }
-          .overview_infos-allcolors-colors-bubble:nth-child(4):hover {
+          .overview_infos-allcolors-colors-bubble:nth-child(3) {
+            background-color: black; }
+          .overview_infos-allcolors-colors-bubble:nth-child(4) {
+            background-color: sandybrown;
             border: 2px solid #df6f0f; }
     .overview_infos-description {
       margin: 2em 1em 2em 1.5em;
       text-align: justify; }
-    .overview_infos-materiaux h2 {
-      margin-left: 1em;
-      font-size: 1.5em;
-      font-weight: bold; }
+    .overview_infos-materiaux {
+      margin-bottom: 2em; }
+      .overview_infos-materiaux h2 {
+        margin-left: 1em;
+        font-size: 1.5em;
+        font-weight: bold; }
+    .overview_infos-addcart-button {
+      transition: 800ms;
+      position: absolute;
+      left: 32%;
+      padding: 0.8em;
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      background-color: #d3bcf4;
+      box-shadow: 1px 1px 5px 0px #9c69e5; }
+      .overview_infos-addcart-button i {
+        transition: 800ms;
+        font-size: 1.5em;
+        margin-right: 0.5em; }
+      .overview_infos-addcart-button p {
+        margin: 0; }
+      .overview_infos-addcart-button:hover {
+        background-color: #c7aaf1; }
+        .overview_infos-addcart-button:hover i {
+          background: linear-gradient(-50deg, #915cf9, #cf7e48);
+          background-clip: text;
+          color: transparent; }
   @media all and (max-width: 768px) {
     .overview {
       flex-direction: column;
