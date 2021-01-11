@@ -355,7 +355,8 @@ section {
         font-weight: bold;
         font-size: 2.5em;
         animation: drive 50s forwards;
-        animation-iteration-count: infinite; }
+        animation-iteration-count: infinite;
+        animation-delay: 5s; }
     .purchres_real_recap {
       height: 200px;
       position: relative; }
