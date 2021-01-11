@@ -1,7 +1,8 @@
 
+
 .purchres{
     margin-top: 1em;
-    margin-bottom: 2em;
+    padding-bottom: 1em;
     background-color: lighten($cd-secondary,20%);
     border-radius: 15px;
     &_real{
@@ -26,13 +27,36 @@
                 animation-iteration-count: infinite;
             }
         }
+        &_recap{
+            height: 200px;
+            position: relative;
+            &-block{
+
+            }
+            &-price{
+                position: absolute;
+                padding: 0.5em 1em 0.5em 1em;
+                text-align: center;
+                background-color: lighten($cd-tertiary,15);
+                box-shadow: 1px 1px 5px 0px rgba($color: darken($cd-tertiary,25), $alpha: 1);
+                bottom: 0px;
+                right: 0px;
+                border-radius: 5px;
+                p{
+                    margin: 0;
+
+                }
+            }
+        }
         &-thanks{
+            margin-top: 8em;
             p{
                 font-size: 1em;
                 text-align: center;
             }
         }
         &_backtoshop{
+            margin-bottom: -2em;
             &-button{
                 @media all and (max-width: 768px) {
                     h2{
@@ -42,31 +66,27 @@
                     margin-right: 15%;
                  }
                  @media all and (min-width: 768px){
-                    h2{
-                        font-size: 1em;
-                    }
                     margin-left: 25%;
                     margin-right: 25%;
                  }
                  @media all and (min-width: 992px){
-                    h2{
-                        font-size: 1em;
-                    }
                     margin-left: 35%;
                     margin-right: 35%;
                  }
                 display: flex;
                 justify-content: center;
                 padding: 0.8em;
+                margin-top: 1.3em;
                 border-radius: 5px;
-                background-color: $cd-secondary;
-                box-shadow: 1px 1px 5px 0px rgba($color: darken(#e4d6f8,25), $alpha: 1);
+                background-color: lighten($cd-tertiary,15);
+                box-shadow: 1px 1px 5px 0px rgba($color: darken($cd-tertiary,25), $alpha: 1);
                 h2{
                     font-size: 1em;
                     margin: 0;
                 }
                 &:hover{
-                    background-color: darken(#e4d6f8,10%);
+                    background-color: lighten($cd-tertiary,13);
+                    box-shadow: 2px 2px 5px 0px rgba($color: darken($cd-tertiary,25), $alpha: 1);
                     i{
                         transition: 800ms;
                         background: linear-gradient(-50deg, $cd-secondary, $cd-tertiary);
@@ -77,8 +97,4 @@
             }
         }
     }
-}
-
-footer{
-    margin-top: 6em;
 }
