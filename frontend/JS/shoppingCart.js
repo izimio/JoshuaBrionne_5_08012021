@@ -2,19 +2,19 @@ function userInputChecker(userInput,value) {
 
     if(value == 1)
     {
-    if(! userInput.match(/^([a-zA-Z-'éè ]+)$/))
+    if(! userInput.match(/^([a-zA-Z-'éèç ]+)$/))
     	return(0);
     else
     	return(1);
     }
     else if(value == 2){
-        if(! userInput.match(/^([a-zA-Z-0-9éè ]+)$/))
+        if(! userInput.match(/^([a-zA-Z-0-9éèç ]+)$/))
     	return(0);
     else
     	return(1);
     }
     else if(value == 3){
-        if(! userInput.match(/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/))
+        if(! userInput.match(/^[a-z0-9._-ç]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/))
     	return(0);
     else
     	return(1);
@@ -55,7 +55,6 @@ let error = {
 
 firstName.addEventListener('input',function(){
     if(! userInputChecker(firstName.value,1)){
-        firstName.classList.remove('right');
         firstName.classList.add('wrong');
         error1.innerHTML = "&nbsp &nbsp entrée invalide";
         error.in1 = 0;
@@ -74,7 +73,6 @@ firstName.addEventListener('input',function(){
 
 lastName.addEventListener('input',function(){
     if(! userInputChecker(lastName.value,1)){
-        lastName.classList.remove('right');
         lastName.classList.add('wrong');
         error2.innerHTML = "&nbsp &nbsp entrée invalide";
         error.in2 = 0;
@@ -93,7 +91,6 @@ lastName.addEventListener('input',function(){
 
 city.addEventListener('input',function(){
     if(! userInputChecker(city.value,1)){
-        city.classList.remove('right');
         city.classList.add('wrong');
         error3.innerHTML = "&nbsp &nbsp entrée invalide";
         error.in3 = 0;
@@ -112,7 +109,6 @@ city.addEventListener('input',function(){
 
 adress.addEventListener('input',function(){
     if(! userInputChecker(adress.value,2)){
-        adress.classList.remove('right');
         adress.classList.add('wrong');
         error4.innerHTML = "&nbsp &nbsp entrée invalide";
         error.in4 = 0;
@@ -131,7 +127,6 @@ adress.addEventListener('input',function(){
 
 email.addEventListener('input',function(){
     if(! userInputChecker(email.value,3)){
-        email.classList.remove('right');
         email.classList.add('wrong');
         error5.innerHTML = "&nbsp &nbsp entrée invalide";
         error.in5 = 0;
@@ -150,5 +145,4 @@ email.addEventListener('input',function(){
 
 sumbut.addEventListener('click',function(event){
     event.preventDefault();
-    
     });
