@@ -21,6 +21,15 @@ a {
     transform: rotate(-10deg); }
   100% {
     transform: rotate(0deg); } }
+@keyframes drive {
+  0% {
+    transform: rotate(0deg); }
+  1% {
+    transform: rotate(390deg); }
+  2% {
+    transform: rotate(360deg); }
+  100% {
+    transform: rotate(360deg); } }
 /* ++++ GLOBAL +++ */
 /* ----- HEDEAR ----- */
 header {
@@ -183,7 +192,8 @@ section {
           background-color: lightblue; }
         .formulaire-real-button button:disabled {
           background-color: #ff6666;
-          box-shadow: 1px 1px 1px 0px #ff6666; }
+          box-shadow: 1px 1px 1px 0px #ff6666;
+          cursor: not-allowed; }
 
 .wrong {
   background-color: #ffb3b3; }
@@ -319,6 +329,72 @@ section {
           width: 100%; }
       .overview_infos {
         width: 100%; } }
+
+.purchres {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  background-color: #d3befd;
+  border-radius: 15px; }
+  .purchres_real {
+    margin-left: 1em;
+    margin-right: 1em; }
+    .purchres_real h2 {
+      padding-top: 0.5em;
+      margin-left: 0.5em;
+      font-size: 1.5em; }
+    .purchres_real-T {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+      .purchres_real-T i {
+        background: linear-gradient(-50deg, #915cf9, #cf7e48);
+        background-clip: text;
+        color: transparent;
+        font-weight: bold;
+        font-size: 2.5em;
+        animation: drive 50s forwards;
+        animation-iteration-count: infinite; }
+    .purchres_real-thanks p {
+      font-size: 1em;
+      text-align: center; }
+    .purchres_real_backtoshop-button {
+      display: flex;
+      justify-content: center;
+      padding: 0.8em;
+      border-radius: 5px;
+      background-color: #915cf9;
+      box-shadow: 1px 1px 5px 0px #9c69e5; }
+      @media all and (max-width: 768px) {
+        .purchres_real_backtoshop-button {
+          margin-left: 15%;
+          margin-right: 15%; }
+          .purchres_real_backtoshop-button h2 {
+            font-size: 1em; } }
+      @media all and (min-width: 768px) {
+        .purchres_real_backtoshop-button {
+          margin-left: 25%;
+          margin-right: 25%; }
+          .purchres_real_backtoshop-button h2 {
+            font-size: 1em; } }
+      @media all and (min-width: 992px) {
+        .purchres_real_backtoshop-button {
+          margin-left: 35%;
+          margin-right: 35%; }
+          .purchres_real_backtoshop-button h2 {
+            font-size: 1em; } }
+      .purchres_real_backtoshop-button h2 {
+        font-size: 1em;
+        margin: 0; }
+      .purchres_real_backtoshop-button:hover {
+        background-color: #c7aaf1; }
+        .purchres_real_backtoshop-button:hover i {
+          transition: 800ms;
+          background: linear-gradient(-50deg, #915cf9, #cf7e48);
+          background-clip: text;
+          color: transparent; }
+
+footer {
+  margin-top: 6em; }
 
 /* ++++ PAGE accueil +++ */
 

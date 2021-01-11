@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">  
     <!-- /FONT -->
-    <title>Votre panier - Orinoco</title>
+    <title>Confirmation d'achat - Orinoco</title>
 </head>
 <body>
     <div class="container">
@@ -28,58 +28,37 @@
             </nav>
         </header>
         <main>
-            <div class="tilte2">
-                <h1>Bienvenue dans votre panier</h1>
-                <div class="tilte2_recap">
-                    <p id="allProductsName"></p>
-                    <p>[OBJECT] impatient de vous rencontrer !</p>
+            <section>
+                <div class="tilte2">
+                    <h1>Merci d'avoir fait confiance à Orinoco</h1>
+                    <div class="tilte2_recap">
+                        <p id="allProductsName"></p>
+                        <p>[OBJECT] prépare déjà ses affaires</p>
+                    </div>
                 </div>
-            </div>
-            <section class="bg-color-deg recapitulatif">
-                <h2>Votre recapitulatif : </h2>
-                <p>sdqsdsqd</p>
-                <p>qsdqsdd</p>
-                <p>qsdqdqsdqsdqs</p>
-                <div class="recapitulatif_price">
-                    <p>Total : </p>
-                    <p id="allcost"></p>
-                </div>
-            </section>
-            <section class="formulaire">
-                <h2>Formulaire de d'envoie</h2>
-                <div class="formulaire-real">
-                    <form action="/ma-page-de-traitement" method="post">
-                        <div class="formulaire-real-firstname">
-                            <label for="firstName">Prénom :</label>
-                            <input type="text" id="firstName" name="user_firstname" title="Renseignez votre prénom" placeholder="Jean">
-                            <p id="error1" class="error"></p>
+                <div class="purchres">
+                    <div class="purchres_real">
+                        <div class="purchres_real-T">
+                            <h2>Resumé de votre commande :</h2>
+                            <i class="fas fa-shipping-fast ico"></i>
                         </div>
-                        <div class="formulaire-real-lastname">
-                            <label for="lastName">Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <input type="text" id="lastName" name="user_lastname" title="Renseignez votre nom de famille" placeholder=" Dupont">
-                            <p id="error2" class="error"></p>
+                        <div class="purchres_real_recap">
+        
                         </div>
-                        <div class="formulaire-real-city">
-                            <label for="city">Ville :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <input type="text" id="city" name="user_city" title="Renseignez ici le nom de votre ville" placeholder=" Bordeau">
-                            <p id="error3" class="error"></p>
+                        <div class="purchres_real-thanks">
+                            <p>Une nouvelle fois, toute l'équipe d'Orinoco tient à vous remercier pour la confiance que vous lui accordez </p>
                         </div>
-                        <div class="formulaire-real-adress">
-                            <label for="address">Adresse :</label>
-                            <input type="text" id="address" name="user_address" title="Renseignez ici votre adresse postale" placeholder=" 15 avenue des tulipes">
-                            <p id="error4" class="error"></p>
-                        </div>
-                        <div class="formulaire-real-email">
-                            <label for="mail">e-mail : &nbsp;&nbsp;</label>
-                            <input type="text" id="mail" name="user_mail" title="Veuillez saisir une adresse e-mail valide" placeholder=" Jean.Dupont@hotmail.com">
-                            <p id="error5" class="error"></p>
-                        </div>
-                        <div class="formulaire-real-button">
-                            <button type="submit" id="sumbutton" disabled>Commander</button>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="backtoshop">
+                        <a href="index.html">
+                            <div class="purchres_real_backtoshop-button">
+                                <h2>Retourner au magasin</h2>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </section>
+            
         </main>
         
         <footer class="bloc" id="foot">

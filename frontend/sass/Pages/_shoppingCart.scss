@@ -76,6 +76,7 @@
                 &:disabled{
                     background-color: lighten(red,20);
                     box-shadow: 1px 1px 1px 0px rgba($color: lighten(red,20), $alpha: 1);
+                    cursor: not-allowed;
                 }
             }
         }

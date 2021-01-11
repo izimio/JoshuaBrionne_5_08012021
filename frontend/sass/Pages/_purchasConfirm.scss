@@ -1,0 +1,84 @@
+
+.purchres{
+    margin-top: 1em;
+    margin-bottom: 2em;
+    background-color: lighten($cd-secondary,20%);
+    border-radius: 15px;
+    &_real{
+        margin-left: 1em;
+        margin-right: 1em;
+        h2{
+            padding-top: 0.5em;
+            margin-left: 0.5em;
+            font-size: 1.5em;
+        }
+        &-T{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            i{
+                background: linear-gradient(-50deg, $cd-secondary, $cd-tertiary);
+                background-clip: text;
+                color: transparent;
+                font-weight: bold;
+                font-size: 2.5em;
+                animation: drive 50s forwards;
+                animation-iteration-count: infinite;
+            }
+        }
+        &-thanks{
+            p{
+                font-size: 1em;
+                text-align: center;
+            }
+        }
+        &_backtoshop{
+            &-button{
+                @media all and (max-width: 768px) {
+                    h2{
+                        font-size: 1em;
+                    }
+                    margin-left: 15%;
+                    margin-right: 15%;
+                 }
+                 @media all and (min-width: 768px){
+                    h2{
+                        font-size: 1em;
+                    }
+                    margin-left: 25%;
+                    margin-right: 25%;
+                 }
+                 @media all and (min-width: 992px){
+                    h2{
+                        font-size: 1em;
+                    }
+                    margin-left: 35%;
+                    margin-right: 35%;
+                 }
+                display: flex;
+                justify-content: center;
+                padding: 0.8em;
+                border-radius: 5px;
+                background-color: $cd-secondary;
+                box-shadow: 1px 1px 5px 0px rgba($color: darken(#e4d6f8,25), $alpha: 1);
+                h2{
+                    font-size: 1em;
+                    margin: 0;
+                }
+                &:hover{
+                    background-color: darken(#e4d6f8,10%);
+                    i{
+                        transition: 800ms;
+                        background: linear-gradient(-50deg, $cd-secondary, $cd-tertiary);
+                        background-clip: text;
+                        color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer{
+    margin-top: 6em;
+}
