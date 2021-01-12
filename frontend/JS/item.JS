@@ -8,7 +8,7 @@ id = ad.substr(47,24);
 // declaring variables //
 let i = -1;
 const Allcolors = document.createElement("select");
-
+const Allbubble = document.createElement("div");
 const main = document.getElementById('product');
 // ======== //
         
@@ -20,6 +20,15 @@ const main = document.getElementById('product');
             const option = document.createElement("option");             
             option.innerHTML = response.colors[i];
             Allcolors.appendChild(option);
+
+            const bubble = document.createElement("div");
+            bubble.style.backgroundColor = response.colors[i];
+            if(response.colors[i] == "Pale brown")
+                bubble.style.backgroundColor = "sandybrown";
+            else if(response.colors[i] == "Dark brown")
+                bubble.style.backgroundColor = "#654321";
+            bubble.classList.add("overview_infos-allcolors-colors-bubble")
+            Allbubble.appendChild(bubble);
             }
         main.innerHTML = `<div class="tilte2">
                 <h1>Découvrez ${response.name}</h1>
@@ -54,17 +63,7 @@ const main = document.getElementById('product');
                                         <h2>Les différents coloris : </h2>
                                     </div>
                                     <div class="overview_infos-allcolors-colors">
-                                        <div class="overview_infos-allcolors-colors-bubble">
-
-                                        </div>
-                                        <div class="overview_infos-allcolors-colors-bubble">
-                                        </div>
-                                        <div class="overview_infos-allcolors-colors-bubble">
-
-                                        </div>
-                                        <div class="overview_infos-allcolors-colors-bubble">
-
-                                        </div>
+                                    ${Allbubble.innerHTML}
                                     </div>
                                     <div class="overview_infos-allcolors-form">
                                         <form>
@@ -77,7 +76,7 @@ const main = document.getElementById('product');
                                 </div>
                                 <div class="overview_infos-addcart">
                                     <a href="">
-                                        <div class="overview_infos-addcart-button">
+                                        <div class="overview_infos-addcart-button" id="addcart">
                                             <i class="fas fa-cart-plus"></i>
                                             <p>Ajouter au panier</p>
                                         </div>
