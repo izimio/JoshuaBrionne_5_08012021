@@ -1,12 +1,14 @@
 
 // GETTING PRODUCT ID //
-const ad = document.location.href //Obtiens l'id du produit
 var id;
+const ad = document.location.href //Obtiens l'id du produit
 id = ad.substr(47,24);
 // =============== //
 
 // declaring variables //
 let i = -1;
+var p;
+var d;
 const Allcolors = document.createElement("select");
 const Allbubble = document.createElement("div");
 const main = document.getElementById('product');
@@ -16,6 +18,10 @@ const main = document.getElementById('product');
     fetch("http://localhost:3000/api/teddies/" + id) //Rappel notre api + l'id de notre produit
     .then(async result_ => {  //Récupère le tableau json 
         const response = await result_.json() //Donne un nom au tableau json récupéré
+
+        // reducing PRIZE //
+        // =============== //
+        // TRICKY CASES //
         while (++i < response.colors.length) {
             const option = document.createElement("option");             
             option.innerHTML = response.colors[i];
@@ -30,6 +36,7 @@ const main = document.getElementById('product');
             bubble.classList.add("overview_infos-allcolors-colors-bubble")
             Allbubble.appendChild(bubble);
             }
+        // ============== //
         main.innerHTML = `<div class="tilte2">
                 <h1>Découvrez ${response.name}</h1>
                     </div>
@@ -38,7 +45,7 @@ const main = document.getElementById('product');
                             <div class="overview_img">
                                 <img src="${response.imageUrl}" alt="photo de ${response.name}">
                                 <div class="overview_img-price">
-                                    <h2>${response.price}</h2>
+                                    <h2>${response.price},00 € </h2>
                                 </div>
                             </div>
                             <div class="overview_infos">
@@ -75,12 +82,10 @@ const main = document.getElementById('product');
                                     </div>
                                 </div>
                                 <div class="overview_infos-addcart">
-                                    <a href="">
-                                        <div class="overview_infos-addcart-button" id="addcart">
-                                            <i class="fas fa-cart-plus"></i>
-                                            <p>Ajouter au panier</p>
-                                        </div>
-                                    </a>
+                                     <div id="addcartee" class="overview_infos-addcart-button">
+                                         <i class="fas fa-cart-plus"></i>
+                                        <p>Ajouter au panier</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -89,3 +94,5 @@ const main = document.getElementById('product');
     .catch((error) => {
         console.log(error);
     })
+
+    
