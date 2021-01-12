@@ -51,36 +51,31 @@
                 <h2>Formulaire d'envoi</h2>
                 <div class="formulaire-real">
                     <form action="purchaseconfirm.html" method="GET">
-                        <div class="formulaire-real-firstname">
+                        <div class="formulaire-real-firstname" id="fName">
                             <label for="firstName">Prénom :</label>
                             <input type="text" id="firstName" name="user_firstname" title="Renseignez votre prénom"
                                 placeholder="Jean">
-                            <p id="error1" class="error"></p>
                         </div>
-                        <div class="formulaire-real-lastname">
+                        <div class="formulaire-real-lastname" id="fLast">
                             <label for="lastName">Nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <input type="text" id="lastName" name="user_lastname"
                                 title="Renseignez votre nom de famille" placeholder=" Dupont">
-                            <p id="error2" class="error"></p>
                         </div>
-                        <div class="formulaire-real-city">
+                        <div class="formulaire-real-city" id="fCity">
                             <label for="city">Ville :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <input type="text" id="city" name="user_city" title="Renseignez ici le nom de votre ville"
                                 placeholder=" Bordeaux">
-                            <p id="error3" class="error"></p>
                         </div>
-                        <div class="formulaire-real-adress">
+                        <div class="formulaire-real-adress" id="fAdress">
                             <label for="address">Adresse :</label>
                             <input type="text" id="address" name="user_address"
                                 title="Renseignez ici votre adresse postale" placeholder=" 15 avenue des tulipes">
-                            <p id="error4" class="error"></p>
                         </div>
-                        <div class="formulaire-real-email">
+                        <div class="formulaire-real-email" id="fEmail">
                             <label for="mail">e-mail : &nbsp;&nbsp;</label>
                             <input type="text" id="mail" name="user_mail"
                                 title="Veuillez saisir une adresse e-mail valide"
                                 placeholder=" Jean.Dupont@hotmail.com">
-                            <p id="error5" class="error"></p>
                         </div>
                         <div class="formulaire-real-button">
                             <button type="submit" id="sumbutton" disabled>Commander</button>
