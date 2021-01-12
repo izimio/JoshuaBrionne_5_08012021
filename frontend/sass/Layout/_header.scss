@@ -20,6 +20,12 @@ header{
             color: black;
             margin-bottom: 0;
         }
+        span{
+            color: $cd-secondary; 
+            position: relative;
+            bottom: 15px;
+            left: 5px;
+        }
         i{
            margin-top: 0.2em;
         }

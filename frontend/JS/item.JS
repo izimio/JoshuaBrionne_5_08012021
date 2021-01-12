@@ -12,6 +12,9 @@ var d;
 const Allcolors = document.createElement("select");
 const Allbubble = document.createElement("div");
 const main = document.getElementById('product');
+const oui = document.getElementById('addcartee');
+let numberOfItemsInTheCard = 0;
+
 // ======== //
         
 
@@ -33,7 +36,7 @@ const main = document.getElementById('product');
                 bubble.style.backgroundColor = "sandybrown";
             else if(response.colors[i] == "Dark brown")
                 bubble.style.backgroundColor = "#654321";
-            bubble.classList.add("overview_infos-allcolors-colors-bubble")
+            bubble.classList.add("overview_infos-allcolors-colors-bubble");
             Allbubble.appendChild(bubble);
             }
         // ============== //
@@ -82,7 +85,7 @@ const main = document.getElementById('product');
                                     </div>
                                 </div>
                                 <div class="overview_infos-addcart">
-                                     <div id="addcartee" class="overview_infos-addcart-button">
+                                     <div id="addcartee" class="overview_infos-addcart-button" onclick="addToBasket()">
                                          <i class="fas fa-cart-plus"></i>
                                         <p>Ajouter au panier</p>
                                     </div>
@@ -95,4 +98,10 @@ const main = document.getElementById('product');
         console.log(error);
     })
 
+    const addToBasket = () =>{
+        numberOfItemsInTheCard++;
+        cartIndex.innerHTML = numberOfItemsInTheCard;
+    }
+
+    
     

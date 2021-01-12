@@ -5,7 +5,8 @@ const allCards = [
     document.getElementById('productCard4'),
     document.getElementById('productCard5')
 ];
-
+let i = -1;
+let numberOfItemsInTheCard = 0;
 
 function GET(index, value) {
 
@@ -30,7 +31,7 @@ function GET(index, value) {
                     <div class="productCard_caption-lower">
                         <p class="productCard_caption-lower-description">${response[index].description}</p>
                     </div>
-                    <div class="productCard_caption-lower-addtocart">
+                    <div class="productCard_caption-lower-addtocart" onclick="addToBasket()">
                         <span>Ajouter au panier</span>
                         <i class="fas fa-cart-plus"></i>
                     </div>
@@ -42,9 +43,12 @@ function GET(index, value) {
     request.send();
 };
 
-
-let i = -1;
-
 while (allCards[++i]) {
     GET(i, allCards[i]);
+}
+
+const addToBasket = (event) =>{
+    Event.preventDefault();
+    numberOfItemsInTheCard++;
+    cartIndex.innerHTML = numberOfItemsInTheCard;
 }
