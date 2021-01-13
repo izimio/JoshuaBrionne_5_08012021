@@ -66,18 +66,24 @@ section{
             }
         }
         &-lower{
+            border: 1px solid transparent;
             &-description{
                 margin-left: 1em;
                 margin-bottom: 2em;
             }
             &-addtocart{
-                text-align: center;
-                margin: 0 15% 0 15%;
-                padding: 0.3em;
+                width: 100%;
+                z-index: 2;
                 margin-bottom: 1em;
-                border-radius: 5px;
-                background-color: lighten($cd-secondary,30);
-
+                background-color: white;
+                border: none;
+                border-radius: 0 0 5px 5px;
+                padding: 0.3em;
+                transition: 500ms;
+                text-align: center;
+                &:hover{
+                    background-color: darken($cd-primary,8%);
+                }
             }
         }
     }

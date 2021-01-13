@@ -99,6 +99,7 @@ let numberOfItemsInTheCard = 0;
     const addToBasket = () =>{
         numberOfItemsInTheCard++;
         cartIndex.innerHTML = numberOfItemsInTheCard;
+        document.location.href="shoppingCart.html";
     }
 
     

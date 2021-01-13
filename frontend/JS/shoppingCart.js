@@ -10,17 +10,12 @@ ouin.addEventListener('click', function () {
 });
 
 // ========================== // FORMULAIRE // =========================== //
-
 var firstName = document.getElementById('firstName');
 var lastName = document.getElementById('lastName');
 var city = document.getElementById('city');
 var adress = document.getElementById('address');
 var email = document.getElementById('mail');
 var sumbut = document.getElementById('sumbutton');
-
-var p = document.createElement('p');
-p.classList.add('error');
-p.textContent = "entrée invalide";
 
 let error = {
     in1: 0,
@@ -53,13 +48,13 @@ function userInputChecker(userInput, value) {
 firstName.addEventListener('input', function () {
     if (!userInputChecker(firstName.value, 1)) {
         firstName.classList.add('wrong');
-        fName.appendChild(p);
+        error1.innerHTML = "&nbsp &nbsp entrée invalide";
         error.in1 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
     } else {
         firstName.classList.remove('wrong');
-        fName.removeChild(p);
+        error1.innerHTML = "";
         error.in1 = 1;
         if (error.in1 == 1 && error.in2 == 1 && error.in3 == 1 && error.in4 == 1 && error.in5 == 1)
             sumbut.removeAttribute("disabled", "");
@@ -70,13 +65,13 @@ firstName.addEventListener('input', function () {
 lastName.addEventListener('input', function () {
     if (!userInputChecker(lastName.value, 1)) {
         lastName.classList.add('wrong');
-        fLast.appendChild(p);
+        error2.innerHTML = "&nbsp &nbsp entrée invalide";
         error.in2 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
     } else {
         lastName.classList.remove('wrong');
-        fLast.removeChild(p);
+        error2.innerHTML = "";
         error.in2 = 1;
         if (error.in1 == 1 && error.in2 == 1 && error.in3 == 1 && error.in4 == 1 && error.in5 == 1)
             sumbut.removeAttribute("disabled", "");
@@ -87,13 +82,13 @@ lastName.addEventListener('input', function () {
 city.addEventListener('input', function () {
     if (!userInputChecker(city.value, 1)) {
         city.classList.add('wrong');
-        fCity.appendChild(p);
+        error3.innerHTML = "&nbsp &nbsp entrée invalide";
         error.in3 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
     } else {
         city.classList.remove('wrong');
-        fCity.removeChild(p);
+        error3.innerHTML = "";
         error.in3 = 1;
         if (error.in1 == 1 && error.in2 == 1 && error.in3 == 1 && error.in4 == 1 && error.in5 == 1)
             sumbut.removeAttribute("disabled", "");
@@ -104,13 +99,13 @@ city.addEventListener('input', function () {
 adress.addEventListener('input', function () {
     if (!userInputChecker(adress.value, 2)) {
         adress.classList.add('wrong');
-        fAdress.appendChild(p);
+        error4.innerHTML = "&nbsp &nbsp entrée invalide";
         error.in4 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
     } else {
         adress.classList.remove('wrong');
-        fAdress.removeChild(p);
+        error4.innerHTML = "";
         error.in4 = 1;
         if (error.in1 == 1 && error.in2 == 1 && error.in3 == 1 && error.in4 == 1 && error.in5 == 1)
             sumbut.removeAttribute("disabled", "");
@@ -118,16 +113,16 @@ adress.addEventListener('input', function () {
     }
 });
 
-email.addEventListener('input', function () {
+email.addEventListener('change', function () {
     if (!userInputChecker(email.value, 3)) {
         email.classList.add('wrong');
-        fEmail.appendChild(p);
+        error5.innerHTML = "&nbsp &nbsp entrée invalide";
         error.in5 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
     } else {
         email.classList.remove('wrong');
-        fEmail.removeChild(p);
+        error5.innerHTML = "";
         error.in5 = 1;
         if (error.in1 == 1 && error.in2 == 1 && error.in3 == 1 && error.in4 == 1 && error.in5 == 1)
             sumbut.removeAttribute("disabled", "");

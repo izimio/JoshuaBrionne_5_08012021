@@ -31,10 +31,12 @@ function GET(index, value) {
                     <div class="productCard_caption-lower">
                         <p class="productCard_caption-lower-description">${response[index].description}</p>
                     </div>
-                    <div class="productCard_caption-lower-addtocart" onclick="addToBasket()">
-                        <span>Ajouter au panier</span>
-                        <i class="fas fa-cart-plus"></i>
-                    </div>
+                    <a href="shoppingCart.html">
+                        <div class="productCard_caption-lower-addtocart" onclick="addToBasket()">
+                            <span>Ajouter au panier</span>
+                            <i class="fas fa-cart-plus"></i>
+                        </div>
+                    </a>
                 </div>
             </a>`;
         }
