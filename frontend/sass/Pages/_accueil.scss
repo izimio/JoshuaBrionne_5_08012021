@@ -25,6 +25,7 @@ section{
 }
 
 .productCard{
+    position: relative;
     background-color: darken($cd-primary,4%);
     border-radius: 10px;
     height: auto;
@@ -38,7 +39,6 @@ section{
     &_img{
         height: 15rem;
         padding: 1em;
-        color: sandybrown;
         img{
             border-radius: 15px;
             height: 100%;
@@ -48,9 +48,36 @@ section{
     }
     &_caption{
         margin-top: 0%;
+        &-upper{
+            &-name{
+                text-align: center;
+            }
+            &-price{
+                position: absolute;
+                 padding: 0.5em;
+                border-radius: 5px;
+                background-color: darken($cd-primary,30);
+                right: 1.5em;
+                top: 200px;
+                p{
+                    font-weight: bold;
+                    margin-bottom: 0;
+                }
+            }
+        }
         &-lower{
             &-description{
-                margin: 1em;
+                margin-left: 1em;
+                margin-bottom: 2em;
+            }
+            &-addtocart{
+                text-align: center;
+                margin: 0 15% 0 15%;
+                padding: 0.3em;
+                margin-bottom: 1em;
+                border-radius: 5px;
+                background-color: lighten($cd-secondary,30);
+
             }
         }
     }

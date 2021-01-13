@@ -12,7 +12,6 @@ var d;
 const Allcolors = document.createElement("select");
 const Allbubble = document.createElement("div");
 const main = document.getElementById('product');
-const oui = document.getElementById('addcartee');
 let numberOfItemsInTheCard = 0;
 
 // ======== //
@@ -21,7 +20,6 @@ let numberOfItemsInTheCard = 0;
     fetch("http://localhost:3000/api/teddies/" + id) //Rappel notre api + l'id de notre produit
     .then(async result_ => {  //Récupère le tableau json 
         const response = await result_.json() //Donne un nom au tableau json récupéré
-
         // reducing PRIZE //
         // =============== //
         // TRICKY CASES //
@@ -48,7 +46,7 @@ let numberOfItemsInTheCard = 0;
                             <div class="overview_img">
                                 <img src="${response.imageUrl}" alt="photo de ${response.name}">
                                 <div class="overview_img-price">
-                                    <h2>${response.price},00 € </h2>
+                                    <h2>${response.price} € </h2>
                                 </div>
                             </div>
                             <div class="overview_infos">

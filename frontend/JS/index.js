@@ -25,7 +25,7 @@ function GET(index, value) {
                             <h2>${response[index].name}</h2>
                         </div>
                         <div class="productCard_caption-upper-price">
-                            <p>${response[index].price}</p>
+                            <p>${response[index].price} €</p>
                         </div>
                     </div>
                     <div class="productCard_caption-lower">
@@ -48,7 +48,6 @@ while (allCards[++i]) {
 }
 
 const addToBasket = (event) =>{
-    Event.preventDefault();
     numberOfItemsInTheCard++;
     cartIndex.innerHTML = numberOfItemsInTheCard;
 }
