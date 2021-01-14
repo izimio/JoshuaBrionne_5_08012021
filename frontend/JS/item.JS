@@ -130,6 +130,21 @@ var tabAll;
         localStorage.setItem("TabAllInfos", JSON.stringify(storage)) // Putting the final result inside à stringify tab 
         alert(`L'ourson ${tabAll.name} à bien été ajouté à votre panier !`)
         addNumberAndPrice();
+        var quantity = localStorage.getItem("quantity");
+            if(!quantity){
+                var quantity = [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ];
+            }
+            else{
+                quantity = JSON.parse(quantity)
+            }
+            localStorage.setItem("quantity", JSON.stringify(quantity));
+
     }
 
     

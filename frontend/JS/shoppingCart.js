@@ -1,22 +1,23 @@
 //localStorage.clear();
 // FUNCTIONS //
 function antiRep(value) {
-    if (value == "5be9c8541c9d440000665243") {
-        antiRepeat[0]++;
-        return (0);
-    } else if (value == "5beaa8bf1c9d440000a57d94") {
-        antiRepeat[1]++;
-        return (1);
-    } else if (value == "5beaaa8f1c9d440000a57d95") {
-        antiRepeat[2]++;
-        return (2);
-    } else if (value == "5beaabe91c9d440000a57d96") {
-        antiRepeat[3]++;
-        return (3);
-    } else if (value == "5beaacd41c9d440000a57d97") {
-        antiRepeat[4]++;
-        return (4);
-    }
+
+        if (value == "5be9c8541c9d440000665243") {
+            antiRepeat[0]++;
+            return (0);
+        } else if (value == "5beaa8bf1c9d440000a57d94") {
+            antiRepeat[1]++;
+            return (1);
+        } else if (value == "5beaaa8f1c9d440000a57d95") {
+            antiRepeat[2]++;
+            return (2);
+        } else if (value == "5beaabe91c9d440000a57d96") {
+            antiRepeat[3]++;
+            return (3);
+        } else if (value == "5beaacd41c9d440000a57d97") {
+            antiRepeat[4]++;
+            return (4);
+        }
 }
 
 function GetId(value) {
@@ -35,15 +36,15 @@ function GetId(value) {
 
 function checkQuantity(index) {
     if (index == 0) {
-        numberOf0.innerHTML = antiRepeat[0];
+        numberOf0.innerHTML = quantity[0];
     } else if (index == 1) {
-        numberOf1.innerHTML = antiRepeat[1];
+        numberOf1.innerHTML = quantity[1];
     } else if (index == 2) {
-        numberOf2.innerHTML = antiRepeat[2];
+        numberOf2.innerHTML = quantity[2];
     } else if (index == 3) {
-        numberOf3.innerHTML = antiRepeat[3];
+        numberOf3.innerHTML = quantity[3];
     } else if (index == 4) {
-        numberOf4.innerHTML = antiRepeat[4];
+        numberOf4.innerHTML = quantity[4];
     }
 }
 // ================= //
@@ -56,6 +57,7 @@ const itemNumber = document.getElementById('cartIndex');
 let i = -1;
 var index;
 var p = -1;
+
 var antiRepeat = [
     0,
     0,
@@ -63,10 +65,14 @@ var antiRepeat = [
     0,
     0
 ];
-// CREATING THE TAB //
 
-var t = -1;
-var select = document.createElement('select');
+// LOCAL STORAGE ANTIREPEAT // 
+var quantity = localStorage.getItem("quantity");
+quantity = JSON.parse(quantity);
+
+// =================== // 
+
+// CREATING THE TAB //
 
 //  REFRESHING THE ITEMS'S VALUE//
 let nums = localStorage.getItem("PricesAndNums");
@@ -78,6 +84,7 @@ nums = JSON.parse(nums);
 price.innerHTML = nums.TotalPrice + ",00 €"; // total price
 itemNumber.innerHTML = nums.TotalItemsNumber;
 
+
 // OPENING AND GETTING READY TO SHOW THE BASQUET // 
 
 var storage = localStorage.getItem("TabAllInfos");
@@ -85,7 +92,8 @@ storage = JSON.parse(storage);
 
 if (!storage) {
 
-} else {
+} 
+else {
     let products = storage.products;
     main.innerHTML = "";
     while (++i != storage.products.length) {
@@ -133,17 +141,16 @@ function modifyValuePlus(aEvent) {
     var t = e.target.id;
     t = t.substring(4);
     t = parseInt(t, 10);
-    antiRepeat[t]++;
-    if (numberOf0)
-        numberOf0.innerHTML = antiRepeat[0];
-    else if (numberOf1)
-        numberOf1.innerHTML = antiRepeat[1];
-    else if (numberOf2)
-        numberOf2.innerHTML = antiRepeat[2];
-    else if (numberOf3)
-        numberOf3.innerHTML = antiRepeat[3];
-    else if (numberOf4)
-        numberOf4.innerHTML = antiRepeat[4];
+
+    var totalNumberOfItem = document.getElementById('numberOf' + t);
+    quantity[t]++;
+    nums.TotalItemsNumber++;
+    itemNumber.innerHTML = nums.TotalItemsNumber;
+    totalNumberOfItem.innerHTML = quantity[t];
+
+
+    localStorage.setItem("quantity", JSON.stringify(quantity));
+    localStorage.setItem("PricesAndNums", JSON.stringify(nums));
 }
 
 function modifyValueMinus(aEvent) {
@@ -151,17 +158,16 @@ function modifyValueMinus(aEvent) {
     var t = e.target.id;
     t = t.substring(4);
     t = parseInt(t, 10);
-    antiRepeat[t]--;
-    if (numberOf0)
-        numberOf0.innerHTML = antiRepeat[0];
-    else if (numberOf1)
-        numberOf1.innerHTML = antiRepeat[1];
-    else if (numberOf2)
-        numberOf2.innerHTML = antiRepeat[2];
-    else if (numberOf3)
-        numberOf3.innerHTML = antiRepeat[3];
-    else if (numberOf4)
-        numberOf4.innerHTML = antiRepeat[4];
+
+    var totalNumberOfItem = document.getElementById('numberOf' + t);
+
+    quantity[t]--;
+    nums.TotalItemsNumber--;
+    itemNumber.innerHTML = nums.TotalItemsNumber;
+    totalNumberOfItem.innerHTML = quantity[t];
+
+    localStorage.setItem("quantity", JSON.stringify(quantity));
+    localStorage.setItem("PricesAndNums", JSON.stringify(nums));
 }
 
 function DeleteItem() {
