@@ -118,8 +118,8 @@
                             </div>
                         </div>
                     </div>`
-                    }
-                    checkQuantity(index);
+                }
+                checkQuantity(index);
             }
         }
 
@@ -140,6 +140,7 @@
             if(numberOf4)
                  numberOf4.innerHTML = antiRepeat[4] - 4;
         }
+
         function modifyValueMinus(aEvent){
             var e = aEvent ? aEvent : window.event;
             var t = e.target.id;
