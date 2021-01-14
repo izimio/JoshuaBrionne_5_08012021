@@ -3,10 +3,13 @@
         storagee = JSON.parse(storagee)
         let products = storagee.products;
 
+        let nums = localStorage.getItem("PricesAndNums");
+        nums = JSON.parse(nums);
+
+    cartIndex.innerHTML = nums.TotalItemsNumber;
 const ouin = document.getElementById('allcost');
 
-ouin.innerHTML =  products[1].price;
-
+ouin.innerHTML =  nums.TotalPrice;
 // ========================== // FORMULAIRE // =========================== //
 var firstName = document.getElementById('firstName');
 var lastName = document.getElementById('lastName');

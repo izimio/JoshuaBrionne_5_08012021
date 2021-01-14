@@ -95,17 +95,32 @@ var tabAll;
     })
 
     const addNumberAndPrice = () => {
+        let nums = localStorage.getItem("PricesAndNums");
+        if(!nums){
+            nums = {
+                TotalPrice: 0,
+                TotalItemsNumber: 0
+            }
+        }
+        else{
+            nums = JSON.parse(nums);
+        }
+        nums.TotalPrice += tabAll.price / 100;
+        nums.TotalItemsNumber += 1;
+        localStorage.setItem("PricesAndNums", JSON.stringify(nums));
+    }
 
         
 
     const addToBasket = () => {
-        let storage = localStorage.getItem("TabAllInfos") //Créer notre stockage de panier
-        if (!storage) {
+        // CREATING THE BASQUT STORAGE //
+        let storage = localStorage.getItem("TabAllInfos");
+        if (!storage) {  //if doesn't exist, creating, else just fill it 
             storage = {
                 products: [],
             }
         } else {
-            storage = JSON.parse(storage) //On extrait notre json 
+            storage = JSON.parse(storage) //extracting JSON
         }
         storage.products.push({
             name: tabAll.name,
@@ -114,9 +129,9 @@ var tabAll;
             priceByItems: tabAll.price,
             imageUrl: tabAll.imageUrl,
         })
-        localStorage.setItem("TabAllInfos", JSON.stringify(storage))
+        localStorage.setItem("TabAllInfos", JSON.stringify(storage)) // Putting the final result inside à stringify tab 
         alert(`L'ourson ${tabAll.name} à bien été ajouté à votre panier !`)
-
+        addNumberAndPrice();
     }
 
     
