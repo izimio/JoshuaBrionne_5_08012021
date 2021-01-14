@@ -12,7 +12,12 @@ var d;
 const Allcolors = document.createElement("select");
 const Allbubble = document.createElement("div");
 const main = document.getElementById('product');
-let numberOfItemsInTheCard = 0;
+var numberOfItemsInTheCard = 0;
+var price;
+
+localStorage.setItem('data', numberOfItemsInTheCard);
+var max = 0;
+localStorage.setItem('max', max);
 
 // ======== //
         
@@ -23,6 +28,7 @@ let numberOfItemsInTheCard = 0;
         // reducing PRIZE //
         // =============== //
         // TRICKY CASES //
+        price = response.price;
         while (++i < response.colors.length) {
             const option = document.createElement("option");             
             option.innerHTML = response.colors[i];
@@ -98,8 +104,11 @@ let numberOfItemsInTheCard = 0;
 
     const addToBasket = () =>{
         numberOfItemsInTheCard++;
+        max += price;
+        localStorage.setItem('max', max);
         cartIndex.innerHTML = numberOfItemsInTheCard;
-        document.location.href="shoppingCart.html";
+        localStorage.setItem('data', numberOfItemsInTheCard);
+        alert(localStorage.getItem('max'));
     }
 
     

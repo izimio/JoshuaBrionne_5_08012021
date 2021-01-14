@@ -1,13 +1,9 @@
+
+cartIndex.innerHTML = localStorage.getItem('data');
+
 const ouin = document.getElementById('allcost');
 
-let oui = 1;
-ouin.innerHTML = oui + "€";
-ouin.addEventListener('click', function () {
-
-    oui *= 2;
-    ouin.innerHTML = "&nbsp " + oui + "€";
-
-});
+ouin.textContent = localStorage.getItem('max');
 
 // ========================== // FORMULAIRE // =========================== //
 var firstName = document.getElementById('firstName');
