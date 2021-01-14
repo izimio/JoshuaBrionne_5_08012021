@@ -10,9 +10,12 @@ const itemNumber = document.getElementById('cartIndex');
 
 
 let nums = localStorage.getItem("PricesAndNums");
-if(nums){
+if (nums) {
     nums = JSON.parse(nums);
-    itemNumber.innerHTML = nums.TotalItemsNumber;   
+    itemNumber.innerHTML = nums.TotalItemsNumber;
+}
+else{
+    itemNumber.innerHTML = "0";
 }
 
 function GET(index, value) {
@@ -55,18 +58,17 @@ while (allCards[++i]) {
     GET(i, allCards[i]);
 }
 
-const addToBasket = () =>{
+const addToBasket = () => {
 
     alert(tabAll.price)
 
     let nums = localStorage.getItem("PricesAndNums")
-    if(!nums){
+    if (!nums) {
         nums = {
             TotalPrice: 0,
             TotalItemsNumber: 0
         }
-    }
-    else{
+    } else {
         nums = JSON.parse(nums);
     }
     nums.TotalPrice += tabAll.price / 100;

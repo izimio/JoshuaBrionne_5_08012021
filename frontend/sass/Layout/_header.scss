@@ -25,6 +25,9 @@ header{
             position: relative;
             bottom: 15px;
             left: 5px;
+            @media all and (max-width: 330px){
+                left: -5px;
+            }
         }
         i{
            margin-top: 0.2em;

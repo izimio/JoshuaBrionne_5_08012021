@@ -59,6 +59,12 @@
                     height: 80%;
                     h3{
                         margin-left: 0.6em;
+                        @media all and (max-width: 360px){
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            margin-right: 0.5em;
+                        }
                     }
                     p{
                         margin-left: 1em;
@@ -74,12 +80,6 @@
                             margin-left: 0;
                             p{
                                 cursor: pointer;
-                                @media all and (max-width: 360px){
-                                    padding-bottom: 0;
-                                    padding-top: 0;
-                                    padding-left: 0.5em;
-                                    padding-right: 0.5em;
-                                }
                                 background-color: lighten($cd-tertiary,15);
                                 border-radius: 15px 0 0 15px;
                                 border: 1px solid black;
@@ -95,12 +95,6 @@
                             margin-left: -12px;
                             margin-right: -15px;
                             p{
-                                @media all and (max-width: 360px){
-                                    padding-bottom: 0;
-                                    padding-top: 0;
-                                    padding-left: 0.8em;
-                                    padding-right: 0.8em;
-                                }
                                 text-align: center;
                                 background-color: lighten($cd-tertiary,15);
                                 border: 1px solid black;
@@ -114,12 +108,6 @@
                         &-plus{
                             p{
                                 cursor: pointer;
-                                @media all and (max-width: 360px){
-                                    padding-bottom: 0;
-                                    padding-top: 0;
-                                    padding-left: 0.5em;
-                                    padding-right: 0.5em;
-                                }
                                 text-align: center;
                                 background-color: lighten($cd-tertiary,15);
                                 border-radius: 0px 15px 15px 0px;     

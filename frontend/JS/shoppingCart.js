@@ -132,9 +132,6 @@ if (!storage) {
                                 </div>
                             </div>
                             <div class="recapitulatif_all_each-infos-right">
-                                <div class="recapitulatif_all_each-infos-right-cross">
-                                    <i onclick="DeleteItem()" class="fas fa-trash"></i>
-                                </div>
                                 <div class="recapitulatif_all_each-infos-right-price">
                                     <p>${storage.products[i].price},00 €</p>
                                 </div>
