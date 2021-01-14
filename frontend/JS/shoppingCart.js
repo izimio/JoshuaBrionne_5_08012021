@@ -1,97 +1,99 @@
-
-        
-     //localStorage.clear();
-    // FUNCTIONS //
-    function antiRep (value){
-        if(value == "5be9c8541c9d440000665243"){
+//localStorage.clear();
+// FUNCTIONS //
+function antiRep(value) {
+    if (value == "5be9c8541c9d440000665243") {
         antiRepeat[0]++;
-        return(0);
-        }
-        else if (value == "5beaa8bf1c9d440000a57d94"){
+        return (0);
+    } else if (value == "5beaa8bf1c9d440000a57d94") {
         antiRepeat[1]++;
-        return(1);
-        }
-        else if (value == "5beaaa8f1c9d440000a57d95"){
+        return (1);
+    } else if (value == "5beaaa8f1c9d440000a57d95") {
         antiRepeat[2]++;
-        return(2);
-        }
-        else if (value == "5beaabe91c9d440000a57d96"){
+        return (2);
+    } else if (value == "5beaabe91c9d440000a57d96") {
         antiRepeat[3]++;
-        return(3);
-        }
-        else if (value == "5beaacd41c9d440000a57d97"){
+        return (3);
+    } else if (value == "5beaacd41c9d440000a57d97") {
         antiRepeat[4]++;
-        return(4);
-        }
+        return (4);
     }
+}
 
-
-    function checkQuantity(index){
-        if(index == 0){
-            numberOf0.innerHTML = antiRepeat[0] - 4;
-        }
-        else if(index == 1){
-            numberOf1.innerHTML = antiRepeat[1] - 4;
-        }
-        else if(index == 2){
-            numberOf2.innerHTML = antiRepeat[2] - 4;
-        }
-        else if(index == 3){
-            numberOf3.innerHTML = antiRepeat[3] - 4;
-        }
-        else if(index == 4){
-            numberOf4.innerHTML = antiRepeat[4] - 4;
-        }
+function GetId(value) {
+    if (value == "5be9c8541c9d440000665243") {
+        return (0);
+    } else if (value == "5beaa8bf1c9d440000a57d94") {
+        return (1);
+    } else if (value == "5beaaa8f1c9d440000a57d95") {
+        return (2);
+    } else if (value == "5beaabe91c9d440000a57d96") {
+        return (3);
+    } else if (value == "5beaacd41c9d440000a57d97") {
+        return (4);
     }
-    // ================= //
+}
+
+function checkQuantity(index) {
+    if (index == 0) {
+        numberOf0.innerHTML = antiRepeat[0];
+    } else if (index == 1) {
+        numberOf1.innerHTML = antiRepeat[1];
+    } else if (index == 2) {
+        numberOf2.innerHTML = antiRepeat[2];
+    } else if (index == 3) {
+        numberOf3.innerHTML = antiRepeat[3];
+    } else if (index == 4) {
+        numberOf4.innerHTML = antiRepeat[4];
+    }
+}
+// ================= //
 
 
-    // CREATINGS VARIABLE //
-        const main = document.getElementById('recapAll');
-        const price = document.getElementById('allcost');
-        const itemNumber = document.getElementById('cartIndex');
-        let i = -1;
-        var index;
-        var p = -1;
-        var antiRepeat = [
-             0,
-             0,
-             0,
-             0,
-             0
-        ]; 
-    // CREATING THE TAB //
+// CREATINGS VARIABLE //
+const main = document.getElementById('recapAll');
+const price = document.getElementById('allcost');
+const itemNumber = document.getElementById('cartIndex');
+let i = -1;
+var index;
+var p = -1;
+var antiRepeat = [
+    0,
+    0,
+    0,
+    0,
+    0
+];
+// CREATING THE TAB //
 
-    var t = -1;
-    var select = document.createElement('select');     
+var t = -1;
+var select = document.createElement('select');
 
-    //  REFRESHING THE ITEMS'S VALUE//
-        let nums = localStorage.getItem("PricesAndNums");
-        if(!nums){
-            itemNumber.innerHTML = "0";
-            price.innerHTML = "0,00 €";
-        }
-        nums = JSON.parse(nums);
-        price.innerHTML =  nums.TotalPrice + ",00 €";  // total price
-        itemNumber.innerHTML = nums.TotalItemsNumber;
+//  REFRESHING THE ITEMS'S VALUE//
+let nums = localStorage.getItem("PricesAndNums");
+if (!nums) {
+    itemNumber.innerHTML = "0";
+    price.innerHTML = "0,00 €";
+}
+nums = JSON.parse(nums);
+price.innerHTML = nums.TotalPrice + ",00 €"; // total price
+itemNumber.innerHTML = nums.TotalItemsNumber;
 
-    // OPENING AND GETTING READY TO SHOW THE BASQUET // 
+// OPENING AND GETTING READY TO SHOW THE BASQUET // 
 
-        var storage = localStorage.getItem("TabAllInfos");
-        storage = JSON.parse(storage);
+var storage = localStorage.getItem("TabAllInfos");
+storage = JSON.parse(storage);
 
-        if(!storage){
+if (!storage) {
 
-        }
-        else{
-            let products = storage.products;  
-            main.innerHTML = "";
-            while(++i != storage.products.length){
-                index = antiRep(storage.products[i]._id);   // BLOCKING THE REPETITION OF ARTICLES //           
-                if(antiRepeat[index] <= 1){
-                    p++;
-                        main.innerHTML += 
-                        `<div class="recapitulatif_all_each" id="recap${antiRep(storage.products[i]._id)}">
+} else {
+    let products = storage.products;
+    main.innerHTML = "";
+    while (++i != storage.products.length) {
+        index = antiRep(storage.products[i]._id); // BLOCKING THE REPETITION OF ARTICLES //           
+        if (antiRepeat[index] <= 1) {
+            p++;
+            main.innerHTML +=
+                `<div class="recapitulatif_all_each" id="recap${GetId(storage.products[i]._id)}">
                         <div class="recapitulatif_all_each-image">
                             <img src="${storage.products[i].imageUrl}" alt="photo de ${storage.products[i].name}">
                         </div>
@@ -101,64 +103,70 @@
                                 <p>${storage.products[i].description}</p>
                                 <div class="recapitulatif_all_each-infos-left-tab">
                                     <div class="recapitulatif_all_each-infos-left-tab-minus">
-                                        <p onclick="modifyValueMinus()" id="minu${antiRep(storage.products[i]._id)}">-</p>
+                                        <p onclick="modifyValueMinus()" id="minu${GetId(storage.products[i]._id)}">-</p>
                                     </div>
                                     <div class="recapitulatif_all_each-infos-left-tab-select">
-                                        <p id="numberOf${antiRep(storage.products[i]._id)}"> </p>
+                                        <p id="numberOf${GetId(storage.products[i]._id)}"> </p>
                                     </div>
                                     <div class="recapitulatif_all_each-infos-left-tab-plus">
-                                        <p onclick="modifyValuePlus()" id="plus${antiRep(storage.products[i]._id)}">+</p>
+                                        <p id="plus${GetId(storage.products[i]._id)}" onclick="modifyValuePlus()">+</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="recapitulatif_all_each-infos-right">
+                                <div class="recapitulatif_all_each-infos-right-cross">
+                                    <i onclick="DeleteItem()" class="fas fa-times"></i>
+                                </div>
                                 <div class="recapitulatif_all_each-infos-right-price">
                                     <p>${storage.products[i].price},00 €</p>
                                 </div>
                             </div>
                         </div>
                     </div>`
-                }
-                checkQuantity(index);
-            }
         }
+        checkQuantity(index);
+    }
+}
 
-        function modifyValuePlus(aEvent){
-            var e = aEvent ? aEvent : window.event;
-            var t = e.target.id;
-            t = t.substring(4);
-            t = parseInt(t,10);
-            antiRepeat[t]++;
-            if(numberOf0)
-                 numberOf0.innerHTML = antiRepeat[0] - 4;
-            if(numberOf1)
-                 numberOf1.innerHTML = antiRepeat[1] - 4;
-            if(numberOf2)
-                 numberOf2.innerHTML = antiRepeat[2] - 4;
-            if(numberOf3)
-                 numberOf3.innerHTML = antiRepeat[3] - 4;
-            if(numberOf4)
-                 numberOf4.innerHTML = antiRepeat[4] - 4;
-        }
+function modifyValuePlus(aEvent) {
+    var e = aEvent ? aEvent : window.event;
+    var t = e.target.id;
+    t = t.substring(4);
+    t = parseInt(t, 10);
+    antiRepeat[t]++;
+    if (numberOf0)
+        numberOf0.innerHTML = antiRepeat[0];
+    else if (numberOf1)
+        numberOf1.innerHTML = antiRepeat[1];
+    else if (numberOf2)
+        numberOf2.innerHTML = antiRepeat[2];
+    else if (numberOf3)
+        numberOf3.innerHTML = antiRepeat[3];
+    else if (numberOf4)
+        numberOf4.innerHTML = antiRepeat[4];
+}
 
-        function modifyValueMinus(aEvent){
-            var e = aEvent ? aEvent : window.event;
-            var t = e.target.id;
-            t = t.substring(4);
-            t = parseInt(t,10);
-            antiRepeat[t]--;
-            if(numberOf0)
-            numberOf0.innerHTML = antiRepeat[0] - 4;
-            if(numberOf1)
-                    numberOf1.innerHTML = antiRepeat[1] - 4;
-            if(numberOf2)
-                    numberOf2.innerHTML = antiRepeat[2] - 4;
-            if(numberOf3)
-                    numberOf3.innerHTML = antiRepeat[3] - 4;
-            if(numberOf4)
-                    numberOf4.innerHTML = antiRepeat[4] - 4;
-        }
+function modifyValueMinus(aEvent) {
+    var e = aEvent ? aEvent : window.event;
+    var t = e.target.id;
+    t = t.substring(4);
+    t = parseInt(t, 10);
+    antiRepeat[t]--;
+    if (numberOf0)
+        numberOf0.innerHTML = antiRepeat[0];
+    else if (numberOf1)
+        numberOf1.innerHTML = antiRepeat[1];
+    else if (numberOf2)
+        numberOf2.innerHTML = antiRepeat[2];
+    else if (numberOf3)
+        numberOf3.innerHTML = antiRepeat[3];
+    else if (numberOf4)
+        numberOf4.innerHTML = antiRepeat[4];
+}
 
+function DeleteItem() {
+    alert('oui');
+}
 
 
 
@@ -193,17 +201,17 @@ let error = {
 function userInputChecker(userInput, value) {
 
     if (value == 1) {
-        if (!userInput.match(/^([a-zA-Z-'éèç ]+)$/))   // first regex for firstname and last name 
+        if (!userInput.match(/^([a-zA-Z-'éèç ]+)$/)) // first regex for firstname and last name 
             return (0);
         else
             return (1);
     } else if (value == 2) {
-        if (!userInput.match(/^([a-zA-Z-0-9éèç ]+)$/))  // Second regex for adress and city 
+        if (!userInput.match(/^([a-zA-Z-0-9éèç ]+)$/)) // Second regex for adress and city 
             return (0);
         else
             return (1);
     } else if (value == 3) {
-        if (!userInput.match(/^[a-z0-9._-ç]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/))  // thrid regex for the email adress
+        if (!userInput.match(/^[a-z0-9._-ç]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/)) // thrid regex for the email adress
             return (0);
         else
             return (1);
@@ -214,16 +222,16 @@ function userInputChecker(userInput, value) {
 
 firstName.addEventListener('input', function () {
     if (!userInputChecker(firstName.value, 1)) {
-        firstName.classList.add('wrong');                                                               // if it's wrong, adding a red background color 
-        error1.innerHTML = "&nbsp &nbsp entrée invalide";                                               // write that the entry is not allowed 
-        error.in1 = 0;                                                                                  // putting the error checker to 0 in order to block the final button 
+        firstName.classList.add('wrong'); // if it's wrong, adding a red background color 
+        error1.innerHTML = "&nbsp &nbsp entrée invalide"; // write that the entry is not allowed 
+        error.in1 = 0; // putting the error checker to 0 in order to block the final button 
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
-            sumbut.setAttribute("disabled", "");                                                        // if one of the checker's var are not equal to 1, blocking the button 
+            sumbut.setAttribute("disabled", ""); // if one of the checker's var are not equal to 1, blocking the button 
     } else {
-        firstName.classList.remove('wrong');                                                            // if the input fills inside the regex, removing the red background color 
-        error1.innerHTML = "";                                                                          // erasing the error message
-        error.in1 = 1;                                                                                  // putting the variable to 1 in order to unlock that input 
-        if (error.in1 == 1 && error.in2 == 1 && error.in3 == 1 && error.in4 == 1 && error.in5 == 1)     // if everything is good, unlock the buttong 
+        firstName.classList.remove('wrong'); // if the input fills inside the regex, removing the red background color 
+        error1.innerHTML = ""; // erasing the error message
+        error.in1 = 1; // putting the variable to 1 in order to unlock that input 
+        if (error.in1 == 1 && error.in2 == 1 && error.in3 == 1 && error.in4 == 1 && error.in5 == 1) // if everything is good, unlock the buttong 
             sumbut.removeAttribute("disabled", "");
     }
 

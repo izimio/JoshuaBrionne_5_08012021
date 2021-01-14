@@ -24,6 +24,10 @@
         font-size: 1.5em;
     }
     &_all{
+        h2{
+            margin-top: 205px;
+            text-align: center;
+        }
         &_each{
             background-color: $cd-primary;
             padding: 0.3em;
@@ -69,6 +73,7 @@
                         &-minus{
                             margin-left: 0;
                             p{
+                                cursor: pointer;
                                 @media all and (max-width: 360px){
                                     padding-bottom: 0;
                                     padding-top: 0;
@@ -88,7 +93,7 @@
                         }
                         &-select{
                             margin-left: -12px;
-                            margin-right: -12px;
+                            margin-right: -15px;
                             p{
                                 @media all and (max-width: 360px){
                                     padding-bottom: 0;
@@ -108,6 +113,7 @@
                         }
                         &-plus{
                             p{
+                                cursor: pointer;
                                 @media all and (max-width: 360px){
                                     padding-bottom: 0;
                                     padding-top: 0;
@@ -118,8 +124,8 @@
                                 background-color: lighten($cd-tertiary,15);
                                 border-radius: 0px 15px 15px 0px;     
                                 border: 1px solid black;
-                                margin-bottom: 0;
                                 padding-left: 1em;
+                                margin-bottom: auto;
                                 padding-top: 0.2em;
                                 padding-bottom: 0.2em;
                                 padding-right: 1em;
@@ -131,6 +137,15 @@
                     width: 100%;
                     height: 20%;
                     position: relative;
+                    &-cross{
+                        position: absolute;
+                        top: -110px;
+                        right: 0;
+                        cursor: pointer;
+                        @media all and (max-width: 355px){
+                            right: 15px;
+                        }
+                    }
                     &-price{
                         p{
                             margin-bottom: 0;
