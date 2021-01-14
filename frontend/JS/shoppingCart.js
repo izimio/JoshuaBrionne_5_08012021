@@ -2,22 +2,22 @@
 // FUNCTIONS //
 function antiRep(value) {
 
-        if (value == "5be9c8541c9d440000665243") {
-            antiRepeat[0]++;
-            return (0);
-        } else if (value == "5beaa8bf1c9d440000a57d94") {
-            antiRepeat[1]++;
-            return (1);
-        } else if (value == "5beaaa8f1c9d440000a57d95") {
-            antiRepeat[2]++;
-            return (2);
-        } else if (value == "5beaabe91c9d440000a57d96") {
-            antiRepeat[3]++;
-            return (3);
-        } else if (value == "5beaacd41c9d440000a57d97") {
-            antiRepeat[4]++;
-            return (4);
-        }
+    if (value == "5be9c8541c9d440000665243") {
+        antiRepeat[0]++;
+        return (0);
+    } else if (value == "5beaa8bf1c9d440000a57d94") {
+        antiRepeat[1]++;
+        return (1);
+    } else if (value == "5beaaa8f1c9d440000a57d95") {
+        antiRepeat[2]++;
+        return (2);
+    } else if (value == "5beaabe91c9d440000a57d96") {
+        antiRepeat[3]++;
+        return (3);
+    } else if (value == "5beaacd41c9d440000a57d97") {
+        antiRepeat[4]++;
+        return (4);
+    }
 }
 
 function GetId(value) {
@@ -47,6 +47,19 @@ function checkQuantity(index) {
         numberOf4.innerHTML = quantity[4];
     }
 }
+
+function adjustingThePrice(value) {
+    if (value == 0)
+        return (29);
+    else if (value == 1)
+        return (39);
+    else if (value == 2)
+        return (59);
+    else if (value == 3)
+        return (45);
+    else if (value == 4)
+        return (55);
+}
 // ================= //
 
 
@@ -69,31 +82,28 @@ var antiRepeat = [
 // LOCAL STORAGE ANTIREPEAT // 
 var quantity = localStorage.getItem("quantity");
 quantity = JSON.parse(quantity);
-
 // =================== // 
 
 // CREATING THE TAB //
 
 //  REFRESHING THE ITEMS'S VALUE//
 let nums = localStorage.getItem("PricesAndNums");
-if (!nums) {
-    itemNumber.innerHTML = "0";
-    price.innerHTML = "0,00 €";
+if (nums) {
+    nums = JSON.parse(nums);
+    price.innerHTML = nums.TotalPrice + ",00 €"; // total price
+    itemNumber.innerHTML = nums.TotalItemsNumber;
+} else {
+    price.innerHTML = "0,00 €"; // total price
+    itemNumber.innerHTML = nums.TotalItemsNumber;
+
 }
-nums = JSON.parse(nums);
-price.innerHTML = nums.TotalPrice + ",00 €"; // total price
-itemNumber.innerHTML = nums.TotalItemsNumber;
-
-
 // OPENING AND GETTING READY TO SHOW THE BASQUET // 
 
 var storage = localStorage.getItem("TabAllInfos");
 storage = JSON.parse(storage);
-
 if (!storage) {
 
-} 
-else {
+} else {
     let products = storage.products;
     main.innerHTML = "";
     while (++i != storage.products.length) {
@@ -123,7 +133,7 @@ else {
                             </div>
                             <div class="recapitulatif_all_each-infos-right">
                                 <div class="recapitulatif_all_each-infos-right-cross">
-                                    <i onclick="DeleteItem()" class="fas fa-times"></i>
+                                    <i onclick="DeleteItem()" class="fas fa-trash"></i>
                                 </div>
                                 <div class="recapitulatif_all_each-infos-right-price">
                                     <p>${storage.products[i].price},00 €</p>
@@ -146,8 +156,9 @@ function modifyValuePlus(aEvent) {
     quantity[t]++;
     nums.TotalItemsNumber++;
     itemNumber.innerHTML = nums.TotalItemsNumber;
+    nums.TotalPrice += adjustingThePrice(t);
+    price.innerHTML = nums.TotalPrice + ",00 €"
     totalNumberOfItem.innerHTML = quantity[t];
-
 
     localStorage.setItem("quantity", JSON.stringify(quantity));
     localStorage.setItem("PricesAndNums", JSON.stringify(nums));
@@ -160,14 +171,16 @@ function modifyValueMinus(aEvent) {
     t = parseInt(t, 10);
 
     var totalNumberOfItem = document.getElementById('numberOf' + t);
-
-    quantity[t]--;
-    nums.TotalItemsNumber--;
-    itemNumber.innerHTML = nums.TotalItemsNumber;
-    totalNumberOfItem.innerHTML = quantity[t];
-
-    localStorage.setItem("quantity", JSON.stringify(quantity));
-    localStorage.setItem("PricesAndNums", JSON.stringify(nums));
+    if(quantity[t] - 1 >= 0){
+        quantity[t]--;
+        nums.TotalItemsNumber--;
+        itemNumber.innerHTML = nums.TotalItemsNumber;
+        nums.TotalPrice -= adjustingThePrice(t);
+        price.innerHTML = nums.TotalPrice + ",00 €"
+        totalNumberOfItem.innerHTML = quantity[t];
+        localStorage.setItem("quantity", JSON.stringify(quantity));
+        localStorage.setItem("PricesAndNums", JSON.stringify(nums));
+    }
 }
 
 function DeleteItem() {

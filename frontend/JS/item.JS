@@ -1,8 +1,10 @@
+// function // 
 
+// ============ // 
 // GETTING PRODUCT ID //
 var id;
 const ad = document.location.href //Obtiens l'id du produit
-id = ad.substr(47,24);
+id = ad.substr(47, 24);
 // =============== //
 
 // declaring variables //
@@ -11,30 +13,41 @@ const Allcolors = document.createElement("select");
 const Allbubble = document.createElement("div");
 const main = document.getElementById('product');
 var tabAll;
+const itemNumber = document.getElementById('cartIndex');
 // ======== //
-        
 
-    fetch("http://localhost:3000/api/teddies/" + id) //Rappel notre api + l'id de notre produit
-    .then(async result_ => {  //Récupère le tableau json 
+// SETTING NUMS //
+let nums = localStorage.getItem("PricesAndNums");
+if (nums) {
+    nums = JSON.parse(nums);
+    itemNumber.innerHTML = nums.TotalItemsNumber;
+}
+// ============= //
+
+// MAIN PROG // 
+
+
+fetch("http://localhost:3000/api/teddies/" + id) //Rappel notre api + l'id de notre produit
+    .then(async result_ => { //Récupère le tableau json 
         const response = await result_.json() //Donne un nom au tableau json récupéré
         tabAll = response;
         // reducing PRIZE //
         // =============== //
         // TRICKY CASES //
         while (++i < response.colors.length) {
-            const option = document.createElement("option");             
+            const option = document.createElement("option");
             option.innerHTML = response.colors[i];
             Allcolors.appendChild(option);
 
             const bubble = document.createElement("div");
             bubble.style.backgroundColor = response.colors[i];
-            if(response.colors[i] == "Pale brown")
+            if (response.colors[i] == "Pale brown")
                 bubble.style.backgroundColor = "sandybrown";
-            else if(response.colors[i] == "Dark brown")
+            else if (response.colors[i] == "Dark brown")
                 bubble.style.backgroundColor = "#654321";
             bubble.classList.add("overview_infos-allcolors-colors-bubble");
             Allbubble.appendChild(bubble);
-            }
+        }
         // ============== //
         main.innerHTML = `<div class="tilte2">
                 <h1>Découvrez ${tabAll.name}</h1>
@@ -93,59 +106,75 @@ var tabAll;
     .catch((error) => {
         console.log(error);
     })
-
-    const addNumberAndPrice = () => {
-        let nums = localStorage.getItem("PricesAndNums");
-        if(!nums){
-            nums = {
-                TotalPrice: 0,
-                TotalItemsNumber: 0
-            }
+const addNumberAndPrice = () => {
+    let nums = localStorage.getItem("PricesAndNums");
+    if (!nums) {
+        nums = {
+            TotalPrice: 0,
+            TotalItemsNumber: 0
         }
-        else{
-            nums = JSON.parse(nums);
-        }
-        nums.TotalPrice += tabAll.price / 100;
-        nums.TotalItemsNumber += 1;
-        localStorage.setItem("PricesAndNums", JSON.stringify(nums));
+    } else {
+        nums = JSON.parse(nums);
     }
+    nums.TotalPrice += tabAll.price / 100;
+    nums.TotalItemsNumber += 1;
+    localStorage.setItem("PricesAndNums", JSON.stringify(nums));
+}
 
-    const addToBasket = () => {
-        // CREATING THE BASQUT STORAGE //
-        let storage = localStorage.getItem("TabAllInfos");
-        if (!storage) {  //if doesn't exist, creating, else just fill it 
-            storage = {
-                products: [],
-            }
-        } else {
-            storage = JSON.parse(storage) //extracting JSON
+const addToBasket = () => {
+    // CREATING THE BASQUT STORAGE //
+    let storage = localStorage.getItem("TabAllInfos");
+    if (!storage) { //if doesn't exist, creating, else just fill it 
+        storage = {
+            products: [],
         }
-        storage.products.push({
-            name: tabAll.name,
-            _id: tabAll._id,
-            price: tabAll.price / 100,
-            description: tabAll.description,
-            imageUrl: tabAll.imageUrl,
-        })
-        localStorage.setItem("TabAllInfos", JSON.stringify(storage)) // Putting the final result inside à stringify tab 
-        alert(`L'ourson ${tabAll.name} à bien été ajouté à votre panier !`)
-        addNumberAndPrice();
-        var quantity = localStorage.getItem("quantity");
-            if(!quantity){
-                var quantity = [
-                    0,
-                    0,
-                    0,
-                    0,
-                    0
-                ];
-            }
-            else{
-                quantity = JSON.parse(quantity)
-            }
-            localStorage.setItem("quantity", JSON.stringify(quantity));
-
+    } else {
+        storage = JSON.parse(storage) //extracting JSON
     }
+    storage.products.push({
+        name: tabAll.name,
+        _id: tabAll._id,
+        price: tabAll.price / 100,
+        description: tabAll.description,
+        imageUrl: tabAll.imageUrl,
+    })
+    localStorage.setItem("TabAllInfos", JSON.stringify(storage)) // Putting the final result inside à stringify tab 
+    alert(`L'ourson ${tabAll.name} à bien été ajouté à votre panier !`)
+    addNumberAndPrice();
 
-    
-    
+
+    var quantity = localStorage.getItem("quantity");
+    if (!quantity) {
+        var quantity = [
+            0,
+            0,
+            0,
+            0,
+            0
+        ];
+    } else {
+        quantity = JSON.parse(quantity)
+    }
+    if (id == "5be9c8541c9d440000665243")
+        quantity[0]++;
+    else if (id == "5beaa8bf1c9d440000a57d94")
+        quantity[1]++;
+    else if (id == "5beaaa8f1c9d440000a57d95")
+        quantity[2]++;
+    else if (id == "5beaabe91c9d440000a57d96")
+        quantity[3]++;
+    else if (id == "5beaacd41c9d440000a57d97")
+        quantity[4]++;
+
+    localStorage.setItem("quantity", JSON.stringify(quantity));
+
+    let nums = localStorage.getItem("PricesAndNums");
+    if (!nums) {
+        itemNumber.innerHTML = "1";
+        price.innerHTML = "0,00 €";
+    } else {
+        nums = JSON.parse(nums);
+    }
+    itemNumber.innerHTML = nums.TotalItemsNumber;
+    localStorage.setItem("PricesAndNums", JSON.stringify(nums));
+}

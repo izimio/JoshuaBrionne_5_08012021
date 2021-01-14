@@ -6,8 +6,14 @@ const allCards = [
     document.getElementById('productCard5')
 ];
 let i = -1;
-let numberOfItemsInTheCard = 0;
+const itemNumber = document.getElementById('cartIndex');
 
+
+let nums = localStorage.getItem("PricesAndNums");
+if(nums){
+    nums = JSON.parse(nums);
+    itemNumber.innerHTML = nums.TotalItemsNumber;   
+}
 
 function GET(index, value) {
 
