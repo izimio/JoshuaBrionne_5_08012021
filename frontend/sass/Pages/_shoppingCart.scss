@@ -25,11 +25,9 @@
     }
     &_all{
         &_each{
-            border: 2px solid black;
             margin-bottom: 1em;
             display: flex;
             &-image{
-                border: 1px solid red;
                 height: 10em;
                 width: 10em;
                 @media all  and (max-width: 576px) {
@@ -46,12 +44,13 @@
             }
             &-infos{
                 &-left{
-
-                }
-                &-right{
                     &-tab{
                         display: flex;
                     }
+                }
+                &-right{
+
+            
                 }
             }
         }
