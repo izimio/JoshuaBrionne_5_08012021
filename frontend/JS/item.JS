@@ -7,28 +7,20 @@ id = ad.substr(47,24);
 
 // declaring variables //
 let i = -1;
-var p;
-var d;
 const Allcolors = document.createElement("select");
 const Allbubble = document.createElement("div");
 const main = document.getElementById('product');
-var numberOfItemsInTheCard = 0;
-var price;
-
-localStorage.setItem('data', numberOfItemsInTheCard);
-var max = 0;
-localStorage.setItem('max', max);
-
+var tabAll;
 // ======== //
         
 
     fetch("http://localhost:3000/api/teddies/" + id) //Rappel notre api + l'id de notre produit
     .then(async result_ => {  //Récupère le tableau json 
         const response = await result_.json() //Donne un nom au tableau json récupéré
+        tabAll = response;
         // reducing PRIZE //
         // =============== //
         // TRICKY CASES //
-        price = response.price;
         while (++i < response.colors.length) {
             const option = document.createElement("option");             
             option.innerHTML = response.colors[i];
@@ -45,22 +37,22 @@ localStorage.setItem('max', max);
             }
         // ============== //
         main.innerHTML = `<div class="tilte2">
-                <h1>Découvrez ${response.name}</h1>
+                <h1>Découvrez ${tabAll.name}</h1>
                     </div>
                     <section class="bg-color-deg">
                         <div class="overview">
                             <div class="overview_img">
-                                <img src="${response.imageUrl}" alt="photo de ${response.name}">
+                                <img src="${tabAll.imageUrl}" alt="photo de ${tabAll.name}">
                                 <div class="overview_img-price">
-                                    <h2>${response.price} € </h2>
+                                    <h2>${tabAll.price / 100},00 € </h2>
                                 </div>
                             </div>
                             <div class="overview_infos">
                                 <div class="overview_infos-name text-center">
-                                    <h2>${response.name}</h2>
+                                    <h2>${tabAll.name}</h2>
                                 </div>
                                 <div class="overview_infos-description">
-                                    <p> <b> description :</b> ${response.description}</p>
+                                    <p> <b> description :</b> ${tabAll.description}</p>
                                 </div>
                                 <div class="overview_infos-materiaux">
                                     <h2>Matériaux</h2>
@@ -102,13 +94,29 @@ localStorage.setItem('max', max);
         console.log(error);
     })
 
-    const addToBasket = () =>{
-        numberOfItemsInTheCard++;
-        max += price;
-        localStorage.setItem('max', max);
-        cartIndex.innerHTML = numberOfItemsInTheCard;
-        localStorage.setItem('data', numberOfItemsInTheCard);
-        alert(localStorage.getItem('max'));
+    const addNumberAndPrice = () => {
+
+        
+
+    const addToBasket = () => {
+        let storage = localStorage.getItem("TabAllInfos") //Créer notre stockage de panier
+        if (!storage) {
+            storage = {
+                products: [],
+            }
+        } else {
+            storage = JSON.parse(storage) //On extrait notre json 
+        }
+        storage.products.push({
+            name: tabAll.name,
+            _id: tabAll._id,
+            price: tabAll.price / 100,
+            priceByItems: tabAll.price,
+            imageUrl: tabAll.imageUrl,
+        })
+        localStorage.setItem("TabAllInfos", JSON.stringify(storage))
+        alert(`L'ourson ${tabAll.name} à bien été ajouté à votre panier !`)
+
     }
 
     

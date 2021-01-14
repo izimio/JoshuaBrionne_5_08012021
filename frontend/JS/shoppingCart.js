@@ -1,9 +1,11 @@
 
-cartIndex.innerHTML = localStorage.getItem('data');
+        let storagee = localStorage.getItem("TabAllInfos");
+        storagee = JSON.parse(storagee)
+        let products = storagee.products;
 
 const ouin = document.getElementById('allcost');
 
-ouin.textContent = localStorage.getItem('max');
+ouin.innerHTML =  products[1].price;
 
 // ========================== // FORMULAIRE // =========================== //
 var firstName = document.getElementById('firstName');

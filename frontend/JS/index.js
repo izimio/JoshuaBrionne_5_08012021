@@ -25,7 +25,7 @@ function GET(index, value) {
                             <h2>${response[index].name}</h2>
                         </div>
                         <div class="productCard_caption-upper-price">
-                            <p>${response[index].price} €</p>
+                            <p>${response[index].price / 100},00 €</p>
                         </div>
                     </div>
                     <div class="productCard_caption-lower">
