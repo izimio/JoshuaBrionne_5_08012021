@@ -110,8 +110,6 @@ var tabAll;
         localStorage.setItem("PricesAndNums", JSON.stringify(nums));
     }
 
-        
-
     const addToBasket = () => {
         // CREATING THE BASQUT STORAGE //
         let storage = localStorage.getItem("TabAllInfos");
@@ -126,7 +124,7 @@ var tabAll;
             name: tabAll.name,
             _id: tabAll._id,
             price: tabAll.price / 100,
-            priceByItems: tabAll.price,
+            description: tabAll.description,
             imageUrl: tabAll.imageUrl,
         })
         localStorage.setItem("TabAllInfos", JSON.stringify(storage)) // Putting the final result inside à stringify tab 

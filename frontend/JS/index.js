@@ -8,6 +8,7 @@ const allCards = [
 let i = -1;
 let numberOfItemsInTheCard = 0;
 
+
 function GET(index, value) {
 
     var request = new XMLHttpRequest();
@@ -15,28 +16,27 @@ function GET(index, value) {
     request.onreadystatechange = function () {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
             var response = JSON.parse(this.responseText);
-            value.innerHTML = `<a href="../html/product_id=${response[index]._id}.html">
+            var tabAll = response;
+            value.innerHTML = `<a href="../html/product_id=${tabAll[index]._id}.html">
                 <div class="productCard_img">
-                    <img src="${response[index].imageUrl}" alt="photo de ${response[index].name}">
+                    <img src="${tabAll[index].imageUrl}" alt="photo de ${tabAll[index].name}">
                 </div>
                 <div class="productCard_caption">
                     <div class="productCard_caption-upper">
                         <div class="productCard_caption-upper-name">
-                            <h2>${response[index].name}</h2>
+                            <h2>${tabAll[index].name}</h2>
                         </div>
                         <div class="productCard_caption-upper-price">
-                            <p>${response[index].price / 100},00 €</p>
+                            <p>${tabAll[index].price / 100},00 €</p>
                         </div>
                     </div>
                     <div class="productCard_caption-lower">
-                        <p class="productCard_caption-lower-description">${response[index].description}</p>
+                        <p class="productCard_caption-lower-description">${tabAll[index].description}</p>
                     </div>
-                    <a href="shoppingCart.html">
-                        <div class="productCard_caption-lower-addtocart" onclick="addToBasket()">
-                            <span>Ajouter au panier</span>
+                        <div class="productCard_caption-lower-addtocart" onclick="">
+                            <span>En savoir plus</span>
                             <i class="fas fa-cart-plus"></i>
                         </div>
-                    </a>
                 </div>
             </a>`;
         }
@@ -49,7 +49,22 @@ while (allCards[++i]) {
     GET(i, allCards[i]);
 }
 
-const addToBasket = (event) =>{
-    numberOfItemsInTheCard++;
-    cartIndex.innerHTML = numberOfItemsInTheCard;
+const addToBasket = () =>{
+
+    alert(tabAll.price)
+
+    let nums = localStorage.getItem("PricesAndNums")
+    if(!nums){
+        nums = {
+            TotalPrice: 0,
+            TotalItemsNumber: 0
+        }
+    }
+    else{
+        nums = JSON.parse(nums);
+    }
+    nums.TotalPrice += tabAll.price / 100;
+    nums.TotalItemsNumber += 1;
+
+    localStorage.setItem("PricesAndNums", JSON.stringify(nums));
 }
