@@ -20,6 +20,9 @@ if (nums) {
     nums = JSON.parse(nums);
     itemNumber.innerHTML = nums.TotalItemsNumber;
 }
+else{
+    itemNumber.innerHTML = "0";
+}
 // ============= //
 
 // MAIN PROG // 

@@ -1,3 +1,5 @@
+// variables //
+
 const allCards = [
     document.getElementById('productCard1'),
     document.getElementById('productCard2'),
@@ -7,16 +9,20 @@ const allCards = [
 ];
 let i = -1;
 const itemNumber = document.getElementById('cartIndex');
+// ================ //
 
+//refreshing price //
 
 let nums = localStorage.getItem("PricesAndNums");
 if (nums) {
     nums = JSON.parse(nums);
     itemNumber.innerHTML = nums.TotalItemsNumber;
 }
-else{
+else {
     itemNumber.innerHTML = "0";
 }
+
+// ============= //
 
 function GET(index, value) {
 
@@ -42,22 +48,24 @@ function GET(index, value) {
                     <div class="productCard_caption-lower">
                         <p class="productCard_caption-lower-description">${tabAll[index].description}</p>
                     </div>
-                        <div class="productCard_caption-lower-addtocart" onclick="">
-                            <span>En savoir plus</span>
-                            <i class="fas fa-cart-plus"></i>
-                        </div>
-                </div>
-            </a>`;
+                    </a>
+                    <div class="productCard_caption-lower-addtocart" id="teddy${index}">
+                        <span>En savoir plus</span>
+                        <i class="fas fa-cart-plus"></i>
+                    </div>
+                </div>`;
         }
     };
     request.open("GET", "http://localhost:3000/api/teddies");
     request.send();
 };
-
+// DISCARDING EVERY CARDS 
 while (allCards[++i]) {
     GET(i, allCards[i]);
 }
 
+
+/*
 const addToBasket = () => {
 
     alert(tabAll.price)
@@ -76,3 +84,5 @@ const addToBasket = () => {
 
     localStorage.setItem("PricesAndNums", JSON.stringify(nums));
 }
+
+*/

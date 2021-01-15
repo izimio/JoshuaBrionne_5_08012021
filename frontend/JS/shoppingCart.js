@@ -97,7 +97,7 @@ if (nums) {
     itemNumber.innerHTML = nums.TotalItemsNumber;
 } else {
     price.innerHTML = "0,00 €"; // total price
-    itemNumber.innerHTML = nums.TotalItemsNumber;
+    itemNumber.innerHTML = "0";
 
 }
 // =========================== // 
