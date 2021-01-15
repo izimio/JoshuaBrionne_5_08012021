@@ -1,5 +1,7 @@
 //localStorage.clear();
 // FUNCTIONS //
+
+    // function to block the repetition of the same object //
 function antiRep(value) {
 
     if (value == "5be9c8541c9d440000665243") {
@@ -19,7 +21,7 @@ function antiRep(value) {
         return (4);
     }
 }
-
+    // Getting with a product's ID his reference
 function GetId(value) {
     if (value == "5be9c8541c9d440000665243") {
         return (0);
@@ -33,7 +35,7 @@ function GetId(value) {
         return (4);
     }
 }
-
+    // showing the quantity of an item 
 function checkQuantity(index) {
     if (index == 0) {
         numberOf0.innerHTML = quantity[0];
@@ -47,6 +49,8 @@ function checkQuantity(index) {
         numberOf4.innerHTML = quantity[4];
     }
 }
+
+    // ajusting the price depending on the "+" & the "-"
 
 function adjustingThePrice(value) {
     if (value == 0)
@@ -63,7 +67,7 @@ function adjustingThePrice(value) {
 // ================= //
 
 
-// CREATINGS VARIABLE //
+// CREATINGS mains VARIABLE //
 const main = document.getElementById('recapAll');
 const price = document.getElementById('allcost');
 const itemNumber = document.getElementById('cartIndex');
@@ -78,15 +82,14 @@ var antiRepeat = [
     0,
     0
 ];
+// ============ //
 
 // LOCAL STORAGE ANTIREPEAT // 
 var quantity = localStorage.getItem("quantity");
 quantity = JSON.parse(quantity);
 // =================== // 
 
-// CREATING THE TAB //
-
-//  REFRESHING THE ITEMS'S VALUE//
+//  REFRESHING THE nums'S VALUE//
 let nums = localStorage.getItem("PricesAndNums");
 if (nums) {
     nums = JSON.parse(nums);
@@ -97,7 +100,9 @@ if (nums) {
     itemNumber.innerHTML = nums.TotalItemsNumber;
 
 }
-// OPENING AND GETTING READY TO SHOW THE BASQUET // 
+// =========================== // 
+
+// OPENING AND GETTING READY TO SHOW THE BASKET // 
 
 var storage = localStorage.getItem("TabAllInfos");
 storage = JSON.parse(storage);
@@ -143,6 +148,8 @@ if (!storage) {
     }
 }
 
+// functions that's refreshing the nums's value in case of a "+" or "-"
+
 function modifyValuePlus(aEvent) {
     var e = aEvent ? aEvent : window.event;
     var t = e.target.id;
@@ -179,6 +186,8 @@ function modifyValueMinus(aEvent) {
         localStorage.setItem("PricesAndNums", JSON.stringify(nums));
     }
 }
+
+// working on 
 
 function DeleteItem() {
     alert('oui');

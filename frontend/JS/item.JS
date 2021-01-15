@@ -1,7 +1,5 @@
-// function // 
 
-// ============ // 
-// GETTING PRODUCT ID //
+// GETTING PAGE ID //
 var id;
 const ad = document.location.href //Obtiens l'id du produit
 id = ad.substr(47, 24);
@@ -26,20 +24,18 @@ if (nums) {
 
 // MAIN PROG // 
 
-
-fetch("http://localhost:3000/api/teddies/" + id) //Rappel notre api + l'id de notre produit
-    .then(async result_ => { //Récupère le tableau json 
-        const response = await result_.json() //Donne un nom au tableau json récupéré
-        tabAll = response;
-        // reducing PRIZE //
-        // =============== //
+fetch("http://localhost:3000/api/teddies/" + id) //recall our API with the ID
+    .then(async result_ => { //GET the stringify tab
+        const response = await result_.json() //give a ame to that tab
+        tabAll = response; // getting the api's information inside my own variable
+        
         // TRICKY CASES //
         while (++i < response.colors.length) {
-            const option = document.createElement("option");
+            const option = document.createElement("option");        // creating the select filled with every color
             option.innerHTML = response.colors[i];
             Allcolors.appendChild(option);
 
-            const bubble = document.createElement("div");
+            const bubble = document.createElement("div");           // creatings the colored bubbles 
             bubble.style.backgroundColor = response.colors[i];
             if (response.colors[i] == "Pale brown")
                 bubble.style.backgroundColor = "sandybrown";
@@ -49,6 +45,7 @@ fetch("http://localhost:3000/api/teddies/" + id) //Rappel notre api + l'id de no
             Allbubble.appendChild(bubble);
         }
         // ============== //
+
         main.innerHTML = `<div class="tilte2">
                 <h1>Découvrez ${tabAll.name}</h1>
                     </div>
@@ -106,6 +103,8 @@ fetch("http://localhost:3000/api/teddies/" + id) //Rappel notre api + l'id de no
     .catch((error) => {
         console.log(error);
     })
+
+    // adding the product's value to the total price and also ++ the itemNumber
 const addNumberAndPrice = () => {
     let nums = localStorage.getItem("PricesAndNums");
     if (!nums) {
