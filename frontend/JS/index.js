@@ -1,5 +1,5 @@
 // variables //
-
+//localStorage.clear();
 const allCards = [
     document.getElementById('productCard1'),
     document.getElementById('productCard2'),
@@ -17,8 +17,7 @@ let nums = localStorage.getItem("PricesAndNums");
 if (nums) {
     nums = JSON.parse(nums);
     itemNumber.innerHTML = nums.TotalItemsNumber;
-}
-else {
+} else {
     itemNumber.innerHTML = "0";
 }
 
@@ -28,7 +27,7 @@ function GET(index, value) {
 
     var request = new XMLHttpRequest();
 
-    request.onreadystatechange = function () {
+    request.onreadystatechange = function() {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
             var response = JSON.parse(this.responseText);
             var tabAll = response;

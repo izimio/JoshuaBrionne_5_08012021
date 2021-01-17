@@ -1,7 +1,7 @@
 //localStorage.clear();
 // FUNCTIONS //
 
-    // function to block the repetition of the same object //
+// function to block the repetition of the same object //
 function antiRep(value) {
 
     if (value == "5be9c8541c9d440000665243") {
@@ -21,7 +21,7 @@ function antiRep(value) {
         return (4);
     }
 }
-    // Getting with a product's ID his reference
+// Getting with a product's ID his reference
 function GetId(value) {
     if (value == "5be9c8541c9d440000665243") {
         return (0);
@@ -35,7 +35,7 @@ function GetId(value) {
         return (4);
     }
 }
-    // showing the quantity of an item 
+// showing the quantity of an item 
 function checkQuantity(index) {
     if (index == 0) {
         numberOf0.innerHTML = quantity[0];
@@ -50,7 +50,7 @@ function checkQuantity(index) {
     }
 }
 
-    // ajusting the price depending on the "+" & the "-"
+// ajusting the price depending on the "+" & the "-"
 
 function adjustingThePrice(value) {
     if (value == 0)
@@ -71,9 +71,8 @@ function adjustingThePrice(value) {
 const main = document.getElementById('recapAll');
 const price = document.getElementById('allcost');
 const itemNumber = document.getElementById('cartIndex');
-let i = -1;
+var i = -1;
 var index;
-var p = -1;
 
 var antiRepeat = [
     0,
@@ -113,8 +112,7 @@ if (!storage) {
     main.innerHTML = "";
     while (++i != storage.products.length) {
         index = antiRep(storage.products[i]._id); // BLOCKING THE REPETITION OF ARTICLES //           
-        if (antiRepeat[index] <= 1) {
-            p++;
+        if (antiRepeat[index] <= 1 && storage.products[i]) {
             main.innerHTML +=
                 `<div class="recapitulatif_all_each" id="recap${GetId(storage.products[i]._id)}">
                         <div class="recapitulatif_all_each-image">
@@ -137,8 +135,9 @@ if (!storage) {
                                 </div>
                             </div>
                             <div class="recapitulatif_all_each-infos-right">
-                                <div class="recapitulatif_all_each-infos-right-cross">
+                                <div class="recapitulatif_all_each-infos-right-cross" id="crossDiv">
                                     <p id="cross${GetId(storage.products[i]._id)}" onclick="deletingElement()">x</p>
+                                    <p id="crossInfo"></p>
                                 </div>
                                 <div class="recapitulatif_all_each-infos-right-price">
                                     <p>${storage.products[i].price},00 €</p>
@@ -150,21 +149,52 @@ if (!storage) {
         checkQuantity(index);
     }
 }
+const crossDiv = document.getElementById("crossDiv");
+crossDiv.addEventListener('mouseover', function(event) {
+    event.stopPropagation();
 
+    var crossinfo = document.getElementById('crossInfo')
+    crossinfo.classList.add('recapitulatif_all_each-infos-right-cross-info')
+    crossinfo.innerHTML = "supprimer l'article";
+});
+crossDiv.addEventListener('mouseout', function() {
+    var crossinfo = document.getElementById('crossInfo')
+    crossinfo.innerHTML = "";
+});
 // functions that's refreshing the nums's value in case of a "+" or "-"
-function deletingElement(aEvent){
+function deletingElement(aEvent) {
     var g = aEvent ? aEvent : window.event;
     var ProductId = g.target.id;
     ProductId = ProductId.substr(5);
-    parseInt(ProductId,10);
-    
-    let i = 0;
+    parseInt(ProductId, 10);
+    var tab = [];
+    let i = -1;
+    while (++i < storage.products.length) {
+        if (storage.products[i].index == ProductId) {
+            tab.push(i);
+        }
+    }
+    alert(tab);
+    i = -1;
+    while (tab[++i]) {
+        storage.products.splice(tab[i], 1);
+    }
+    if (tab[0] == 0) {
+        storage.products.splice(tab[0], 1);
+        if (tab.length > 1)
+            storage.products.splice(tab[0], 1);
+    }
+    i = -1;
+    nums.TotalItemsNumber -= (quantity[ProductId])
+    itemNumber.innerHTML = nums.TotalItemsNumber;
+    nums.TotalPrice -= (quantity[ProductId] * adjustingThePrice(ProductId));
+    price.innerHTML = nums.TotalPrice + ",00 €"
 
-    /*JUSTE ICI */
-    storage.product.splice(i,1);
-
-
+    quantity[ProductId] = 0;
+    localStorage.setItem("quantity", JSON.stringify(quantity));
     localStorage.setItem("TabAllInfos", JSON.stringify(storage));
+    localStorage.setItem("PricesAndNums", JSON.stringify(nums));
+    location.reload();
 }
 
 function modifyValuePlus(aEvent) {
@@ -192,7 +222,7 @@ function modifyValueMinus(aEvent) {
     t = parseInt(t, 10);
 
     var totalNumberOfItem = document.getElementById('numberOf' + t);
-    if(quantity[t] - 1 >= 0){
+    if (quantity[t] - 1 >= 0) {
         quantity[t]--;
         nums.TotalItemsNumber--;
         itemNumber.innerHTML = nums.TotalItemsNumber;
@@ -259,7 +289,7 @@ function userInputChecker(userInput, value) {
 
 // plenty of event listener to check the user's input and block the acess to the button "commander" if the input is wrong
 
-firstName.addEventListener('input', function () {
+firstName.addEventListener('input', function() {
     if (!userInputChecker(firstName.value, 1)) {
         firstName.classList.add('wrong'); // if it's wrong, adding a red background color 
         error1.innerHTML = "&nbsp &nbsp entrée invalide"; // write that the entry is not allowed 
@@ -276,7 +306,7 @@ firstName.addEventListener('input', function () {
 
 });
 
-lastName.addEventListener('input', function () {
+lastName.addEventListener('input', function() {
     if (!userInputChecker(lastName.value, 1)) {
         lastName.classList.add('wrong');
         error2.innerHTML = "&nbsp &nbsp entrée invalide";
@@ -293,7 +323,7 @@ lastName.addEventListener('input', function () {
 
 });
 
-city.addEventListener('input', function () {
+city.addEventListener('input', function() {
     if (!userInputChecker(city.value, 1)) {
         city.classList.add('wrong');
         error3.innerHTML = "&nbsp &nbsp entrée invalide";
@@ -310,7 +340,7 @@ city.addEventListener('input', function () {
 
 });
 
-adress.addEventListener('input', function () {
+adress.addEventListener('input', function() {
     if (!userInputChecker(adress.value, 2)) {
         adress.classList.add('wrong');
         error4.innerHTML = "&nbsp &nbsp entrée invalide";
@@ -327,7 +357,7 @@ adress.addEventListener('input', function () {
     }
 });
 
-email.addEventListener('change', function () {
+email.addEventListener('change', function() {
     if (!userInputChecker(email.value, 3)) {
         email.classList.add('wrong');
         error5.innerHTML = "&nbsp &nbsp entrée invalide";
@@ -344,6 +374,6 @@ email.addEventListener('change', function () {
     }
 });
 
-sumbut.addEventListener('click', function (event) {
+sumbut.addEventListener('click', function(event) {
 
 });

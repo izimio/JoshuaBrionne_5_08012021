@@ -1,24 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&family=Roboto+Slab&display=swap');
-
-html, body{
+html,
+body {
     font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
-
-
 //GLOBALE//
-body{
-    background-color: lighten($cd-primary,4%);
+body {
+    background-color: lighten($cd-primary, 4%);
 }
 
-a{
+a {
     color: black;
     text-decoration: none;
-    &:hover{
+    &:hover {
         color: black;
         text-decoration: none;
     }
+}
+
+.ko {
+    font-size: 5em;
 }
 
 //\GLOBALE\\
