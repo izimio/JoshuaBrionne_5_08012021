@@ -46,11 +46,11 @@ function GET(index, value) {
                     <div class="productCard_caption-lower">
                         <p class="productCard_caption-lower-description">${tabAll[index].description}</p>
                     </div>
-                    </a>
                     <div class="productCard_caption-lower-addtocart">
-                        <p id="teddy${index}" onclick="test()">Ajouter au panier</p>
+                        <p id="teddy${index}" onclick="test()">En savoir plus</p>
                     </div>
-                </div>`;
+                </div>
+                </a>`;
         }
     };
     request.open("GET", "http://localhost:3000/api/teddies");
@@ -60,7 +60,7 @@ function GET(index, value) {
 while (allCards[++i]) {
     GET(i, allCards[i]);
 }
-
+/*
 function test(aEvent) {
     var g = aEvent ? aEvent : window.event;
     var ProductId = g.target.id;
@@ -68,3 +68,4 @@ function test(aEvent) {
     parseInt(ProductId, 10);
     alert(ProductId);
 }
+*/
