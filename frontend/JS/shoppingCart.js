@@ -167,24 +167,13 @@ function deletingElement(aEvent) {
     var ProductId = g.target.id;
     ProductId = ProductId.substr(5);
     parseInt(ProductId, 10);
-    var tab = [];
     let i = -1;
     while (++i < storage.products.length) {
         if (storage.products[i].index == ProductId) {
-            tab.push(i);
+            storage.products.splice(i, 1);
+            i = -1;
         }
     }
-    alert(tab);
-    i = -1;
-    while (tab[++i]) {
-        storage.products.splice(tab[i], 1);
-    }
-    if (tab[0] == 0) {
-        storage.products.splice(tab[0], 1);
-        if (tab.length > 1)
-            storage.products.splice(tab[0], 1);
-    }
-    i = -1;
     nums.TotalItemsNumber -= (quantity[ProductId])
     itemNumber.innerHTML = nums.TotalItemsNumber;
     nums.TotalPrice -= (quantity[ProductId] * adjustingThePrice(ProductId));
