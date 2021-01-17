@@ -160,7 +160,7 @@ crossDiv.addEventListener('mouseout', function() {
     var crossinfo = document.getElementById('crossInfo')
     crossinfo.innerHTML = "";
 });
-// functions that's refreshing the nums's value in case of a "+" or "-"
+
 function deletingElement(aEvent) {
     var g = aEvent ? aEvent : window.event;
     var ProductId = g.target.id;
@@ -184,7 +184,7 @@ function deletingElement(aEvent) {
     localStorage.setItem("PricesAndNums", JSON.stringify(nums));
     location.reload();
 }
-
+// functions that's refreshing the nums's value in case of a "+" or "-"
 function modifyValuePlus(aEvent) {
     var e = aEvent ? aEvent : window.event;
     var t = e.target.id;
@@ -210,7 +210,7 @@ function modifyValueMinus(aEvent) {
     t = parseInt(t, 10);
 
     var totalNumberOfItem = document.getElementById('numberOf' + t);
-    if (quantity[t] - 1 >= 0) {
+    if (quantity[t] - 1 > 0) {
         quantity[t]--;
         nums.TotalItemsNumber--;
         itemNumber.innerHTML = nums.TotalItemsNumber;
