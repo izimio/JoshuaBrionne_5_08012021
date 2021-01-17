@@ -136,7 +136,7 @@ if (!storage) {
                             </div>
                             <div class="recapitulatif_all_each-infos-right">
                                 <div class="recapitulatif_all_each-infos-right-cross" id="crossDiv">
-                                    <p id="cross${GetId(storage.products[i]._id)}" onclick="deletingElement()">x</p>
+                                    <i class="far fa-trash-alt" id="cross${GetId(storage.products[i]._id)}" onclick="deletingElement()"></i>
                                     <p id="crossInfo"></p>
                                 </div>
                                 <div class="recapitulatif_all_each-infos-right-price">

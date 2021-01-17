@@ -1,5 +1,4 @@
 // variables //
-//localStorage.clear();
 const allCards = [
     document.getElementById('productCard1'),
     document.getElementById('productCard2'),
@@ -48,9 +47,8 @@ function GET(index, value) {
                         <p class="productCard_caption-lower-description">${tabAll[index].description}</p>
                     </div>
                     </a>
-                    <div class="productCard_caption-lower-addtocart" id="teddy${index}">
-                        <span>En savoir plus</span>
-                        <i class="fas fa-cart-plus"></i>
+                    <div class="productCard_caption-lower-addtocart">
+                        <p id="teddy${index}" onclick="test()">Ajouter au panier</p>
                     </div>
                 </div>`;
         }
@@ -63,25 +61,10 @@ while (allCards[++i]) {
     GET(i, allCards[i]);
 }
 
-
-/*
-const addToBasket = () => {
-
-    alert(tabAll.price)
-
-    let nums = localStorage.getItem("PricesAndNums")
-    if (!nums) {
-        nums = {
-            TotalPrice: 0,
-            TotalItemsNumber: 0
-        }
-    } else {
-        nums = JSON.parse(nums);
-    }
-    nums.TotalPrice += tabAll.price / 100;
-    nums.TotalItemsNumber += 1;
-
-    localStorage.setItem("PricesAndNums", JSON.stringify(nums));
+function test(aEvent) {
+    var g = aEvent ? aEvent : window.event;
+    var ProductId = g.target.id;
+    ProductId = ProductId.substr(5);
+    parseInt(ProductId, 10);
+    alert(ProductId);
 }
-
-*/

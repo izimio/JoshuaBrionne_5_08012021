@@ -1,4 +1,3 @@
-
 // GETTING PAGE ID //
 var id;
 const ad = document.location.href //Obtiens l'id du produit
@@ -19,8 +18,7 @@ let nums = localStorage.getItem("PricesAndNums");
 if (nums) {
     nums = JSON.parse(nums);
     itemNumber.innerHTML = nums.TotalItemsNumber;
-}
-else{
+} else {
     itemNumber.innerHTML = "0";
 }
 // ============= //
@@ -31,14 +29,14 @@ fetch("http://localhost:3000/api/teddies/" + id) //recall our API with the ID
     .then(async result_ => { //GET the stringify tab
         const response = await result_.json() //give a ame to that tab
         tabAll = response; // getting the api's information inside my own variable
-        
+
         // TRICKY CASES //
         while (++i < response.colors.length) {
-            const option = document.createElement("option");        // creating the select filled with every color
+            const option = document.createElement("option"); // creating the select filled with every color
             option.innerHTML = response.colors[i];
             Allcolors.appendChild(option);
 
-            const bubble = document.createElement("div");           // creatings the colored bubbles 
+            const bubble = document.createElement("div"); // creatings the colored bubbles 
             bubble.style.backgroundColor = response.colors[i];
             if (response.colors[i] == "Pale brown")
                 bubble.style.backgroundColor = "sandybrown";
@@ -107,8 +105,8 @@ fetch("http://localhost:3000/api/teddies/" + id) //recall our API with the ID
         console.log(error);
     })
 
-    // adding the product's value to the total price and also ++ the itemNumber
-const addNumberAndPrice = () => {
+// adding the product's value to the total price and also ++ the itemNumber
+function addNumberAndPrice() {
     let nums = localStorage.getItem("PricesAndNums");
     if (!nums) {
         nums = {
@@ -123,7 +121,7 @@ const addNumberAndPrice = () => {
     localStorage.setItem("PricesAndNums", JSON.stringify(nums));
 }
 
-const addToBasket = () => {
+function addToBasket() {
     // CREATING THE BASQUT STORAGE //
     let storage = localStorage.getItem("TabAllInfos");
     if (!storage) { //if doesn't exist, creating, else just fill it 
@@ -158,23 +156,19 @@ const addToBasket = () => {
     } else {
         quantity = JSON.parse(quantity)
     }
-    if (id == "5be9c8541c9d440000665243"){
+    if (id == "5be9c8541c9d440000665243") {
         quantity[0]++;
         storage.products.index = 0;
-    }
-    else if (id == "5beaa8bf1c9d440000a57d94"){
+    } else if (id == "5beaa8bf1c9d440000a57d94") {
         quantity[1]++;
         storage.products.index = 1;
-    }
-    else if (id == "5beaaa8f1c9d440000a57d95"){
+    } else if (id == "5beaaa8f1c9d440000a57d95") {
         quantity[2]++;
         storage.products.index = 2;
-    }
-    else if (id == "5beaabe91c9d440000a57d96"){
+    } else if (id == "5beaabe91c9d440000a57d96") {
         quantity[3]++;
         storage.products.index = 3;
-    }
-    else if (id == "5beaacd41c9d440000a57d97"){
+    } else if (id == "5beaacd41c9d440000a57d97") {
         quantity[4]++;
         storage.products.index = 4;
     }

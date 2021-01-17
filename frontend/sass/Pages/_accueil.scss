@@ -1,79 +1,79 @@
-.tilte{
+.tilte {
     text-align: center;
-    h1{
+    h1 {
         margin-bottom: 0%;
         margin-top: -0.5em;
         font-size: 3.5em;
     }
-    p{
+    p {
         font-size: 1em;
     }
 }
 
-.shrink{
+.shrink {
     margin: 0em 0.3em 0em 0.3em;
 }
 
-section{
+section {
     margin-bottom: 2em;
 }
-.bg-color-deg{
-    background: (linear-gradient(-50deg, lighten($cd-secondary,25%), lighten($cd-tertiary,25%)));
+
+.bg-color-deg {
+    background: (linear-gradient(-50deg, lighten($cd-secondary, 25%), lighten($cd-tertiary, 25%)));
     height: auto;
     border-radius: 15px;
     padding: 2em 0em 2em 0em;
 }
 
-.productCard{
+.productCard {
     position: relative;
-    background-color: darken($cd-primary,4%);
+    background-color: darken($cd-primary, 4%);
     border-radius: 10px;
     height: auto;
     margin-bottom: 1em;
     margin-top: 1em;
-    box-shadow: 1px 1px 15px 0px rgba($color: darken($cd-primary,30), $alpha: 1);
+    box-shadow: 1px 1px 15px 0px rgba($color: darken($cd-primary, 30), $alpha: 1);
     transition: 200ms;
-    &:hover{
+    &:hover {
         transform: scale(1.04);
     }
-    &_img{
+    &_img {
         height: 15rem;
         padding: 1em;
-        img{
+        img {
             border-radius: 15px;
             height: 100%;
             width: 100%;
             object-fit: cover;
         }
     }
-    &_caption{
+    &_caption {
         margin-top: 0%;
-        &-upper{
-            &-name{
+        &-upper {
+            &-name {
                 text-align: center;
             }
-            &-price{
+            &-price {
                 position: absolute;
-                 padding: 0.5em;
+                padding: 0.5em;
                 border-radius: 5px;
-                background-color: darken($cd-primary,30);
+                background-color: darken($cd-primary, 30);
                 right: 1.5em;
                 top: 200px;
-                p{
+                p {
                     font-weight: bold;
                     margin-bottom: 0;
                 }
             }
         }
-        &-lower{
+        &-lower {
             border: 1px solid transparent;
-            &-description{
+            &-description {
                 margin-left: 1em;
                 margin-bottom: 2em;
             }
-            &-addtocart{
+            &-addtocart {
                 width: 100%;
-                z-index: 2;
                 margin-bottom: 1em;
                 background-color: white;
                 border: none;
@@ -81,11 +81,23 @@ section{
                 padding: 0.3em;
                 transition: 500ms;
                 text-align: center;
-                &:hover{
-                    background-color: darken($cd-primary,8%);
+                &:hover {
+                    background-color: darken($cd-primary, 8%);
+                }
+                p {
+                    transition: 500ms;
+                    text-align: center;
+                    width: 100%;
+                    height: 100%;
+                    margin-bottom: 0;
+                    &:hover {
+                        background: (linear-gradient(-50deg, $cd-secondary, $cd-tertiary));
+                        color: transparent;
+                        background-clip: text;
+                        font-weight: bold;
+                    }
                 }
             }
         }
     }
 }
-
