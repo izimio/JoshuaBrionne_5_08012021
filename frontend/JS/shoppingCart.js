@@ -137,6 +137,9 @@ if (!storage) {
                                 </div>
                             </div>
                             <div class="recapitulatif_all_each-infos-right">
+                                <div class="recapitulatif_all_each-infos-right-cross">
+                                    <p id="cross${GetId(storage.products[i]._id)}" onclick="deletingElement()">x</p>
+                                </div>
                                 <div class="recapitulatif_all_each-infos-right-price">
                                     <p>${storage.products[i].price},00 €</p>
                                 </div>
@@ -149,6 +152,28 @@ if (!storage) {
 }
 
 // functions that's refreshing the nums's value in case of a "+" or "-"
+function deletingElement(aEvent){
+    var g = aEvent ? aEvent : window.event;
+    var ProductId = g.target.id;
+    ProductId = ProductId.substr(5);
+    parseInt(ProductId,10);
+    
+    let i = 0;
+    while(storage[i])
+        i++;
+    alert(i);
+    /* 
+    while(++i <= storage){
+        if(storage.products[i].index == ProductId){
+             storage.splice(i,1);
+             alert("oui");
+        }
+    }
+    */
+   storage.products.splice(i,1);
+    localStorage.setItem("TabAllInfos", JSON.stringify(storage));
+    alert(i);
+}
 
 function modifyValuePlus(aEvent) {
     var e = aEvent ? aEvent : window.event;
@@ -189,9 +214,6 @@ function modifyValueMinus(aEvent) {
 
 // working on 
 
-function DeleteItem() {
-    alert('oui');
-}
 
 
 

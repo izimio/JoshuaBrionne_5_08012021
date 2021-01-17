@@ -139,6 +139,7 @@ const addToBasket = () => {
         price: tabAll.price / 100,
         description: tabAll.description,
         imageUrl: tabAll.imageUrl,
+        index: (parseInt(id.substr(23)) - 3),
     })
     localStorage.setItem("TabAllInfos", JSON.stringify(storage)) // Putting the final result inside à stringify tab 
     alert(`L'ourson ${tabAll.name} à bien été ajouté à votre panier !`)
@@ -157,17 +158,28 @@ const addToBasket = () => {
     } else {
         quantity = JSON.parse(quantity)
     }
-    if (id == "5be9c8541c9d440000665243")
+    if (id == "5be9c8541c9d440000665243"){
         quantity[0]++;
-    else if (id == "5beaa8bf1c9d440000a57d94")
+        storage.products.index = 0;
+    }
+    else if (id == "5beaa8bf1c9d440000a57d94"){
         quantity[1]++;
-    else if (id == "5beaaa8f1c9d440000a57d95")
+        storage.products.index = 1;
+    }
+    else if (id == "5beaaa8f1c9d440000a57d95"){
         quantity[2]++;
-    else if (id == "5beaabe91c9d440000a57d96")
+        storage.products.index = 2;
+    }
+    else if (id == "5beaabe91c9d440000a57d96"){
         quantity[3]++;
-    else if (id == "5beaacd41c9d440000a57d97")
+        storage.products.index = 3;
+    }
+    else if (id == "5beaacd41c9d440000a57d97"){
         quantity[4]++;
+        storage.products.index = 4;
+    }
 
+    localStorage.setItem("TabAllInfos", JSON.stringify(storage))
     localStorage.setItem("quantity", JSON.stringify(quantity));
 
     let nums = localStorage.getItem("PricesAndNums");
