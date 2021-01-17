@@ -159,20 +159,12 @@ function deletingElement(aEvent){
     parseInt(ProductId,10);
     
     let i = 0;
-    while(storage[i])
-        i++;
-    alert(i);
-    /* 
-    while(++i <= storage){
-        if(storage.products[i].index == ProductId){
-             storage.splice(i,1);
-             alert("oui");
-        }
-    }
-    */
-   storage.products.splice(i,1);
+
+    /*JUSTE ICI */
+    storage.product.splice(i,1);
+
+
     localStorage.setItem("TabAllInfos", JSON.stringify(storage));
-    alert(i);
 }
 
 function modifyValuePlus(aEvent) {
