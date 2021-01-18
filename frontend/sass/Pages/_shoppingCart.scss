@@ -24,9 +24,10 @@
         font-size: 1.5em;
     }
     &_all {
-        h2 {
+        #emptyBasket{
             margin-top: 205px;
             text-align: center;
+            font-size: 2em;
         }
         &_each {
             background-color: $cd-primary;

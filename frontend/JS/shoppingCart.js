@@ -69,8 +69,9 @@ if (nums) {
 
 var storage = localStorage.getItem("TabAllInfos");
 storage = JSON.parse(storage);
-if (!storage) {
-
+if (!storage.products[0]) {
+    var empty = document.getElementById('emptyBasket');
+    empty.innerHTML = "Votre panier est vide"
 } else {
     let products = storage.products;
     main.innerHTML = "";
@@ -129,18 +130,20 @@ crossDiv.addEventListener('mouseout', function () {
 });
 // ================================ //
 
+// function to delete an item from the basket //
 function deletingElement(aEvent) {
     var g = aEvent ? aEvent : window.event;
     var ProductId = g.target.id;
-    ProductId = ProductId.substr(5);
-    parseInt(ProductId, 10);
+    ProductId = ProductId.substr(5); //getting the product's id from the id by substring it
+    parseInt(ProductId, 10); // parsing with an atoi the product in order to transform him into a int var
     let i = -1;
     while (++i < storage.products.length) {
         if (storage.products[i].index == ProductId) {
-            storage.products.splice(i, 1);
+            storage.products.splice(i, 1); //if we find the id throught the whole object STORAGE // 
             i = -1;
         }
     }
+    // adjusting the nums //
     nums.TotalItemsNumber -= (quantity[ProductId])
     itemNumber.innerHTML = nums.TotalItemsNumber;
     nums.TotalPrice -= (quantity[ProductId] * adjustingThePrice(ProductId));
@@ -150,7 +153,7 @@ function deletingElement(aEvent) {
     localStorage.setItem("quantity", JSON.stringify(quantity));
     localStorage.setItem("TabAllInfos", JSON.stringify(storage));
     localStorage.setItem("PricesAndNums", JSON.stringify(nums));
-    location.reload();
+    location.reload(); // reloading to show the new basket
 }
 
 // functions that's refreshing the nums's value in case of a "+" or "-"
@@ -186,6 +189,7 @@ function modifyValueMinus(aEvent) {
         nums.TotalPrice -= adjustingThePrice(t);
         price.innerHTML = nums.TotalPrice + ",00 €"
         totalNumberOfItem.innerHTML = quantity[t];
+        
         localStorage.setItem("quantity", JSON.stringify(quantity));
         localStorage.setItem("PricesAndNums", JSON.stringify(nums));
     }
