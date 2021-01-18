@@ -3,66 +3,31 @@
 
 // function to block the repetition of the same object //
 function antiRep(value) {
-
-    if (value == "5be9c8541c9d440000665243") {
-        antiRepeat[0]++;
-        return (0);
-    } else if (value == "5beaa8bf1c9d440000a57d94") {
-        antiRepeat[1]++;
-        return (1);
-    } else if (value == "5beaaa8f1c9d440000a57d95") {
-        antiRepeat[2]++;
-        return (2);
-    } else if (value == "5beaabe91c9d440000a57d96") {
-        antiRepeat[3]++;
-        return (3);
-    } else if (value == "5beaacd41c9d440000a57d97") {
-        antiRepeat[4]++;
-        return (4);
-    }
+    var ProductId = GetId(value);
+    antiRepeat[ProductId]++;
+    return (ProductId);
 }
+
 // Getting with a product's ID his reference
 function GetId(value) {
-    if (value == "5be9c8541c9d440000665243") {
-        return (0);
-    } else if (value == "5beaa8bf1c9d440000a57d94") {
-        return (1);
-    } else if (value == "5beaaa8f1c9d440000a57d95") {
-        return (2);
-    } else if (value == "5beaabe91c9d440000a57d96") {
-        return (3);
-    } else if (value == "5beaacd41c9d440000a57d97") {
-        return (4);
-    }
+    var productId = value.substr(23);
+    parseInt(productId, 10);
+    productId -= 3
+    return (productId);
 }
+
 // showing the quantity of an item 
 function checkQuantity(index) {
-    if (index == 0) {
-        numberOf0.innerHTML = quantity[0];
-    } else if (index == 1) {
-        numberOf1.innerHTML = quantity[1];
-    } else if (index == 2) {
-        numberOf2.innerHTML = quantity[2];
-    } else if (index == 3) {
-        numberOf3.innerHTML = quantity[3];
-    } else if (index == 4) {
-        numberOf4.innerHTML = quantity[4];
-    }
+    var numberOfX = document.getElementById('numberOf' + index);
+    numberOfX.innerHTML = quantity[index];
 }
 
 // ajusting the price depending on the "+" & the "-"
 
 function adjustingThePrice(value) {
-    if (value == 0)
-        return (29);
-    else if (value == 1)
-        return (39);
-    else if (value == 2)
-        return (59);
-    else if (value == 3)
-        return (45);
-    else if (value == 4)
-        return (55);
+    var tabPrice = localStorage.getItem("TabAllApi");
+    tabPrice = JSON.parse(tabPrice);
+    return (tabPrice[value].price) / 100;
 }
 // ================= //
 
@@ -148,18 +113,21 @@ if (!storage) {
         checkQuantity(index);
     }
 }
+
+// INFOS ABOUT DELETING AN ELEMENT // 
 const crossDiv = document.getElementById("crossDiv");
-crossDiv.addEventListener('mouseover', function(event) {
+crossDiv.addEventListener('mouseover', function (event) {
     event.stopPropagation();
 
     var crossinfo = document.getElementById('crossInfo')
     crossinfo.classList.add('recapitulatif_all_each-infos-right-cross-info')
     crossinfo.innerHTML = "supprimer l'article";
 });
-crossDiv.addEventListener('mouseout', function() {
+crossDiv.addEventListener('mouseout', function () {
     var crossinfo = document.getElementById('crossInfo')
     crossinfo.innerHTML = "";
 });
+// ================================ //
 
 function deletingElement(aEvent) {
     var g = aEvent ? aEvent : window.event;
@@ -184,6 +152,7 @@ function deletingElement(aEvent) {
     localStorage.setItem("PricesAndNums", JSON.stringify(nums));
     location.reload();
 }
+
 // functions that's refreshing the nums's value in case of a "+" or "-"
 function modifyValuePlus(aEvent) {
     var e = aEvent ? aEvent : window.event;

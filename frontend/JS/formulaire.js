@@ -42,7 +42,7 @@ function userInputChecker(userInput, value) {
 
 // plenty of event listener to check the user's input and block the acess to the button "commander" if the input is wrong
 
-firstName.addEventListener('input', function() {
+firstName.addEventListener('input', function () {
     if (!userInputChecker(firstName.value, 1)) {
         firstName.classList.add('wrong'); // if it's wrong, adding a red background color 
         error1.innerHTML = "&nbsp &nbsp entrée invalide"; // write that the entry is not allowed 
@@ -59,7 +59,7 @@ firstName.addEventListener('input', function() {
 
 });
 
-lastName.addEventListener('input', function() {
+lastName.addEventListener('input', function () {
     if (!userInputChecker(lastName.value, 1)) {
         lastName.classList.add('wrong');
         error2.innerHTML = "&nbsp &nbsp entrée invalide";
@@ -76,7 +76,7 @@ lastName.addEventListener('input', function() {
 
 });
 
-city.addEventListener('input', function() {
+city.addEventListener('input', function () {
     if (!userInputChecker(city.value, 1)) {
         city.classList.add('wrong');
         error3.innerHTML = "&nbsp &nbsp entrée invalide";
@@ -93,7 +93,7 @@ city.addEventListener('input', function() {
 
 });
 
-adress.addEventListener('input', function() {
+adress.addEventListener('input', function () {
     if (!userInputChecker(adress.value, 2)) {
         adress.classList.add('wrong');
         error4.innerHTML = "&nbsp &nbsp entrée invalide";
@@ -110,7 +110,7 @@ adress.addEventListener('input', function() {
     }
 });
 
-email.addEventListener('input', function() {
+email.addEventListener('input', function () {
     if (!userInputChecker(email.value, 3)) {
         email.classList.add('wrong');
         error5.innerHTML = "&nbsp &nbsp entrée invalide";

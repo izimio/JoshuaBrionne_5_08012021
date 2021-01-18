@@ -8,6 +8,7 @@ const allCards = [
 ];
 let i = -1;
 const itemNumber = document.getElementById('cartIndex');
+var tab = [];
 // ================ //
 
 //refreshing price //
@@ -22,14 +23,15 @@ if (nums) {
 
 // ============= //
 
-function GET(index, value) {
+function GET(index, value, tab) {
 
     var request = new XMLHttpRequest();
 
-    request.onreadystatechange = function() {
+    request.onreadystatechange = function () {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
             var response = JSON.parse(this.responseText);
             var tabAll = response;
+            localStorage.setItem("TabAllApi", JSON.stringify(tabAll));
             value.innerHTML = `<a href="../html/product_id=${tabAll[index]._id}.html">
                 <div class="productCard_img">
                     <img src="${tabAll[index].imageUrl}" alt="photo de ${tabAll[index].name}">
@@ -58,7 +60,7 @@ function GET(index, value) {
 };
 // DISCARDING EVERY CARDS 
 while (allCards[++i]) {
-    GET(i, allCards[i]);
+    GET(i, allCards[i], tab);
 }
 /*
 function test(aEvent) {
