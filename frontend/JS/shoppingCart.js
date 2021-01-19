@@ -127,7 +127,8 @@ crossDiv.addEventListener('mouseover', function (event) {
 crossDiv.addEventListener('mouseout', function () {
     var crossinfo = document.getElementById('crossInfo')
     crossinfo.innerHTML = "";
-});
+    
+}); 
 // ================================ //
 
 // function to delete an item from the basket //

@@ -56,23 +56,23 @@ fetch("http://localhost:3000/api/teddies/" + id) //recall our API with the ID
                                 <img src="${tabAll.imageUrl}" alt="photo de ${tabAll.name}">
                                 <div class="overview_img-price">
                                     <h2>${tabAll.price / 100},00 € </h2>
-                                </div>
+                                </div>e
                             </div>
                             <div class="overview_infos">
                                 <div class="overview_infos-name text-center">
                                     <h2>${tabAll.name}</h2>
                                 </div>
                                 <div class="overview_infos-description">
-                                    <p> <b> description :</b> ${tabAll.description}</p>
+                                    <p> <b> Description :</b> ${tabAll.description}</p>
                                 </div>
                                 <div class="overview_infos-materiaux">
                                     <h2>Matériaux</h2>
                                     <ul>
                                         <li>Laine de mouton</li>
                                         <li>Coton biologique éco-responsable</li>
-                                        <li>Billes en verres</li>
+                                        <li>Billes en verre</li>
                                         <li>Fil de lin</li>
-                                        <li>Teinture aux pigments végétales</li>
+                                        <li>Teinture aux pigments végétaux</li>
                                     </ul>
                                 </div>
                                 <div class="overview_infos-allcolors">
