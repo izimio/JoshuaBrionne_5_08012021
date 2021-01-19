@@ -195,3 +195,5 @@ function modifyValueMinus(aEvent) {
         localStorage.setItem("PricesAndNums", JSON.stringify(nums));
     }
 }
+
+// CREER UN TABLEAU DE PRODUCT ID //
