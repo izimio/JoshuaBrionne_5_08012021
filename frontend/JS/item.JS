@@ -56,7 +56,7 @@ fetch("http://localhost:3000/api/teddies/" + id) //recall our API with the ID
                                 <img src="${tabAll.imageUrl}" alt="photo de ${tabAll.name}">
                                 <div class="overview_img-price">
                                     <h2>${tabAll.price / 100},00 € </h2>
-                                </div>e
+                                </div>
                             </div>
                             <div class="overview_infos">
                                 <div class="overview_infos-name text-center">
