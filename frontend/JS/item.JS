@@ -1,7 +1,15 @@
 // GETTING PAGE ID //
-var id;
-const ad = document.location.href //Obtiens l'id du produit
-id = ad.substr(47, 24);
+var str = document.location.href;
+
+let p = -1;
+var id = "";
+
+while(str[p] != "=")
+    p++;
+while(str[++p] != '.'){
+    id += str[p]
+}
+    console.log(id);
 // =============== //
 
 // declaring variables //
@@ -17,14 +25,13 @@ const itemNumber = document.getElementById('cartIndex');
 let nums = localStorage.getItem("PricesAndNums");
 if (nums) {
     nums = JSON.parse(nums);
-    itemNumber.innerHTML = nums.TotalItemsNumber;
+    itemNumber.textContent = nums.TotalItemsNumber;
 } else {
-    itemNumber.innerHTML = "0";
+    itemNumber.textContent = "0";
 }
 // ============= //
 
 // MAIN PROG // 
-
 fetch("http://localhost:3000/api/teddies/" + id) //recall our API with the ID
     .then(async result_ => { //GET the stringify tab
         const response = await result_.json() //give a ame to that tab
@@ -33,7 +40,7 @@ fetch("http://localhost:3000/api/teddies/" + id) //recall our API with the ID
         // TRICKY CASES //
         while (++i < response.colors.length) {
             const option = document.createElement("option"); // creating the select filled with every color
-            option.innerHTML = response.colors[i];
+            option.textContent = response.colors[i];
             Allcolors.appendChild(option);
 
             const bubble = document.createElement("div"); // creatings the colored bubbles 
@@ -101,10 +108,11 @@ fetch("http://localhost:3000/api/teddies/" + id) //recall our API with the ID
                         </div>
                     </section>`;
     })
+    /*
     .catch((error) => {
         console.log(error);
     })
-
+    */
 // adding the product's value to the total price and also ++ the itemNumber
 function addNumberAndPrice() {
     let nums = localStorage.getItem("PricesAndNums");
@@ -170,11 +178,11 @@ function addToBasket() {
 
     let nums = localStorage.getItem("PricesAndNums");
     if (!nums) {
-        itemNumber.innerHTML = "1";
-        price.innerHTML = "0,00 €";
+        itemNumber.textContent = "1";
+        price.textContent = "0,00 €";
     } else {
         nums = JSON.parse(nums);
     }
-    itemNumber.innerHTML = nums.TotalItemsNumber;
+    itemNumber.textContent = nums.TotalItemsNumber;
     localStorage.setItem("PricesAndNums", JSON.stringify(nums));
 }

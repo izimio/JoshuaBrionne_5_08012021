@@ -19,7 +19,7 @@ function GetId(value) {
 // showing the quantity of an item 
 function checkQuantity(index) {
     var numberOfX = document.getElementById('numberOf' + index);
-    numberOfX.innerHTML = quantity[index];
+    numberOfX.textContent = quantity[index];
 }
 
 // ajusting the price depending on the "+" & the "-"
@@ -57,11 +57,11 @@ quantity = JSON.parse(quantity);
 let nums = localStorage.getItem("PricesAndNums");
 if (nums) {
     nums = JSON.parse(nums);
-    price.innerHTML = nums.TotalPrice + ",00 €"; // total price
-    itemNumber.innerHTML = nums.TotalItemsNumber;
+    price.textContent = nums.TotalPrice + ",00 €"; // total price
+    itemNumber.textContent = nums.TotalItemsNumber;
 } else {
-    price.innerHTML = "0,00 €"; // total price
-    itemNumber.innerHTML = "0";
+    price.textContent = "0,00 €"; // total price
+    itemNumber.textContent = "0";
 }
 // =========================== // 
 
@@ -71,10 +71,10 @@ var storage = localStorage.getItem("TabAllInfos");
 storage = JSON.parse(storage);
 if (!storage.products[0]) {
     var empty = document.getElementById('emptyBasket');
-    empty.innerHTML = "Votre panier est vide"
+    empty.textContent = "Votre panier est vide"
 } else {
     let products = storage.products;
-    main.innerHTML = "";
+    main.textContent = "";
     while (++i != storage.products.length) {
         index = antiRep(storage.products[i]._id); // BLOCKING THE REPETITION OF ARTICLES //           
         if (antiRepeat[index] <= 1 && storage.products[i]) {
@@ -122,11 +122,11 @@ crossDiv.addEventListener('mouseover', function (event) {
 
     var crossinfo = document.getElementById('crossInfo')
     crossinfo.classList.add('recapitulatif_all_each-infos-right-cross-info')
-    crossinfo.innerHTML = "supprimer l'article";
+    crossinfo.textContent = "supprimer l'article";
 });
 crossDiv.addEventListener('mouseout', function () {
     var crossinfo = document.getElementById('crossInfo')
-    crossinfo.innerHTML = "";
+    crossinfo.textContent = "";
     
 }); 
 // ================================ //
@@ -146,9 +146,9 @@ function deletingElement(aEvent) {
     }
     // adjusting the nums //
     nums.TotalItemsNumber -= (quantity[ProductId])
-    itemNumber.innerHTML = nums.TotalItemsNumber;
+    itemNumber.textContent = nums.TotalItemsNumber;
     nums.TotalPrice -= (quantity[ProductId] * adjustingThePrice(ProductId));
-    price.innerHTML = nums.TotalPrice + ",00 €"
+    price.textContent = nums.TotalPrice + ",00 €"
 
     quantity[ProductId] = 0;
     localStorage.setItem("quantity", JSON.stringify(quantity));
@@ -167,10 +167,10 @@ function modifyValuePlus(aEvent) {
     var totalNumberOfItem = document.getElementById('numberOf' + t);
     quantity[t]++;
     nums.TotalItemsNumber++;
-    itemNumber.innerHTML = nums.TotalItemsNumber;
+    itemNumber.textContent = nums.TotalItemsNumber;
     nums.TotalPrice += adjustingThePrice(t);
-    price.innerHTML = nums.TotalPrice + ",00 €"
-    totalNumberOfItem.innerHTML = quantity[t];
+    price.textContent = nums.TotalPrice + ",00 €"
+    totalNumberOfItem.textContent = quantity[t];
 
     localStorage.setItem("quantity", JSON.stringify(quantity));
     localStorage.setItem("PricesAndNums", JSON.stringify(nums));
@@ -186,10 +186,10 @@ function modifyValueMinus(aEvent) {
     if (quantity[t] - 1 > 0) {
         quantity[t]--;
         nums.TotalItemsNumber--;
-        itemNumber.innerHTML = nums.TotalItemsNumber;
+        itemNumber.textContent = nums.TotalItemsNumber;
         nums.TotalPrice -= adjustingThePrice(t);
-        price.innerHTML = nums.TotalPrice + ",00 €"
-        totalNumberOfItem.innerHTML = quantity[t];
+        price.textContent = nums.TotalPrice + ",00 €"
+        totalNumberOfItem.textContent = quantity[t];
         
         localStorage.setItem("quantity", JSON.stringify(quantity));
         localStorage.setItem("PricesAndNums", JSON.stringify(nums));
