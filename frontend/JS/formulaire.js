@@ -45,13 +45,13 @@ function userInputChecker(userInput, value) {
 firstName.addEventListener('input', function () {
     if (!userInputChecker(firstName.value, 1)) {
         firstName.classList.add('wrong'); // if it's wrong, adding a red background color 
-        error1.innerHTML = "&nbsp &nbsp entrée invalide"; // write that the entry is not allowed 
+        error1.textContent = "&nbsp &nbsp entrée invalide"; // write that the entry is not allowed 
         error.in1 = 0; // putting the error checker to 0 in order to block the final button 
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", ""); // if one of the checker's var are not equal to 1, blocking the button 
     } else {
         firstName.classList.remove('wrong'); // if the input fills inside the regex, removing the red background color 
-        error1.innerHTML = ""; // erasing the error message
+        error1.textContent = ""; // erasing the error message
         error.in1 = 1; // putting the variable to 1 in order to unlock that input 
         if (error.in1 == 1 && error.in2 == 1 && error.in3 == 1 && error.in4 == 1 && error.in5 == 1) // if everything is good, unlock the buttong 
             sumbut.removeAttribute("disabled", "");
@@ -62,13 +62,13 @@ firstName.addEventListener('input', function () {
 lastName.addEventListener('input', function () {
     if (!userInputChecker(lastName.value, 1)) {
         lastName.classList.add('wrong');
-        error2.innerHTML = "&nbsp &nbsp entrée invalide";
+        error2.textContent = "&nbsp &nbsp entrée invalide";
         error.in2 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
     } else {
         lastName.classList.remove('wrong');
-        error2.innerHTML = "";
+        error2.textContent = "";
         error.in2 = 1;
         if (error.in1 == 1 && error.in2 == 1 && error.in3 == 1 && error.in4 == 1 && error.in5 == 1)
             sumbut.removeAttribute("disabled", "");
@@ -79,13 +79,13 @@ lastName.addEventListener('input', function () {
 city.addEventListener('input', function () {
     if (!userInputChecker(city.value, 1)) {
         city.classList.add('wrong');
-        error3.innerHTML = "&nbsp &nbsp entrée invalide";
+        error3.textContent = "&nbsp &nbsp entrée invalide";
         error.in3 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
     } else {
         city.classList.remove('wrong');
-        error3.innerHTML = "";
+        error3.textContent = "";
         error.in3 = 1;
         if (error.in1 == 1 && error.in2 == 1 && error.in3 == 1 && error.in4 == 1 && error.in5 == 1)
             sumbut.removeAttribute("disabled", "");
@@ -96,13 +96,13 @@ city.addEventListener('input', function () {
 adress.addEventListener('input', function () {
     if (!userInputChecker(adress.value, 2)) {
         adress.classList.add('wrong');
-        error4.innerHTML = "&nbsp &nbsp entrée invalide";
+        error4.textContent = "&nbsp &nbsp entrée invalide";
         error.in4 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
     } else {
         adress.classList.remove('wrong');
-        error4.innerHTML = "";
+        error4.textContent = "";
         error.in4 = 1;
         if (error.in1 == 1 && error.in2 == 1 && error.in3 == 1 && error.in4 == 1 && error.in5 == 1)
             sumbut.removeAttribute("disabled", "");
@@ -113,13 +113,13 @@ adress.addEventListener('input', function () {
 email.addEventListener('input', function () {
     if (!userInputChecker(email.value, 3)) {
         email.classList.add('wrong');
-        error5.innerHTML = "&nbsp &nbsp entrée invalide";
+        error5.textContent = "&nbsp &nbsp entrée invalide";
         error.in5 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
     } else {
         email.classList.remove('wrong');
-        error5.innerHTML = "";
+        error5.textContent = "";
         error.in5 = 1;
         if (error.in1 == 1 && error.in2 == 1 && error.in3 == 1 && error.in4 == 1 && error.in5 == 1)
             sumbut.removeAttribute("disabled", "");
@@ -137,17 +137,48 @@ sumbut.addEventListener('click', function (Event) {
         alert('Votre panier est vide');
         Event.preventDefault();
     }
-    else {                       // else let's go for completing that order
-        var tab = [];
+    else {                     // else let's go for completing that order
+        var tabId = [];
         let i = -1;
-        var t
-        GetId
+        var t;
         while (++i < storage.products.length) {
             t = -1;
             while (++t != quantity[GetId(storage.products[i]._id)]) {  // adding as much id as the item's quantity
-                tab.push(storage.products[i]._id)
+                tabId.push(storage.products[i]._id)
             }
+            var commande = {
+                contact: { //contact object 
+                    firstName: firstName.value.trim(), //trim() to deleted some mistook spaces
+                    lastName: lastName.value.trim(),
+                    address: adress.value.trim(),
+                    city: city.value.trim(),
+                    email: email.value.trim(),
+                },
+                products: tabId,  //all item's id 
+            };
+            POST(commande);
         }
-        alert(tab)
     }
 });
+
+
+function POST(order) {
+    fetch("http://localhost:3000/api/teddies/order", {
+        method: 'POST',
+        headers: new Headers({
+            "Content-Type": "application/json"
+        }),
+        body: JSON.stringify(order), //stringifying the objet
+    })
+        .then(async result_ => {
+            const result = await result_.json() //waiting for the result before saving things
+            localStorage.setItem("orderResult", JSON.stringify(result.orderId)) //stocking the value inside 2 localstorages
+            console.log(result);
+            localStorage.setItem("order", JSON.stringify(order))
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    alert("Commande prise en compte. Merci de votre achat !")
+
+}
