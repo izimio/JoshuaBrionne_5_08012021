@@ -12,6 +12,10 @@ if (nums) {
 }
 
 var t = localStorage.getItem("orderResult");
+var p = localStorage.getItem("order");
 t = JSON.parse(t);
-console.log(t);
-price.innerHTML = t;
+p = JSON.parse(p);
+
+console.log(p);
+lol.innerHTML = t;
+lol.innerHTML += p.contact.address;

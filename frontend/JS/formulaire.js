@@ -45,7 +45,7 @@ function userInputChecker(userInput, value) {
 firstName.addEventListener('input', function () {
     if (!userInputChecker(firstName.value, 1)) {
         firstName.classList.add('wrong'); // if it's wrong, adding a red background color 
-        error1.textContent = "&nbsp &nbsp entrée invalide"; // write that the entry is not allowed 
+        error1.textContent = "entrée invalide"; // write that the entry is not allowed 
         error.in1 = 0; // putting the error checker to 0 in order to block the final button 
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", ""); // if one of the checker's var are not equal to 1, blocking the button 
@@ -62,7 +62,7 @@ firstName.addEventListener('input', function () {
 lastName.addEventListener('input', function () {
     if (!userInputChecker(lastName.value, 1)) {
         lastName.classList.add('wrong');
-        error2.textContent = "&nbsp &nbsp entrée invalide";
+        error2.textContent = "entrée invalide";
         error.in2 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
@@ -79,7 +79,7 @@ lastName.addEventListener('input', function () {
 city.addEventListener('input', function () {
     if (!userInputChecker(city.value, 1)) {
         city.classList.add('wrong');
-        error3.textContent = "&nbsp &nbsp entrée invalide";
+        error3.textContent = "entrée invalide";
         error.in3 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
@@ -96,7 +96,7 @@ city.addEventListener('input', function () {
 adress.addEventListener('input', function () {
     if (!userInputChecker(adress.value, 2)) {
         adress.classList.add('wrong');
-        error4.textContent = "&nbsp &nbsp entrée invalide";
+        error4.textContent = "entrée invalide";
         error.in4 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
@@ -113,7 +113,7 @@ adress.addEventListener('input', function () {
 email.addEventListener('input', function () {
     if (!userInputChecker(email.value, 3)) {
         email.classList.add('wrong');
-        error5.textContent = "&nbsp &nbsp entrée invalide";
+        error5.textContent = "entrée invalide";
         error.in5 = 0;
         if (error.in1 != 1 || error.in2 != 1 || error.in3 != 1 || error.in4 != 1 || error.in5 != 1)
             sumbut.setAttribute("disabled", "");
