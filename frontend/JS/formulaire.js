@@ -1,5 +1,4 @@
 // ========================== // FORMULAIRE // =========================== //
-
 // var declaration and getting id //
 var firstName = document.getElementById('firstName');
 var lastName = document.getElementById('lastName');
@@ -17,28 +16,6 @@ let error = {
     in4: 0,
     in5: 0
 };
-
-
-// fonction wich tells if the parameter fills in the regex //
-function userInputChecker(userInput, value) {
-
-    if (value == 1) {
-        if (!userInput.match(/^([a-zA-Z-'éèç ]+)$/)) // first regex for firstname and last name 
-            return (0);
-        else
-            return (1);
-    } else if (value == 2) {
-        if (!userInput.match(/^([a-zA-Z-0-9éèç ]+)$/)) // Second regex for adress and city 
-            return (0);
-        else
-            return (1);
-    } else if (value == 3) {
-        if (!userInput.match(/^[a-z0-9._-ç]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/)) // thrid regex for the email adress
-            return (0);
-        else
-            return (1);
-    }
-}
 
 // plenty of event listener to check the user's input and block the acess to the button "commander" if the input is wrong
 
@@ -140,45 +117,30 @@ sumbut.addEventListener('click', function (Event) {
     else {                     // else let's go for completing that order
         var tabId = [];
         let i = -1;
-        var t;
+        var t = -1;
+        let j;
+        let trigger;
         while (++i < storage.products.length) {
-            t = -1;
-            while (++t != quantity[GetId(storage.products[i]._id)]) {  // adding as much id as the item's quantity
-                tabId.push(storage.products[i]._id)
+            j = -1;
+            trigger = 0;
+            while(tabId[++j]){
+                if(tabId[j] == storage.products[i]._id)
+                    trigger++;
             }
-            var commande = {
-                contact: { //contact object 
-                    firstName: firstName.value.trim(), //trim() to deleted some mistook spaces
-                    lastName: lastName.value.trim(),
-                    address: adress.value.trim(),
-                    city: city.value.trim(),
-                    email: email.value.trim(),
-                },
-                products: tabId,  //all item's id 
-            };
-            POST(commande);
+            if(trigger == 0)
+                 tabId.push(storage.products[i]._id)
         }
+        console.log(tabId);
+        var commande = {
+            contact: { //contact object 
+                firstName: firstName.value.trim(), //trim() to deleted some mistook spaces
+                lastName: lastName.value.trim(),
+                address: adress.value.trim(),
+                city: city.value.trim(),
+                email: email.value.trim(),
+            },
+            products: tabId,  //all item's id 
+        };
+        POST(commande);
     }
 });
-
-
-function POST(order) {
-    fetch("http://localhost:3000/api/teddies/order", {
-        method: 'POST',
-        headers: new Headers({
-            "Content-Type": "application/json"
-        }),
-        body: JSON.stringify(order), //stringifying the objet
-    })
-        .then(async result_ => {
-            const result = await result_.json() //waiting for the result before saving things
-            localStorage.setItem("orderResult", JSON.stringify(result.orderId)) //stocking the value inside 2 localstorages
-            console.log(result);
-            localStorage.setItem("order", JSON.stringify(order))
-        })
-        .catch(error => {
-            console.log(error);
-        })
-    alert("Commande prise en compte. Merci de votre achat !")
-
-}

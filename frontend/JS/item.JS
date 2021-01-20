@@ -23,12 +23,7 @@ const itemNumber = document.getElementById('cartIndex');
 
 // SETTING NUMS //
 let nums = localStorage.getItem("PricesAndNums");
-if (nums) {
-    nums = JSON.parse(nums);
-    itemNumber.textContent = nums.TotalItemsNumber;
-} else {
-    itemNumber.textContent = "0";
-}
+refreshNums();
 // ============= //
 
 // MAIN PROG // 
@@ -108,81 +103,8 @@ fetch("http://localhost:3000/api/teddies/" + id) //recall our API with the ID
                         </div>
                     </section>`;
     })
-    /*
+    
     .catch((error) => {
         console.log(error);
     })
-    */
-// adding the product's value to the total price and also ++ the itemNumber
-function addNumberAndPrice() {
-    let nums = localStorage.getItem("PricesAndNums");
-    if (!nums) {
-        nums = {
-            TotalPrice: 0,
-            TotalItemsNumber: 0
-        }
-    } else {
-        nums = JSON.parse(nums);
-    }
-    nums.TotalPrice += tabAll.price / 100;
-    nums.TotalItemsNumber += 1;
-    localStorage.setItem("PricesAndNums", JSON.stringify(nums));
-}
-
-function addToBasket() {
-    // CREATING THE BASQUT STORAGE //
-    let storage = localStorage.getItem("TabAllInfos");
-    if (!storage) { //if doesn't exist, creating, else just fill it 
-        storage = {
-            products: [],
-        }
-    } else {
-        storage = JSON.parse(storage) //extracting JSON
-    }
-    storage.products.push({
-        name: tabAll.name,
-        _id: tabAll._id,
-        price: tabAll.price / 100,
-        description: tabAll.description,
-        imageUrl: tabAll.imageUrl,
-        index: (parseInt(id.substr(23)) - 3),
-    })
-    localStorage.setItem("TabAllInfos", JSON.stringify(storage)) // Putting the final result inside à stringify tab 
-    alert(`L'ourson ${tabAll.name} à bien été ajouté à votre panier !`)
-    addNumberAndPrice();
-
-
-    var quantity = localStorage.getItem("quantity");
-    if (!quantity) {
-        var quantity = [
-            0,
-            0,
-            0,
-            0,
-            0
-        ];
-    } else {
-        quantity = JSON.parse(quantity)
-    }
-
-    // Getting the product's number
-    var productId = id.substr(23);
-    parseInt(productId, 10);
-    productId -= 3
-    // =========================== //
-    quantity[productId]++;
-    storage.products.index = productId;
-
-    localStorage.setItem("TabAllInfos", JSON.stringify(storage))
-    localStorage.setItem("quantity", JSON.stringify(quantity));
-
-    let nums = localStorage.getItem("PricesAndNums");
-    if (!nums) {
-        itemNumber.textContent = "1";
-        price.textContent = "0,00 €";
-    } else {
-        nums = JSON.parse(nums);
-    }
-    itemNumber.textContent = nums.TotalItemsNumber;
-    localStorage.setItem("PricesAndNums", JSON.stringify(nums));
-}
+    

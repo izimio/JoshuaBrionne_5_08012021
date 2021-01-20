@@ -1,44 +1,10 @@
-//localStorage.clear();
-// FUNCTIONS //
-
-// function to block the repetition of the same object //
-function antiRep(value) {
-    var ProductId = GetId(value);
-    antiRepeat[ProductId]++;
-    return (ProductId);
-}
-
-// Getting with a product's ID his reference
-function GetId(value) {
-    var productId = value.substr(23);
-    parseInt(productId, 10);
-    productId -= 3
-    return (productId);
-}
-
-// showing the quantity of an item 
-function checkQuantity(index) {
-    var numberOfX = document.getElementById('numberOf' + index);
-    numberOfX.textContent = quantity[index];
-}
-
-// ajusting the price depending on the "+" & the "-"
-
-function adjustingThePrice(value) {
-    var tabPrice = localStorage.getItem("TabAllApi");
-    tabPrice = JSON.parse(tabPrice);
-    return (tabPrice[value].price) / 100;
-}
-// ================= //
-
-
 // CREATINGS mains VARIABLE //
 const main = document.getElementById('recapAll');
 const price = document.getElementById('allcost');
 const itemNumber = document.getElementById('cartIndex');
+var empty = document.getElementById('emptyBasket');
 var i = -1;
 var index;
-
 var antiRepeat = [
     0,
     0,
@@ -48,30 +14,24 @@ var antiRepeat = [
 ];
 // ============ //
 
-// LOCAL STORAGE ANTIREPEAT // 
 var quantity = localStorage.getItem("quantity");
 quantity = JSON.parse(quantity);
-// =================== // 
+
 
 //  REFRESHING THE nums'S VALUE//
 let nums = localStorage.getItem("PricesAndNums");
-if (nums) {
-    nums = JSON.parse(nums);
-    price.textContent = nums.TotalPrice + ",00 €"; // total price
-    itemNumber.textContent = nums.TotalItemsNumber;
-} else {
-    price.textContent = "0,00 €"; // total price
-    itemNumber.textContent = "0";
-}
+refreshNumsAndPrice();
 // =========================== // 
 
 // OPENING AND GETTING READY TO SHOW THE BASKET // 
 
 var storage = localStorage.getItem("TabAllInfos");
+if(!storage){
+    empty.textContent = "Votre panier est vide";
+}
 storage = JSON.parse(storage);
 if (!storage.products[0]) {
-    var empty = document.getElementById('emptyBasket');
-    empty.textContent = "Votre panier est vide"
+    empty.textContent = "Votre panier est vide";
 } else {
     let products = storage.products;
     main.textContent = "";
@@ -127,73 +87,6 @@ crossDiv.addEventListener('mouseover', function (event) {
 crossDiv.addEventListener('mouseout', function () {
     var crossinfo = document.getElementById('crossInfo')
     crossinfo.textContent = "";
-    
-}); 
+
+});
 // ================================ //
-
-// function to delete an item from the basket //
-function deletingElement(aEvent) {
-    var g = aEvent ? aEvent : window.event;
-    var ProductId = g.target.id;
-    ProductId = ProductId.substr(5); //getting the product's id from the id by substring it
-    parseInt(ProductId, 10); // parsing with an atoi the product in order to transform him into a int var
-    let i = -1;
-    while (++i < storage.products.length) {
-        if (storage.products[i].index == ProductId) {
-            storage.products.splice(i, 1); //if we find the id throught the whole object STORAGE // 
-            i = -1;
-        }
-    }
-    // adjusting the nums //
-    nums.TotalItemsNumber -= (quantity[ProductId])
-    itemNumber.textContent = nums.TotalItemsNumber;
-    nums.TotalPrice -= (quantity[ProductId] * adjustingThePrice(ProductId));
-    price.textContent = nums.TotalPrice + ",00 €"
-
-    quantity[ProductId] = 0;
-    localStorage.setItem("quantity", JSON.stringify(quantity));
-    localStorage.setItem("TabAllInfos", JSON.stringify(storage));
-    localStorage.setItem("PricesAndNums", JSON.stringify(nums));
-    location.reload(); // reloading to show the new basket
-}
-
-// functions that's refreshing the nums's value in case of a "+" or "-"
-function modifyValuePlus(aEvent) {
-    var e = aEvent ? aEvent : window.event;
-    var t = e.target.id;
-    t = t.substring(4);
-    t = parseInt(t, 10);
-
-    var totalNumberOfItem = document.getElementById('numberOf' + t);
-    quantity[t]++;
-    nums.TotalItemsNumber++;
-    itemNumber.textContent = nums.TotalItemsNumber;
-    nums.TotalPrice += adjustingThePrice(t);
-    price.textContent = nums.TotalPrice + ",00 €"
-    totalNumberOfItem.textContent = quantity[t];
-
-    localStorage.setItem("quantity", JSON.stringify(quantity));
-    localStorage.setItem("PricesAndNums", JSON.stringify(nums));
-}
-
-function modifyValueMinus(aEvent) {
-    var e = aEvent ? aEvent : window.event;
-    var t = e.target.id;
-    t = t.substring(4);
-    t = parseInt(t, 10);
-
-    var totalNumberOfItem = document.getElementById('numberOf' + t);
-    if (quantity[t] - 1 > 0) {
-        quantity[t]--;
-        nums.TotalItemsNumber--;
-        itemNumber.textContent = nums.TotalItemsNumber;
-        nums.TotalPrice -= adjustingThePrice(t);
-        price.textContent = nums.TotalPrice + ",00 €"
-        totalNumberOfItem.textContent = quantity[t];
-        
-        localStorage.setItem("quantity", JSON.stringify(quantity));
-        localStorage.setItem("PricesAndNums", JSON.stringify(nums));
-    }
-}
-
-// CREER UN TABLEAU DE PRODUCT ID //

@@ -1,21 +1,25 @@
+// Creating mains variables
 const price = document.getElementById('allcost');
 const itemNumber = document.getElementById('cartIndex');
+var i = -1;
+var j;
+var t = 0;
+var trigger = 0;
+
+// getting all the infos we need about the post we made before 
+var ResultId = localStorage.getItem("orderResult");
+ResultId = JSON.parse(ResultId);
+var OrderAll = localStorage.getItem("order");
+OrderAll = JSON.parse(OrderAll);
+var quantity = localStorage.getItem("quantity");
+quantity = JSON.parse(quantity);
 
 let nums = localStorage.getItem("PricesAndNums");
-if (nums) {
-    nums = JSON.parse(nums);
-    price.textContent = nums.TotalPrice + ",00 €"; // total price
-    itemNumber.textContent = nums.TotalItemsNumber;
-} else {
-    price.textContent = "0,00 €"; // total price
-    itemNumber.textContent = "0";
-}
 
-var t = localStorage.getItem("orderResult");
-var p = localStorage.getItem("order");
-t = JSON.parse(t);
-p = JSON.parse(p);
+refreshNumsAndPrice();
 
-console.log(p);
-lol.innerHTML = t;
-lol.innerHTML += p.contact.address;
+console.log(OrderAll.products);
+lol.innerHTML = OrderAll.products[0] + "___" + quantity[GetId(OrderAll.products[0])];
+
+
+//  NE PAS OUBLEIR DE CLEAR LES LOCAL STORAGE //
