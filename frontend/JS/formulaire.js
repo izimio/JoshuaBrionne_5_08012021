@@ -126,3 +126,28 @@ email.addEventListener('input', function () {
 
     }
 });
+
+sumbut.addEventListener('click', function (Event) {
+    var storage = localStorage.getItem("TabAllInfos");
+    storage = JSON.parse(storage);
+    var quantity = localStorage.getItem("quantity");
+    quantity = JSON.parse(quantity);
+
+    if (!storage.products[0]) { // if the basket is empty, cancelling the sumbit
+        alert('Votre panier est vide');
+        Event.preventDefault();
+    }
+    else {                       // else let's go for completing that order
+        var tab = [];
+        let i = -1;
+        var t
+        GetId
+        while (++i < storage.products.length) {
+            t = -1;
+            while (++t != quantity[GetId(storage.products[i]._id)]) {  // adding as much id as the item's quantity
+                tab.push(storage.products[i]._id)
+            }
+        }
+        alert(tab)
+    }
+});
