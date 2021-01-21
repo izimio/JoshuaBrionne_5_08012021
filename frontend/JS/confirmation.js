@@ -48,7 +48,7 @@ while(OrderAll.products[++i]){
     recapSummaryUL.appendChild(art);
 }
 recapTiltle.innerHTML = `Merci <span>${OrderAll.contact.firstName}</span> pour votre commande`
-recapText.innerHTML = `Elle sera expedié au ${OrderAll.contact.address} (${OrderAll.contact.city})`
+recapText.innerHTML = `Elle sera expediée à ${OrderAll.contact.address} (${OrderAll.contact.city})`
 summaryTilte.textContent = "Résumé de votre commande : ";
 summaryId.textContent = "Numéro de commande : " + ResultId;
 summaryPrice.textContent = "Prix final : " + nums.TotalPrice + ",00 €"

@@ -54,7 +54,7 @@ lastName.addEventListener("input", function () {
 });
 
 city.addEventListener("input", function () {
-    if (!userInputChecker(city.value, 1)) {
+    if (!userInputChecker(city.value, 2)) {
         city.classList.add("wrong");
         error3.textContent = "entrée invalide";
         error.in3 = 0;
