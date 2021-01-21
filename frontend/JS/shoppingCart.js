@@ -33,7 +33,6 @@ storage = JSON.parse(storage);
 if (!storage.products[0]) {
     empty.textContent = "Votre panier est vide";
 } else {
-    let products = storage.products;
     main.textContent = "";
     while (++i != storage.products.length) {
         index = antiRep(storage.products[i]._id); // BLOCKING THE REPETITION OF ARTICLES //           

@@ -1,5 +1,6 @@
 // Creating mains variables
 const itemNumber = document.getElementById("cartIndex");
+const preparing = document.getElementById('preparing');
 var i = -1;
 var t;
 
@@ -48,10 +49,23 @@ while(OrderAll.products[++i]){
     recapSummaryUL.appendChild(art);
 }
 recapTiltle.innerHTML = `Merci <span>${OrderAll.contact.firstName}</span> pour votre commande`
-recapText.innerHTML = `Elle sera expediée à ${OrderAll.contact.address} (${OrderAll.contact.city})`
+if(OrderAll.contact.address[0] >= '0' && OrderAll.contact.address[0] <= '9' ){
+    recapText.textContent = "Elle sera expediée au " + OrderAll.contact.address + " " + "(" + OrderAll.contact.city + ")";
+}
+else{
+    recapText.textContent = "Elle sera expediée à " + OrderAll.contact.address + " " + "(" + OrderAll.contact.city + ")";
+}
 summaryTilte.textContent = "Résumé de votre commande : ";
 summaryId.textContent = "Numéro de commande : " + ResultId;
 summaryPrice.textContent = "Prix final : " + nums.TotalPrice + ",00 €"
+
+if(OrderAll.products[1]){
+    preparing.textContent = "Vos ourons préparent déjà leurs affaires"
+}
+else{
+    preparing.textContent = "Votre ouron prépare déjà ses affaires"
+}
+
 // ===== append child ===== //
 recapMain.appendChild(recapTiltle);
 recapMain.appendChild(recapBlock);
@@ -63,6 +77,8 @@ summaryDiv.appendChild(summaryPrice)
 recapSummary.appendChild(summaryDiv)
 recapBlock.appendChild(recapSummary);
 
+
+// clearing the local storages
 const but1 = document.getElementById('logoOrinoco').addEventListener("click",function(){
     eraseLocalStorage();
 });

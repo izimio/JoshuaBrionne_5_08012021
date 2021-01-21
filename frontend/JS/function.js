@@ -171,7 +171,7 @@ function userInputChecker(userInput, value) {
         else
             return (1);
     } else if (value == 2) {
-        if (!userInput.match(/^([a-zA-Z-0-9éèçüîïûëê ]+)$/)) // Second regex for adress and city 
+        if (!userInput.match(/^([a-zA-Z-0-9éèçüîïûëê' ]+)$/)) // Second regex for adress and city 
             return (0);
         else
             return (1);

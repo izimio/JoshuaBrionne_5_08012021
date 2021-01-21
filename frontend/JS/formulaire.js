@@ -110,13 +110,15 @@ sumbut.addEventListener("click", function (Event) {
     var quantity = localStorage.getItem("quantity");
     quantity = JSON.parse(quantity);
 
-    if (!storage.products[0]) { // if the basket is empty, cancelling the sumbit
+    console.log(storage);
+
+    if (!storage) { // if the basket is empty, cancelling the sumbit
         alert("Votre panier est vide");
         Event.preventDefault();
-    } else { // else let's go for completing that order
+    }
+    else if(storage.products[0] != null) { // else let's go for completing that order
         var tabId = [];
         let i = -1;
-        var t = -1;
         let j;
         let trigger;
         while (++i < storage.products.length) {

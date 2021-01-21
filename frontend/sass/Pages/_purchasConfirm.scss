@@ -48,6 +48,7 @@
                 }
                 &_sum{
                     &-bot{
+                        margin-top: 1em;
                         p{
                             margin-top: 0.5em;
                             margin-bottom: 0;
@@ -62,7 +63,6 @@
                             }
                         }
                     }
-                    text-align: center;
                     @media all and (min-width: 992px) {
                         width: 50%;
                         margin-left: 25%;
@@ -73,6 +73,7 @@
                     ul{
                         text-align: center;
                         margin-left: -3em;
+                        margin-top: 1em;
                     }
                     li{
                         list-style: none;
