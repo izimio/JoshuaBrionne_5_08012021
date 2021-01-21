@@ -1,8 +1,8 @@
 // CREATINGS mains VARIABLE //
-const main = document.getElementById('recapAll');
-const price = document.getElementById('allcost');
-const itemNumber = document.getElementById('cartIndex');
-var empty = document.getElementById('emptyBasket');
+const main = document.getElementById("recapAll");
+const price = document.getElementById("allcost");
+const itemNumber = document.getElementById("cartIndex");
+var empty = document.getElementById("emptyBasket");
 var i = -1;
 var index;
 var antiRepeat = [

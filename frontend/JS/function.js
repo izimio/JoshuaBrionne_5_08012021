@@ -138,9 +138,7 @@ function addToBasket() {
     }
 
     // Getting the product's number
-    var productId = id.substr(23);
-    parseInt(productId, 10);
-    productId -= 3
+    var productId = GetId(id);
     // =========================== //
     quantity[productId]++;
     storage.products.index = productId;
@@ -293,3 +291,12 @@ function modifyValueMinus(aEvent) {
 // ++ LOWER BASKET ++ //
 
 // +++++ SHOPPINGCART +++++ //
+
+// ===== CONFIRMP ===== //
+function eraseLocalStorage(){
+    localStorage.removeItem("PricesAndNums")
+    localStorage.removeItem("quantity")
+    localStorage.removeItem("TabAllInfos")
+}
+
+// +++++ CONFIRMP +++++ //

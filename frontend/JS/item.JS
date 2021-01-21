@@ -16,9 +16,9 @@ while(str[++p] != '.'){
 let i = -1;
 const Allcolors = document.createElement("select");
 const Allbubble = document.createElement("div");
-const main = document.getElementById('product');
+const main = document.getElementById("product");
 var tabAll;
-const itemNumber = document.getElementById('cartIndex');
+const itemNumber = document.getElementById("cartIndex");
 // ======== //
 
 // SETTING NUMS //

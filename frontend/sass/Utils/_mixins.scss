@@ -24,3 +24,15 @@
         transform: rotate(360deg);
     }
 }
+
+
+@keyframes appearsection{
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+      transform: translateX(2%);
+    }
+  
+  }
