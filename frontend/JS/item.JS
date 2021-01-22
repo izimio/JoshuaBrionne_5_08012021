@@ -105,6 +105,6 @@ fetch("http://localhost:3000/api/teddies/" + id) //recall our API with the ID
     })
     
     .catch((error) => {
-        console.log(error);
+        console.error(error);
     })
     

@@ -48,6 +48,7 @@ while(OrderAll.products[++i]){
     })
     recapSummaryUL.appendChild(art);
 }
+
 recapTiltle.innerHTML = `Merci <span>${OrderAll.contact.firstName}</span> pour votre commande`
 if(OrderAll.contact.address[0] >= '0' && OrderAll.contact.address[0] <= '9' ){
     recapText.textContent = "Elle sera expediée au " + OrderAll.contact.address + " " + "(" + OrderAll.contact.city + ")";
@@ -60,10 +61,10 @@ summaryId.textContent = "Numéro de commande : " + ResultId;
 summaryPrice.textContent = "Prix final : " + nums.TotalPrice + ",00 €"
 
 if(OrderAll.products[1]){
-    preparing.textContent = "Vos ourons préparent déjà leurs affaires"
+    preparing.textContent = "Vos oursons préparent déjà leurs affaires"
 }
 else{
-    preparing.textContent = "Votre ouron prépare déjà ses affaires"
+    preparing.textContent = "Votre ourson prépare déjà ses affaires"
 }
 
 // ===== append child ===== //

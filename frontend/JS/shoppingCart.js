@@ -3,6 +3,7 @@ const main = document.getElementById("recapAll");
 const price = document.getElementById("allcost");
 const itemNumber = document.getElementById("cartIndex");
 var empty = document.getElementById("emptyBasket");
+var impatient = document.getElementById("impatient");
 var i = -1;
 var index;
 var antiRepeat = [
@@ -30,8 +31,17 @@ if(!storage){
     empty.textContent = "Votre panier est vide";
 }
 storage = JSON.parse(storage);
+
+// Adjusting the text with the teddies's number
+if(storage.products[1]){
+    impatient.textContent = "Vos oursons ont hâte de vous rencontrer"
+}
+else{
+    impatient.textContent = "Votre ourson a hâte de vous rencontrer"
+}
 if (!storage.products[0]) {
     empty.textContent = "Votre panier est vide";
+    impatient.textContent = "";
 } else {
     main.textContent = "";
     while (++i != storage.products.length) {

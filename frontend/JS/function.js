@@ -24,40 +24,39 @@ function refreshNumsAndPrice(){
 
 // ===== INDEX + GET / POST ===== //
 
-function GET(index, value, tab) {
+function GET(index, value) {
 
-    var request = new XMLHttpRequest();
-
-    request.onreadystatechange = function () {
-        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-            var response = JSON.parse(this.responseText);
-            var tabAll = response;
-            localStorage.setItem("TabAllApi", JSON.stringify(tabAll));
-            value.innerHTML = `<a href="../html/product_id=${tabAll[index]._id}.html">
-                <div class="productCard_img">
-                    <img src="${tabAll[index].imageUrl}" alt="photo de ${tabAll[index].name}">
+    fetch("http://localhost:3000/api/teddies/") 
+    .then(async result_ => { //GET the stringify tab
+        const response = await result_.json() //give a ame to that tab
+        tabAll = response; // getting the api's information inside my own variable
+        localStorage.setItem("TabAllApi", JSON.stringify(tabAll));
+        value.innerHTML = `<a href="../html/product_id=${tabAll[index]._id}.html">
+        <div class="productCard_img">
+            <img src="${tabAll[index].imageUrl}" alt="photo de ${tabAll[index].name}">
+        </div>
+        <div class="productCard_caption">
+            <div class="productCard_caption-upper">
+                <div class="productCard_caption-upper-name">
+                    <h2>${tabAll[index].name}</h2>
                 </div>
-                <div class="productCard_caption">
-                    <div class="productCard_caption-upper">
-                        <div class="productCard_caption-upper-name">
-                            <h2>${tabAll[index].name}</h2>
-                        </div>
-                        <div class="productCard_caption-upper-price">
-                            <p>${tabAll[index].price / 100},00 €</p>
-                        </div>
-                    </div>
-                    <div class="productCard_caption-lower">
-                        <p class="productCard_caption-lower-description">${tabAll[index].description}</p>
-                    </div>
-                    <div class="productCard_caption-lower-addtocart">
-                        <p id="teddy${index}" onclick="test()">En savoir plus</p>
-                    </div>
+                <div class="productCard_caption-upper-price">
+                    <p>${tabAll[index].price / 100},00 €</p>
                 </div>
-                </a>`;
-        }
-    };
-    request.open("GET", "http://localhost:3000/api/teddies");
-    request.send();
+            </div>
+            <div class="productCard_caption-lower">
+                <p class="productCard_caption-lower-description">${tabAll[index].description}</p>
+            </div>
+            <div class="productCard_caption-lower-addtocart">
+                <p id="teddy${index}" onclick="test()">En savoir plus</p>
+            </div>
+        </div>
+        </a>`;
+       
+    })
+    .catch((error) => {
+        console.error(error);
+    })
 };
 
 function POST(order) {
@@ -74,7 +73,7 @@ function POST(order) {
             localStorage.setItem("order", JSON.stringify(order))
         })
         .catch(error => {
-            console.log(error);
+            console.error(error);
         })
     alert("Commande prise en compte. Merci de votre achat !")
 
@@ -164,14 +163,13 @@ function addToBasket() {
 
 // fonction wich tells if the parameter fills in the regex //
 function userInputChecker(userInput, value) {
-
     if (value == 1) {
-        if (!userInput.match(/^([a-zA-Z-'éèçüîïûëê ]+)$/)) // first regex for firstname and last name 
+        if (!userInput.match(/^[A-Za-zéèçüîïûëê-\s]{2,30}$/)) // first regex for firstname and last name 
             return (0);
         else
             return (1);
     } else if (value == 2) {
-        if (!userInput.match(/^([a-zA-Z-0-9éèçüîïûëê' ]+)$/)) // Second regex for adress and city 
+        if (!userInput.match(/^[A-Za-z0-9éèçüîï'ûëê-\s]{2,30}$/)) // Second regex for adress and city 
             return (0);
         else
             return (1);

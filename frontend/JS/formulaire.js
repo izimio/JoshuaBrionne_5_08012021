@@ -105,18 +105,16 @@ email.addEventListener("input", function () {
 });
 
 sumbut.addEventListener("click", function (Event) {
+    var tag = 0;
     var storage = localStorage.getItem("TabAllInfos");
     storage = JSON.parse(storage);
-    var quantity = localStorage.getItem("quantity");
-    quantity = JSON.parse(quantity);
+    var nums = localStorage.getItem("PricesAndNums");
 
-    console.log(storage);
-
-    if (!storage) { // if the basket is empty, cancelling the sumbit
+    if(!storage || !storage.products[0]){ // if the basket is empty, cancelling the sumbit
         alert("Votre panier est vide");
         Event.preventDefault();
     }
-    else if(storage.products[0] != null) { // else let's go for completing that order
+    else{//  completing that order
         var tabId = [];
         let i = -1;
         let j;
@@ -131,7 +129,6 @@ sumbut.addEventListener("click", function (Event) {
             if (trigger == 0)
                 tabId.push(storage.products[i]._id)
         }
-        console.log(tabId);
         var commande = {
             contact: { //contact object 
                 firstName: firstName.value.trim(), //trim() to deleted some mistook spaces
