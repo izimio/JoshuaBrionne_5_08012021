@@ -18,5 +18,5 @@ refreshNums();
 
 // DISCARDING EVERY CARDS 
 while (allCards[++i]) {
-    GET(i, allCards[i]);
+    GETIndex(i, allCards[i]);
 }

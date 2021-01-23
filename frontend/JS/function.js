@@ -24,7 +24,7 @@ function refreshNumsAndPrice(){
 
 // ===== INDEX + GET / POST ===== //
 
-function GET(index, value) {
+function GETIndex(index, value) {
 
     fetch("http://localhost:3000/api/teddies/") 
     .then(async result_ => { //GET the stringify tab
@@ -190,10 +190,15 @@ function userInputChecker(userInput, value) {
 
 // Getting with a product's ID his reference
 function GetId(value) {
-    var productId = value.substr(23);
-    parseInt(productId, 10);
-    productId -= 3
-    return (productId);
+    if(value.length != 24){
+        console.error("erreur d'ID");
+    }
+    else{
+        var productId = value.substr(23);
+        parseInt(productId, 10);
+        productId -= 3
+        return (productId);
+    }
 }
 
 // function to block the repetition of the same object //
@@ -244,6 +249,10 @@ function deletingElement(aEvent) {
     localStorage.setItem("quantity", JSON.stringify(quantity));
     localStorage.setItem("TabAllInfos", JSON.stringify(storage));
     localStorage.setItem("PricesAndNums", JSON.stringify(nums));
+
+    if(!storage.products[0]){ //Ajusting the text with the storage
+        impatient.textContent = "Votre ourson à hâte de vous rencontrer"  
+    }
     location.reload(); // reloading to show the new basket
 }
 
