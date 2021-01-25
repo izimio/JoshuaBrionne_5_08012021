@@ -9,6 +9,8 @@ const allCards = [
 let i = -1;
 const itemNumber = document.getElementById("cartIndex");
 var tab = [];
+
+const main = document.getElementById("test");
 // ================ //
 
 //refreshing price //
@@ -17,6 +19,4 @@ refreshNums();
 // ============= //
 
 // DISCARDING EVERY CARDS 
-while (allCards[++i]) {
-    GETIndex(i, allCards[i]);
-}
+GETIndex(main);

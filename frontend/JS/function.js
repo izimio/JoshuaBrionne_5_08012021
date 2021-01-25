@@ -24,35 +24,45 @@ function refreshNumsAndPrice(){
 
 // ===== INDEX + GET / POST ===== //
 
-function GETIndex(index, value) {
+function GETIndex(value) {
 
     fetch("http://localhost:3000/api/teddies/") 
     .then(async result_ => { //GET the stringify tab
         const response = await result_.json() //give a ame to that tab
         tabAll = response; // getting the api's information inside my own variable
-        localStorage.setItem("TabAllApi", JSON.stringify(tabAll));
-        value.innerHTML = `<a href="../html/product_id=${tabAll[index]._id}.html">
-        <div class="productCard_img">
-            <img src="${tabAll[index].imageUrl}" alt="photo de ${tabAll[index].name}">
-        </div>
-        <div class="productCard_caption">
-            <div class="productCard_caption-upper">
-                <div class="productCard_caption-upper-name">
-                    <h2>${tabAll[index].name}</h2>
+        var index = -1;
+        const allAPI = localStorage.getItem("TabAllApi");
+        if(!allAPI){
+            localStorage.setItem("TabAllApi", JSON.stringify(tabAll));
+        }
+        while(response[++index]){
+            value.innerHTML += `
+        <div class="col-lg-4 col-sm-12 ">
+            <div class="productCard" id="productCard${index}">
+                <a href="../html/product_id=${tabAll[index]._id}.html">
+                <div class="productCard_img">
+                    <img src="${tabAll[index].imageUrl}" alt="photo de ${tabAll[index].name}">
                 </div>
-                <div class="productCard_caption-upper-price">
-                    <p>${tabAll[index].price / 100},00 €</p>
+                <div class="productCard_caption">
+                    <div class="productCard_caption-upper">
+                        <div class="productCard_caption-upper-name">
+                            <h2>${tabAll[index].name}</h2>
+                        </div>
+                        <div class="productCard_caption-upper-price">
+                            <p>${tabAll[index].price / 100},00 €</p>
+                        </div>
+                    </div>
+                    <div class="productCard_caption-lower">
+                        <p class="productCard_caption-lower-description">${tabAll[index].description}</p>
+                    </div>
+                    <div class="productCard_caption-lower-addtocart">
+                        <p id="teddy${index}">En savoir plus</p>
+                    </div>
                 </div>
+                </a>
             </div>
-            <div class="productCard_caption-lower">
-                <p class="productCard_caption-lower-description">${tabAll[index].description}</p>
-            </div>
-            <div class="productCard_caption-lower-addtocart">
-                <p id="teddy${index}" onclick="test()">En savoir plus</p>
-            </div>
-        </div>
-        </a>`;
-       
+        </div>`;
+        }
     })
     .catch((error) => {
         console.error(error);
