@@ -20,8 +20,6 @@ function refreshNumsAndPrice(){
     }
 }
 // +++++ GLOBAL +++++ //
-
-
 // ===== INDEX + GET / POST ===== //
 
 function GETIndex(value) {
@@ -31,10 +29,20 @@ function GETIndex(value) {
         const response = await result_.json() //give a ame to that tab
         tabAll = response; // getting the api's information inside my own variable
         var index = -1;
-        const allAPI = localStorage.getItem("TabAllApi");
+
+        // creating the price's tab
+        const allAPI = localStorage.getItem("TabAllPrice");
         if(!allAPI){
-            localStorage.setItem("TabAllApi", JSON.stringify(tabAll));
+            var tab = [];
+            console.log('a');
+            while(response[++index]){
+                tab.push(tabAll[index].price / 100)
+            }
+            console.log(tab);
+            localStorage.setItem("TabAllPrice", JSON.stringify(tab))
         }
+        index = -1;
+
         while(response[++index]){
             value.innerHTML += `
         <div class="col-lg-4 col-sm-12 ">
@@ -227,9 +235,10 @@ function checkQuantity(index) {
 // ajusting the price depending on the "+" & the "-"
 
 function adjustingThePrice(value) {
-    var tabPrice = localStorage.getItem("TabAllApi");
+    var tabPrice = localStorage.getItem("TabAllPrice");
     tabPrice = JSON.parse(tabPrice);
-    return (tabPrice[value].price) / 100;
+    console.log(tabPrice[value]);
+    return tabPrice[value];
 }
 // ++ UPPOER BASKET ++ //
 
