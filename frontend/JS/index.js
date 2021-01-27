@@ -27,7 +27,7 @@ fetch("http://localhost:3000/api/teddies/")
             main.innerHTML += `
         <div class="col-lg-4 col-sm-12 ">
             <div class="productCard" id="productCard${index}">
-                <a href="../html/product_id=${tabAll[index]._id}.html">
+            <a href="../html/product.html?id=${tabAll[index]._id}">
                 <div class="productCard_img">
                     <img src="${tabAll[index].imageUrl}" alt="photo de ${tabAll[index].name}">
                 </div>

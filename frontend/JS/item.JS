@@ -1,15 +1,6 @@
 // GETTING PAGE ID //
-var str = document.location.href;
-
-let p = -1;
-var id = "";
-
-while(str[p] != "=")
-    p++;
-while(str[++p] != '.'){
-    id += str[p]
-}
-    console.log(id);
+const params = (new URL(document.location)).searchParams;
+const id = params.get('id');
 // =============== //
 
 // declaring variables //
