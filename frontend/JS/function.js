@@ -42,8 +42,7 @@ function POST(order) {
 
 }
 
-// +++++ INDEX + GET / POST +++++ //
-
+// +++++ POST +++++ //
 
 // ===== ITEM ===== //
 
@@ -145,11 +144,9 @@ function userInputChecker(userInput, value) {
 }
 // +++++ FORMULAIRE +++++ //
 
-
 // ===== SHOPPINGCART ===== //
 
 // == UPPOER BASKET == //
-
 
 // Getting with a product's ID his reference
 function GetId(value) {
@@ -186,7 +183,6 @@ function adjustingThePrice(value) {
     return tabPrice[value];
 }
 // ++ UPPOER BASKET ++ //
-
 
 // == LOWER BASKET == //
 

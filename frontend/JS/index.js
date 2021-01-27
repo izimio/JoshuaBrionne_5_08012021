@@ -1,7 +1,7 @@
 // variables //
-let i = -1;
 const itemNumber = document.getElementById("cartIndex");
 const main = document.getElementById("Allcards");
+var index = -1;
 
 //refreshing price //
 let nums = localStorage.getItem("PricesAndNums");
@@ -12,7 +12,6 @@ fetch("http://localhost:3000/api/teddies/")
     .then(async result_ => { //GET the stringify tab
         const response = await result_.json() //give a ame to that tab
         tabAll = response; // getting the api's information inside my own variable
-        var index = -1;
 
         // creating the price's tab
         const allAPI = localStorage.getItem("TabAllPrice");
