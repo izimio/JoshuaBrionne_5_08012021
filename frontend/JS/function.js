@@ -78,7 +78,7 @@ function addToBasket() {
         price: tabAll.price / 100,
         description: tabAll.description,
         imageUrl: tabAll.imageUrl,
-        index: (parseInt(id.substr(23)) - 3),
+        index: GetId(id),
     })
     localStorage.setItem("TabAllInfos", JSON.stringify(storage)) // Putting the final result inside à stringify tab 
     alert(`L'ourson ${tabAll.name} à bien été ajouté à votre panier !`)

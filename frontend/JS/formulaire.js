@@ -7,7 +7,7 @@ var adress = document.getElementById("address");
 var email = document.getElementById("mail");
 var sumbut = document.getElementById("sumbutton");
 
-// tab of error for each input //
+// arr of error for each input //
 
 var error = {
     in1: 0,
@@ -105,10 +105,8 @@ email.addEventListener("input", function () {
 });
 
 sumbut.addEventListener("click", function (Event) {
-    var tag = 0;
     var storage = localStorage.getItem("TabAllInfos");
     storage = JSON.parse(storage);
-    var nums = localStorage.getItem("PricesAndNums");
 
     if(!storage || !storage.products[0]){ // if the basket is empty, cancelling the sumbit
         alert("Votre panier est vide");

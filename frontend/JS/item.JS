@@ -19,8 +19,8 @@ refreshNums();
 
 // MAIN PROG // 
 fetch("http://localhost:3000/api/teddies/" + id) //recall our API with the ID
-    .then(async result_ => { //GET the stringify tab
-        const response = await result_.json() //give a ame to that tab
+    .then(async result_ => { //GET the stringify arr
+        const response = await result_.json() //give a ame to that arr
         tabAll = response; // getting the api's information inside my own variable
 
         // TRICKY CASES //

@@ -9,11 +9,11 @@ refreshNums();
 
 // DISCARDING EVERY CARDS 
 fetch("http://localhost:3000/api/teddies/")
-    .then(async result_ => { //GET the stringify tab
-        const response = await result_.json() //give a ame to that tab
+    .then(async result_ => { //GET the stringify arr
+        const response = await result_.json() //give a ame to that arr
         tabAll = response; // getting the api's information inside my own variable
 
-        // creating the price's tab
+        // creating the price's arr
         const allAPI = localStorage.getItem("TabAllPrice");
         if (!allAPI) {
             var tab = [];

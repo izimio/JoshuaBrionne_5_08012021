@@ -38,8 +38,8 @@ while(OrderAll.products[++i]){
     const art = document.createElement("li");
     const t = OrderAll.products[i];
     fetch("http://localhost:3000/api/teddies/" + OrderAll.products[i]) //recall our API with the ID
-    .then(async result_ => { //GET the stringify tab
-        const response = await result_.json() //give a ame to that tab
+    .then(async result_ => { //GET the stringify arr
+        const response = await result_.json() //give a ame to that arr
         tabAll = response; 
         art.textContent =  tabAll.name.toUpperCase() + " x " + quantity[GetId(t)] + " = " + quantity[GetId(t)] * tabAll.price / 100 + ",00€";
     })
