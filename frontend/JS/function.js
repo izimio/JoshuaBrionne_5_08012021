@@ -24,7 +24,7 @@ function refreshNumsAndPrice(){
 // ===== POST ===== //
 function POST(order) {
     fetch("http://localhost:3000/api/teddies/order", {
-        method: 'POST',
+        method: "POST",
         headers: new Headers({
             "Content-Type": "application/json"
         }),

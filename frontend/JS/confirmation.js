@@ -1,6 +1,6 @@
 // Creating mains variables
 const itemNumber = document.getElementById("cartIndex");
-const preparing = document.getElementById('preparing');
+const preparing = document.getElementById("preparing");
 var i = -1;
 var t;
 
@@ -12,7 +12,7 @@ OrderAll = JSON.parse(OrderAll);
 var quantity = localStorage.getItem("quantity");
 quantity = JSON.parse(quantity);
 
-let nums = localStorage.getItem("PricesAndNums");
+var nums = localStorage.getItem("PricesAndNums");
 
 refreshNums();
 // ===== creating the child ===== //
@@ -29,8 +29,8 @@ var summaryDiv = document.createElement("div");
 var recapSummaryUL = document.createElement("ul");
 // ===== adding classes ===== //
 recapBlock.classList.add("purchres_real_recap-block");
-recapSummary.classList.add("purchres_real_recap-block_sum")
-summaryDiv.classList.add("purchres_real_recap-block_sum-bot")
+recapSummary.classList.add("purchres_real_recap-block_sum");
+summaryDiv.classList.add("purchres_real_recap-block_sum-bot");
 // ===== filling the content ===== //
 
 // creating the ul list 
@@ -44,7 +44,7 @@ while(OrderAll.products[++i]){
         art.textContent =  tabAll.name.toUpperCase() + " x " + quantity[GetId(t)] + " = " + quantity[GetId(t)] * tabAll.price / 100 + ",00€";
     })
     .catch((error) => {
-        console.log(error);
+        console.log(error); 
     })
     recapSummaryUL.appendChild(art);
 }
@@ -80,13 +80,13 @@ recapBlock.appendChild(recapSummary);
 
 
 // clearing the local storages
-const but1 = document.getElementById('logoOrinoco').addEventListener("click",function(){
+const but1 = document.getElementById("logoOrinoco").addEventListener("click",function(){
     eraseLocalStorage();
 });
-const but2 = document.getElementById('shoppingCart').addEventListener("click",function(){
+const but2 = document.getElementById("shoppingCart").addEventListener("click",function(){
     eraseLocalStorage();
 });
-const but3 = document.getElementById('backtoshop').addEventListener("click",function(){
+const but3 = document.getElementById("backtoshop").addEventListener("click",function(){
     eraseLocalStorage();
 });
 

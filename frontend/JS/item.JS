@@ -1,10 +1,10 @@
 // GETTING PAGE ID //
 const params = (new URL(document.location)).searchParams;
-const id = params.get('id');
+const id = params.get("id");
 // =============== //
 
 // declaring variables //
-let i = -1;
+var i = -1;
 const Allcolors = document.createElement("select");
 const Allbubble = document.createElement("div");
 const main = document.getElementById("product");
@@ -13,7 +13,7 @@ const itemNumber = document.getElementById("cartIndex");
 // ======== //
 
 // SETTING NUMS //
-let nums = localStorage.getItem("PricesAndNums");
+var nums = localStorage.getItem("PricesAndNums");
 refreshNums();
 // ============= //
 
@@ -94,8 +94,6 @@ fetch("http://localhost:3000/api/teddies/" + id) //recall our API with the ID
                         </div>
                     </section>`;
     })
-    
     .catch((error) => {
         console.error(error);
-    })
-    
+    });

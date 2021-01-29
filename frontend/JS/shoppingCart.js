@@ -20,7 +20,7 @@ quantity = JSON.parse(quantity);
 
 
 //  REFRESHING THE nums'S VALUE//
-let nums = localStorage.getItem("PricesAndNums");
+var nums = localStorage.getItem("PricesAndNums");
 refreshNumsAndPrice();
 // =========================== // 
 
@@ -34,10 +34,10 @@ storage = JSON.parse(storage);
 
 // Adjusting the text with the teddies's number
 if(storage.products[1]){
-    impatient.textContent = "Vos oursons ont hâte de vous rencontrer"
+    impatient.textContent = "Vos oursons ont hâte de vous rencontrer";
 }
 else{
-    impatient.textContent = "Votre ourson a hâte de vous rencontrer"
+    impatient.textContent = "Votre ourson a hâte de vous rencontrer";
 }
 if (!storage.products[0]) {
     empty.textContent = "Votre panier est vide";
@@ -78,7 +78,7 @@ if (!storage.products[0]) {
                                 </div>
                             </div>
                         </div>
-                    </div>`
+                    </div>`;
         }
         checkQuantity(index);
     }

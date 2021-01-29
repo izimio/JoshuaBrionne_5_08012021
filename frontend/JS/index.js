@@ -4,9 +4,8 @@ const main = document.getElementById("Allcards");
 var index = -1;
 
 //refreshing price //
-let nums = localStorage.getItem("PricesAndNums");
+var nums = localStorage.getItem("PricesAndNums");
 refreshNums();
-
 // DISCARDING EVERY CARDS 
 fetch("http://localhost:3000/api/teddies/")
     .then(async result_ => { //GET the stringify arr
@@ -54,4 +53,4 @@ fetch("http://localhost:3000/api/teddies/")
     })
     .catch((error) => {
         console.error(error);
-    })
+    });
