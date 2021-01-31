@@ -108,11 +108,11 @@ sumbut.addEventListener("click", function (Event) {
     var storage = localStorage.getItem("TabAllInfos");
     storage = JSON.parse(storage);
 
-    if(!storage || !storage.products[0]){ // if the basket is empty, cancelling the sumbit
+    if (!storage || !storage.products[0]) { // if the basket is empty, cancelling the sumbit
         alert("Votre panier est vide");
         Event.preventDefault();
     }
-    else{//  completing that order
+    else {//  completing that order
         var tabId = [];
         let i = -1;
         let j;

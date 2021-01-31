@@ -2,7 +2,6 @@
 const itemNumber = document.getElementById("cartIndex");
 const preparing = document.getElementById("preparing");
 var i = -1;
-var t;
 
 // getting all the infos we need about the post we made before 
 var ResultId = localStorage.getItem("orderResult");
@@ -34,36 +33,34 @@ summaryDiv.classList.add("purchres_real_recap-block_sum-bot");
 // ===== filling the content ===== //
 
 // creating the ul list 
-while(OrderAll.products[++i]){
+while (OrderAll.products[++i]) {
     const art = document.createElement("li");
     const t = OrderAll.products[i];
     fetch("http://localhost:3000/api/teddies/" + OrderAll.products[i]) //recall our API with the ID
-    .then(async result_ => { //GET the stringify arr
-        const response = await result_.json() //give a ame to that arr
-        tabAll = response; 
-        art.textContent =  tabAll.name.toUpperCase() + " x " + quantity[GetId(t)] + " = " + quantity[GetId(t)] * tabAll.price / 100 + ",00€";
-    })
-    .catch((error) => {
-        console.log(error); 
-    })
+        .then(async result_ => { //GET the stringify arr
+            const response = await result_.json() //give a ame to that arr
+            tabAll = response;
+            art.textContent = tabAll.name.toUpperCase() + " x " + quantity[GetId(t)] + " = " + quantity[GetId(t)] * tabAll.price / 100 + ",00€";
+        })
+        .catch((error) => {
+            console.log(error);
+        })
     recapSummaryUL.appendChild(art);
 }
 
 recapTiltle.innerHTML = `Merci <span>${OrderAll.contact.firstName}</span> pour votre commande`
-if(OrderAll.contact.address[0] >= '0' && OrderAll.contact.address[0] <= '9' ){
+if (OrderAll.contact.address[0] >= '0' && OrderAll.contact.address[0] <= '9') {
     recapText.textContent = "Elle sera expediée au " + OrderAll.contact.address + " " + "(" + OrderAll.contact.city + ")";
-}
-else{
+} else {
     recapText.textContent = "Elle sera expediée à " + OrderAll.contact.address + " " + "(" + OrderAll.contact.city + ")";
 }
 summaryTilte.textContent = "Résumé de votre commande : ";
 summaryId.textContent = "Numéro de commande : " + ResultId;
 summaryPrice.textContent = "Prix final : " + nums.TotalPrice + ",00 €"
 
-if(OrderAll.products[1]){
+if (OrderAll.products[1]) {
     preparing.textContent = "Vos oursons préparent déjà leurs affaires"
-}
-else{
+} else {
     preparing.textContent = "Votre ourson prépare déjà ses affaires"
 }
 
@@ -80,18 +77,12 @@ recapBlock.appendChild(recapSummary);
 
 
 // clearing the local storages
-const but1 = document.getElementById("logoOrinoco").addEventListener("click",function(){
+const but1 = document.getElementById("logoOrinoco").addEventListener("click", function () {
     eraseLocalStorage();
 });
-const but2 = document.getElementById("shoppingCart").addEventListener("click",function(){
+const but2 = document.getElementById("shoppingCart").addEventListener("click", function () {
     eraseLocalStorage();
 });
-const but3 = document.getElementById("backtoshop").addEventListener("click",function(){
+const but3 = document.getElementById("backtoshop").addEventListener("click", function () {
     eraseLocalStorage();
 });
-
-
-//recapBlock.innerHTML = OrderAll.products[0] + "___" + quantity[GetId(OrderAll.products[0])];
-
-
-//  NE PAS OUBLEIR DE CLEAR LES LOCAL STORAGE //

@@ -9,7 +9,7 @@ function refreshNums() {
     }
 }
 
-function refreshNumsAndPrice(){
+function refreshNumsAndPrice() {
     if (nums) {
         nums = JSON.parse(nums);
         price.textContent = nums.TotalPrice + ",00 €"; // total price
@@ -150,10 +150,10 @@ function userInputChecker(userInput, value) {
 
 // Getting with a product's ID his reference
 function GetId(value) {
-    if(value.length != 24){
+    if (value.length != 24) {
         console.error("erreur d'ID");
     }
-    else{
+    else {
         var productId = value.substr(23);
         parseInt(productId, 10);
         productId -= 3
@@ -210,8 +210,8 @@ function deletingElement(aEvent) {
     localStorage.setItem("TabAllInfos", JSON.stringify(storage));
     localStorage.setItem("PricesAndNums", JSON.stringify(nums));
 
-    if(!storage.products[0]){ //Ajusting the text with the storage
-        impatient.textContent = "Votre ourson à hâte de vous rencontrer"  
+    if (!storage.products[0]) { //Ajusting the text with the storage
+        impatient.textContent = "Votre ourson à hâte de vous rencontrer"
     }
     location.reload(); // reloading to show the new basket
 }
@@ -260,7 +260,7 @@ function modifyValueMinus(aEvent) {
 // +++++ SHOPPINGCART +++++ //
 
 // ===== CONFIRMP ===== //
-function eraseLocalStorage(){
+function eraseLocalStorage() {
     localStorage.removeItem("PricesAndNums")
     localStorage.removeItem("quantity")
     localStorage.removeItem("TabAllInfos")
