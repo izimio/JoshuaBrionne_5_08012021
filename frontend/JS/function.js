@@ -64,7 +64,7 @@ function addNumberAndPrice() {
 
 function addToBasket() {
     // CREATING THE BASQUT STORAGE //
-    let storage = localStorage.getItem("TabAllInfos");
+    var storage = localStorage.getItem("TabAllInfos");
     if (!storage) { //if doesn't exist, creating, else just fill it 
         storage = {
             products: [],
@@ -84,19 +84,19 @@ function addToBasket() {
     alert(`L'ourson ${tabAll.name} à bien été ajouté à votre panier !`)
     addNumberAndPrice();
 
-
+    var numberOfProduct = localStorage.getItem('TabAllPrice');
+    numberOfProduct = JSON.parse(numberOfProduct);
     var quantity = localStorage.getItem("quantity");
     if (!quantity) {
-        var quantity = [
-            0,
-            0,
-            0,
-            0,
-            0
-        ];
+        var quantity = [];
+        var j = -1;
+        while (++j < numberOfProduct.length) {
+            quantity.push(0);
+        }
     } else {
         quantity = JSON.parse(quantity)
     }
+    console.log(quantity);
 
     // Getting the product's number
     var productId = GetId(id);
