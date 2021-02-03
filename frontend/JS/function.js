@@ -96,7 +96,6 @@ function addToBasket() {
     } else {
         quantity = JSON.parse(quantity)
     }
-
     // Getting the product's number
     var productId = GetId(id);
     // =========================== //
